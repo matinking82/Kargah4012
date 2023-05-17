@@ -1,6 +1,8 @@
 public class Person {
     private String name;
     private Gender gender;
+   
+
     private String phoneNumber;
     private String email;
     private int age;
@@ -55,6 +57,12 @@ public class Person {
         this.id = id;
     }
 
-    
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
     
 }
