@@ -1,3 +1,3 @@
-public class Personel {
+public class Personel extends Person{
     
 }

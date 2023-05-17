@@ -1,3 +1,3 @@
-public class Doctor {
+public class Doctor extends Personel{
     
 }
