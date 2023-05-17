@@ -1,6 +1,8 @@
 package DbContext;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import DbContext.Interfaces.IAdminDbServices;
 import DbContext.Interfaces.IDataBaseContext;
@@ -21,9 +23,30 @@ public class DataBaseContext implements IDataBaseContext {
 
     private Connection connection;
 
-    public DataBaseContext(Connection connection) {
-        this.connection = connection;
+    public DataBaseContext() {
 
+        try {
+            Class.forName("org.sqlite.JDBC");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            // db parameters
+            String url = "jdbc:sqlite:K4012/sqlite/db/office.db";
+            // create a connection to the database
+            connection = DriverManager.getConnection(url);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
     }
 
     @Override
@@ -38,16 +61,15 @@ public class DataBaseContext implements IDataBaseContext {
 
     @Override
     public IDoctorDbServices Doctors() {
-        if (doctors==nurses) {
+        if (doctors == nurses) {
             doctors = new DoctorDbServices(connection);
         }
         return doctors;
     }
 
-
     @Override
     public INoteDbServices Notes() {
-        if (notes==null) {
+        if (notes == null) {
             notes = new NoteDbServices(connection);
         }
 
@@ -56,7 +78,7 @@ public class DataBaseContext implements IDataBaseContext {
 
     @Override
     public INurseDbServices Nurses() {
-        if (nurses==null) {
+        if (nurses == null) {
             nurses = new NurseDbServices(connection);
         }
 
@@ -65,7 +87,7 @@ public class DataBaseContext implements IDataBaseContext {
 
     @Override
     public IPatientDbServices Patients() {
-        if (patients==null) {
+        if (patients == null) {
             patients = new PatientDbServices(connection);
         }
 
@@ -74,7 +96,7 @@ public class DataBaseContext implements IDataBaseContext {
 
     @Override
     public IVisitDbServices Visits() {
-        if (visits==null) {
+        if (visits == null) {
             visits = new VisitDbServices(connection);
         }
 
