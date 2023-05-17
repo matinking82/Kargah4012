@@ -1,0 +1,84 @@
+package DbContext;
+
+import java.sql.Connection;
+
+import DbContext.Interfaces.IAdminDbServices;
+import DbContext.Interfaces.IDataBaseContext;
+import DbContext.Interfaces.IDoctorDbServices;
+import DbContext.Interfaces.INoteDbServices;
+import DbContext.Interfaces.INurseDbServices;
+import DbContext.Interfaces.IPatientDbServices;
+import DbContext.Interfaces.IVisitDbServices;
+
+public class DataBaseContext implements IDataBaseContext {
+
+    private IAdminDbServices admins;
+    private IDoctorDbServices doctors;
+    private INoteDbServices notes;
+    private INurseDbServices nurses;
+    private IPatientDbServices patients;
+    private IVisitDbServices visits;
+
+    private Connection connection;
+
+    public DataBaseContext(Connection connection) {
+        this.connection = connection;
+
+    }
+
+    @Override
+    public IAdminDbServices Admins() {
+
+        if (admins == null) {
+            admins = new AdminDbServices(connection);
+        }
+
+        return admins;
+    }
+
+    @Override
+    public IDoctorDbServices Doctors() {
+        if (doctors==nurses) {
+            doctors = new DoctorDbServices(connection);
+        }
+        return doctors;
+    }
+
+
+    @Override
+    public INoteDbServices Notes() {
+        if (notes==null) {
+            notes = new NoteDbServices(connection);
+        }
+
+        return notes;
+    }
+
+    @Override
+    public INurseDbServices Nurses() {
+        if (nurses==null) {
+            nurses = new NurseDbServices(connection);
+        }
+
+        return nurses;
+    }
+
+    @Override
+    public IPatientDbServices Patients() {
+        if (patients==null) {
+            patients = new PatientDbServices(connection);
+        }
+
+        return patients;
+    }
+
+    @Override
+    public IVisitDbServices Visits() {
+        if (visits==null) {
+            visits = new VisitDbServices(connection);
+        }
+
+        return visits;
+    }
+
+}
