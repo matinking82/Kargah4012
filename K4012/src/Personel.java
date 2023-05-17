@@ -7,8 +7,8 @@ public class Personel extends Person{
 
 
     public Personel(String name, String phoneNumber, String emai, int age, int id, long salary, String shift,
-            boolean isAvalable, String username, String password) {
-        super(name, phoneNumber, emai, age, id);
+            boolean isAvalable, String username, String password ,Gender gender) {
+        super(name, phoneNumber, emai, age, id ,  gender);
         this.salary = salary;
         this.shift = shift;
         this.isAvalable = isAvalable;

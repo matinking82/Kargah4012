@@ -3,8 +3,8 @@ public class Nurse extends Personel {
     private String placeOfWork;
     
     public Nurse(String name, String phoneNumber, String emai, int age, int id, long salary, String shift,
-            boolean isAvalable, String username, String password, String type, String placeOfWork) {
-        super(name, phoneNumber, emai, age, id, salary, shift, isAvalable, username, password);
+            boolean isAvalable, String username, String password, String type, String placeOfWork , Gender gender) {
+        super(name, phoneNumber, emai, age, id, salary, shift, isAvalable, username, password , gender);
         this.type = type;
         this.placeOfWork = placeOfWork;
     }
