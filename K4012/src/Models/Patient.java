@@ -1,3 +1,4 @@
+package Models;
 public class Patient extends Person{
 private boolean haveInsured;
 private String description;

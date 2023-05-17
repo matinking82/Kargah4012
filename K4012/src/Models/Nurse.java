@@ -1,3 +1,4 @@
+package Models;
 public class Nurse extends Personel {
     private String type;
     private String placeOfWork;

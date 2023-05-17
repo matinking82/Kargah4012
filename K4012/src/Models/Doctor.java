@@ -1,3 +1,4 @@
+package Models;
 public class Doctor extends Personel{
     private String Expertise;
     

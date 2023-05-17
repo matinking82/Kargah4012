@@ -1,3 +1,4 @@
+package Models;
 public class Personel extends Person{
     private long salary;
     private String shift; 
