@@ -1,5 +1,7 @@
 package DbContext;
 
+import java.sql.Connection;
+
 import DbContext.Interfaces.IAdminDbServices;
 import DbContext.Interfaces.IDataBaseContext;
 import DbContext.Interfaces.IDoctorDbServices;
@@ -8,7 +10,7 @@ import DbContext.Interfaces.INurseDbServices;
 import DbContext.Interfaces.IPatientDbServices;
 import DbContext.Interfaces.IVisitDbServices;
 
-public class DataBaseContext implements IDataBaseContext{
+public class DataBaseContext implements IDataBaseContext {
 
     private IAdminDbServices admins;
     private IDoctorDbServices doctors;
@@ -17,40 +19,66 @@ public class DataBaseContext implements IDataBaseContext{
     private IPatientDbServices patients;
     private IVisitDbServices visits;
 
+    private Connection connection;
+
+    public DataBaseContext(Connection connection) {
+        this.connection = connection;
+
+    }
+
     @Override
     public IAdminDbServices Admins() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Admins'");
+
+        if (admins == null) {
+            admins = new AdminDbServices(connection);
+        }
+
+        return admins;
     }
 
     @Override
     public IDoctorDbServices Doctors() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Doctors'");
+        if (doctors==nurses) {
+            doctors = new DoctorDbServices(connection);
+        }
+        return doctors;
     }
+
 
     @Override
     public INoteDbServices Notes() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Notes'");
+        if (notes==null) {
+            notes = new NoteDbServices(connection);
+        }
+
+        return notes;
     }
 
     @Override
     public INurseDbServices Nurses() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Nurses'");
+        if (nurses==null) {
+            nurses = new NurseDbServices(connection);
+        }
+
+        return nurses;
     }
 
     @Override
     public IPatientDbServices Patients() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Patients'");
+        if (patients==null) {
+            patients = new PatientDbServices(connection);
+        }
+
+        return patients;
     }
 
     @Override
     public IVisitDbServices Visits() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Visits'");
+        if (visits==null) {
+            visits = new VisitDbServices(connection);
+        }
+
+        return visits;
     }
-    
+
 }
