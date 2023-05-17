@@ -1,11 +1,13 @@
 public class Person {
     private String name;
+    private Gender gender;
     private String phoneNumber;
     private String email;
     private int age;
     private int id;
 
-    public Person(String name, String phoneNumber, String emai, int age, int id) {
+    public Person(String name, String phoneNumber, String emai, int age, int id , Gender gender) {
+        this.gender=gender;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = emai;
