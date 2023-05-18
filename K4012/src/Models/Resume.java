@@ -1,21 +1,20 @@
 package Models;
 
-import java.util.List;
-
 public class Resume {
+
+    private int idPersonels;
     private String University;
     private String GPA;
-    private List<String> WorkExperience;
+    // private List<String> WorkExperience;
     private String LevelOfEducation;
-    private List<String> Articles;
+    // private List<String> Articles;
 
-    public Resume(String university, String gPA, List<String> workExperience, String levelOfEducation,
-            List<String> articles) {
-        University = university;
-        GPA = gPA;
-        WorkExperience = workExperience;
-        LevelOfEducation = levelOfEducation;
-        Articles = articles;
+    public Resume(String university, String gPA, String levelOfEducation, int idPersonels  ) {
+        this.idPersonels=idPersonels;
+        this.University = university;
+        this.GPA = gPA;
+        this.LevelOfEducation = levelOfEducation;
+        
     }
     public Resume() {
     }
@@ -35,12 +34,6 @@ public class Resume {
         GPA = gPA;
     }
     
-    public List<String> getWorkExperience() {
-        return WorkExperience;
-    }
-    public void setWorkExperience(List<String> workExperience) {
-        WorkExperience = workExperience;
-    }
     
     public String getLevelOfEducation() {
         return LevelOfEducation;
@@ -48,12 +41,11 @@ public class Resume {
     public void setLevelOfEducation(String levelOfEducation) {
         LevelOfEducation = levelOfEducation;
     }
-  
-    public List<String> getArticles() {
-        return Articles;
+    public int getIdPersonels() {
+        return idPersonels;
     }
-    public void setArticles(List<String> articles) {
-        Articles = articles;
+    public void setIdPersonels(int idPersonels) {
+        this.idPersonels = idPersonels;
     }
 
 

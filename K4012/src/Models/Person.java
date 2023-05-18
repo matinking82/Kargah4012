@@ -2,8 +2,6 @@ package Models;
 public class Person {
     private String name;
     private Gender gender;
-   
-
     private String phoneNumber;
     private String email;
     private int age;

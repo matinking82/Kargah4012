@@ -4,18 +4,18 @@ import java.util.Date;
 public class Visit {
 
     //private List<Note> notes;
-    private int DoctorId;
-    private int PatientId;
-    private long VisitPrice;
+    private int doctorId;
+    private int patientId;
+    private long visitPrice;
     private int id;
     private String date;//yyyy-MM-dd
 
 
     public Visit( int doctorId, int patientId, long visitPrice, int id, Date date) {
         this();
-        DoctorId = doctorId;
-        PatientId = patientId;
-        VisitPrice = visitPrice;
+        this.doctorId = doctorId;
+        this.patientId = patientId;
+        this.visitPrice = visitPrice;
         this.id = id;
         date=new Date();
     }
@@ -24,22 +24,23 @@ public class Visit {
     }
 
     public int getDoctorId() {
-        return DoctorId;
+        return doctorId;
     }
     public void setDoctorId(int doctorId) {
-        DoctorId = doctorId;
+        this.doctorId = doctorId;
     }
     public int getPatientId() {
-        return PatientId;
+        return patientId;
     }
     public void setPatientId(int patientId) {
-        PatientId = patientId;
+        this.patientId = patientId;
     }
     public long getVisitPrice() {
-        return VisitPrice;
+        return visitPrice;
     }
     public void setVisitPrice(long visitPrice) {
-        VisitPrice = visitPrice;
+         
+        this.visitPrice = visitPrice;
     }
 
     public int getId() {

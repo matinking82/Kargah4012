@@ -2,7 +2,7 @@ package Models;
 public class Note {
 
     private int id;
-    private int VisitId;
+    private int visitId;
     private String note;
     
     
@@ -15,11 +15,11 @@ public class Note {
     }
     
     public int getVisitId() {
-        return VisitId;
+        return visitId;
     }
 
     public void setVisitId(int visitId) {
-        VisitId = visitId;
+        this.visitId = visitId;
     }
     public int getId() {
         return id;

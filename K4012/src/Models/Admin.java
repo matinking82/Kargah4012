@@ -65,8 +65,5 @@ public class Admin {
         this.age = age;
     }
  
-
-    
-    
     
 }
