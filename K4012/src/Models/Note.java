@@ -7,7 +7,6 @@ public class Note {
     
     
     public Note(String note,int visitId) {
-        this.id = id;
         this.note = note;
         this.visitId = visitId;
     } 
