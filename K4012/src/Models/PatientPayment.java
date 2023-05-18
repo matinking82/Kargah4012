@@ -5,6 +5,9 @@ public class PatientPayment {
     private int patientId;
     private int hospitalizationId;
     private int visitId;
+    private boolean isPaid;
+
+  
 
     public PatientPayment(int patientId, int hospitalizationId, int visitId) {
         this.patientId = patientId;
@@ -38,7 +41,13 @@ public class PatientPayment {
     public void setHospitalizationId(int hospitalizationId) {
         this.hospitalizationId = hospitalizationId;
     }
-    
+    public boolean isPaid() {
+        return isPaid;
+    }
+
+    public void setPaid(boolean isPaid) {
+        this.isPaid = isPaid;
+    }
 
     
 }
