@@ -115,7 +115,7 @@ public class DoctorDbServices implements IDoctorDbServices {
         doctor.setId(getLastDoctorId()+1);
         try {
             // Prepare the SQL statement
-            String sql = "INSERT INTO Doctor (name, gender, phoneNumber, email, age, salary, shift, isAvailable, username, password, expertise,off) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Doctor (name, gender, phoneNumber, email, age, salary, shift, isAvailable, username, password, expertise,off,id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, doctor.getName());
             statement.setString(2, doctor.getGender());
@@ -129,6 +129,7 @@ public class DoctorDbServices implements IDoctorDbServices {
             statement.setString(10, doctor.getPassword());
             statement.setString(11, doctor.getExpertise());
             statement.setInt(12, doctor.getOff());
+            statement.setInt(13, doctor.getId());
 
             // Execute the SQL statement
             int rowsInserted = statement.executeUpdate();
