@@ -17,6 +17,27 @@ public class AdminDbServices implements IAdminDbServices {
         this.connection = connection;
     }
 
+    private int getLastAdminId() {
+        int lastAdminId = -1;
+        try {
+            // Prepare the SQL statement
+            String sql = "SELECT MAX(id) AS MaxId FROM Admin;";
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            // Execute the SQL statement
+            ResultSet rs = statement.executeQuery();
+
+            // Check if the result set has a row
+            if (rs.next()) {
+                // Get the value of the MaxId column
+                lastAdminId = rs.getInt("MaxId");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error getting last admin ID: " + e.getMessage());
+        }
+        return lastAdminId;
+    }
+
     @Override
     public List<Admin> getAllAdminsList() {
         List<Admin> admins = new ArrayList<>();
@@ -24,10 +45,10 @@ public class AdminDbServices implements IAdminDbServices {
             // Prepare the SQL statement
             String sql = "SELECT * FROM Admin";
             PreparedStatement statement = connection.prepareStatement(sql);
-    
+
             // Execute the SQL statement
             ResultSet rs = statement.executeQuery();
-    
+
             // Loop through the result set and add each Admin object to the list
             while (rs.next()) {
                 Admin admin = new Admin();
@@ -54,10 +75,10 @@ public class AdminDbServices implements IAdminDbServices {
             String sql = "SELECT * FROM Admin WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, adminId);
-    
+
             // Execute the SQL statement
             ResultSet rs = statement.executeQuery();
-    
+
             // Check if the result set has a row
             if (rs.next()) {
                 // Create a new Admin object and set its properties
@@ -79,9 +100,10 @@ public class AdminDbServices implements IAdminDbServices {
     @Override
 
     public boolean Add(Admin admin) {
+        admin.setId(getLastAdminId() + 1);
         try {
             // Prepare the SQL statement
-            String sql = "INSERT INTO Admin (password, username, name, phoneNumber, email, age) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Admin (password, username, name, phoneNumber, email, age,id) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, admin.getPassword());
             statement.setString(2, admin.getUsername());
@@ -89,6 +111,7 @@ public class AdminDbServices implements IAdminDbServices {
             statement.setString(4, admin.getPhoneNumber());
             statement.setString(5, admin.getEmail());
             statement.setInt(6, admin.getAge());
+            statement.setInt(7, admin.getId());
 
             // Execute the SQL statement
             int rowsInserted = statement.executeUpdate();
@@ -144,10 +167,10 @@ public class AdminDbServices implements IAdminDbServices {
             statement.setString(5, admin.getEmail());
             statement.setInt(6, admin.getAge());
             statement.setInt(7, admin.getId());
-    
+
             // Execute the SQL statement
             int rowsUpdated = statement.executeUpdate();
-    
+
             // Check if the update was successful
             if (rowsUpdated > 0) {
                 System.out.println("Admin with ID " + admin.getId() + " was updated successfully!");
