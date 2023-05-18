@@ -1,6 +1,6 @@
 package Models;
 public class Doctor extends Personel{
-    private String Expertise;
+    private String expertise;
     
 
     public Doctor() {
@@ -9,18 +9,18 @@ public class Doctor extends Personel{
 
 
     public Doctor(String name, String phoneNumber, String emai, int age, int id, long salary, String shift,
-            boolean isAvalable, String username, String password, String expertise , Gender gender) {
-        super(name, phoneNumber, emai, age, id, salary, shift, isAvalable, username, password ,gender);
-        Expertise = expertise;
+            boolean isAvalable, String username, String password, String expertise , Gender gender, int off) {
+        super(name, phoneNumber, emai, age, id, salary, shift, isAvalable, username, password ,gender , off);
+        expertise = expertise;
     }
     
 
     public String getExpertise() {
-        return Expertise;
+        return expertise;
     }
 
     public void setExpertise(String expertise) {
-        Expertise = expertise;
+        expertise = expertise;
     }
 
     
