@@ -1,13 +1,13 @@
 package Models;
 public class Person {
     private String name;
-    private Gender gender;
+    private String gender;
     private String phoneNumber;
     private String email;
     private int age;
     private int id;
 
-    public Person(String name, String phoneNumber, String emai, int age, int id , Gender gender) {
+    public Person(String name, String phoneNumber, String emai, int age, int id , String gender) {
         this.gender=gender;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -36,10 +36,10 @@ public class Person {
         this.phoneNumber = phoneNumber;
     }
     
-    public String getEmai() {
+    public String getEmail() {
         return email;
     }
-    public void setEmai(String emai) {
+    public void setEmail(String emai) {
         this.email = emai;
     }
     public int getAge() {
@@ -56,11 +56,11 @@ public class Person {
         this.id = id;
     }
 
-    public Gender getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
     
