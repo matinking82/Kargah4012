@@ -1,16 +1,14 @@
 package Models;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class Visit {
 
-    private List<Note> notes;
+    //private List<Note> notes;
     private int DoctorId;
     private int PatientId;
     private long VisitPrice;
     private int id;
-    private Date date;
+    private String date;//yyyy-MM-dd
 
 
     public Visit( int doctorId, int patientId, long visitPrice, int id, Date date) {
@@ -22,16 +20,9 @@ public class Visit {
         date=new Date();
     }
     public Visit() {
-        notes=new ArrayList<>();
+        //notes=new ArrayList<>();
     }
 
-
-    public List<Note> getNotes() {
-        return notes;
-    }
-    public void setNotes(List<Note> notes) {
-        this.notes = notes;
-    }
     public int getDoctorId() {
         return DoctorId;
     }
@@ -57,10 +48,10 @@ public class Visit {
     public void setId(int id) {
         this.id = id;
     }
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
     
