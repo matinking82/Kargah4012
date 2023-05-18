@@ -32,10 +32,10 @@ public class PatientHospitalizationRecord {
         this.id = id;
     }
     
-    public int getPoctorId() {
+    public int getDoctorId() {
         return doctorId;
     }
-    public void setPoctorId(int poctorId) {
+    public void setDoctorId(int poctorId) {
         this.doctorId = poctorId;
     }
     
