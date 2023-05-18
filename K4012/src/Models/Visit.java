@@ -8,7 +8,7 @@ public class Visit {
     private int PatientId;
     private long VisitPrice;
     private int id;
-    private Date date;
+    private String date;//yyyy-MM-dd
 
 
     public Visit( int doctorId, int patientId, long visitPrice, int id, Date date) {
