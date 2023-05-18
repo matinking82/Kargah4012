@@ -1,7 +1,7 @@
 package Models;
 
 public class Resume {
-
+    private int id;
     private int idPersonels;
     private String University;
     private String GPA;
@@ -34,6 +34,12 @@ public class Resume {
         GPA = gPA;
     }
     
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
     
     public String getLevelOfEducation() {
         return LevelOfEducation;
