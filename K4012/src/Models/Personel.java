@@ -5,16 +5,18 @@ public class Personel extends Person{
     private boolean isAvalable;
     private String username;
     private String password;
+    private int off;
 
 
     public Personel(String name, String phoneNumber, String emai, int age, int id, long salary, String shift,
-            boolean isAvalable, String username, String password ,Gender gender) {
+            boolean isAvalable, String username, String password ,Gender gender , int off) {
         super(name, phoneNumber, emai, age, id ,  gender);
         this.salary = salary;
         this.shift = shift;
         this.isAvalable = isAvalable;
         this.username = username;
         this.password = password;
+        this.off=off;
     }
 
     public Personel() {
@@ -54,6 +56,13 @@ public class Personel extends Person{
     }
     public void setAvalable(boolean isAvalable) {
         this.isAvalable = isAvalable;
+    }
+    public int getOff() {
+        return off;
+    }
+
+    public void setOff(int off) {
+        this.off = off;
     }
     
 }
