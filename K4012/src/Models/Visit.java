@@ -11,12 +11,11 @@ public class Visit {
     private String date;//yyyy-MM-dd
 
 
-    public Visit( int doctorId, int patientId, long visitPrice, int id, Date date) {
+    public Visit( int doctorId, int patientId, long visitPrice, Date date) {
         this();
         this.doctorId = doctorId;
         this.patientId = patientId;
         this.visitPrice = visitPrice;
-        this.id = id;
         date=new Date();
     }
     public Visit() {
