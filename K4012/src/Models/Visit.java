@@ -48,10 +48,10 @@ public class Visit {
     public void setId(int id) {
         this.id = id;
     }
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
     
