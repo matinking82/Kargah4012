@@ -49,47 +49,41 @@ public class DataBaseContext implements IDataBaseContext {
         try {
             Statement stmnt = connection.createStatement();
 
-            String sql =
-                    // Admins
-                    "CREATE TABLE IF NOT EXISTS Admin (\n"
-                            + "password NVARCHAR(255),"
-                            + "id INT IDENTITY(1,1) PRIMARY KEY," 
-                            + "username NVARCHAR(255),"
-                            + "name NVARCHAR(255),"
-                            + "phoneNumber NVARCHAR(255),"
-                            + "email NVARCHAR(255),"
-                            + "age INT"
-                            + ");"
-                            ////// Doctors
-                            + "CREATE TABLE IF NOT EXISTS Doctor (" +
+            // Admins
+            String admin = "CREATE TABLE IF NOT EXISTS Admin (\n"
+                    + "password NVARCHAR(255),"
+                    + "id INT ,"
+                    + "username NVARCHAR(255),"
+                    + "name NVARCHAR(255),"
+                    + "phoneNumber NVARCHAR(255),"
+                    + "email NVARCHAR(255),"
+                    + "age INT"
+                    + ");";
+            ////// Doctorssql_more
+            String doctor = "CREATE TABLE IF NOT EXISTS Doctor (" +
+                    "name NVARCHAR(255)," +
+                    "gender NVARCHAR(255)," +
+                    "phoneNumber NVARCHAR(255)," +
+                    "email NVARCHAR(255)," +
+                    "age INT," +
+                    "id INT ," +
+                    "salary BIGINT," +
+                    "shift NVARCHAR(255)," +
+                    "isAvailable BIT," +
+                    "username NVARCHAR(255)," +
+                    "password NVARCHAR(255)," +
+                    "off INT," +
+                    "expertise NVARCHAR(255)" +
+                    ");";
+            String nurse =
+                    // Nurses
+                    "CREATE TABLE IF NOT EXISTS Nurse (" +
                             "name NVARCHAR(255)," +
                             "gender NVARCHAR(255)," +
                             "phoneNumber NVARCHAR(255)," +
                             "email NVARCHAR(255)," +
                             "age INT," +
-                            "id INT IDENTITY(1,1) PRIMARY KEY," +
-                            "salary BIGINT," +
-                            "shift NVARCHAR(255)," +
-                            "isAvailable BIT," +
-                            "username NVARCHAR(255)," +
-                            "password NVARCHAR(255)," +
-                            "off INT"+
-                            "expertise NVARCHAR(255)" +
-                            ");" +
-                            // Notes
-                            "CREATE TABLE IF NOT EXISTS Note (" +
-                            "id INT IDENTITY(1,1) PRIMARY KEY," +
-                            "VisitId INT," +
-                            "note NVARCHAR(MAX)" +
-                            ");" +
-                            // Nurses
-                            "CREATE TABLE IF NOT EXISTS Nurse (" +
-                            "name NVARCHAR(255)," +
-                            "gender NVARCHAR(255)," +
-                            "phoneNumber NVARCHAR(255)," +
-                            "email NVARCHAR(255)," +
-                            "age INT," +
-                            "id INT IDENTITY(1,1) PRIMARY KEY," +
+                            "id INT ," +
                             "salary BIGINT," +
                             "shift NVARCHAR(255)," +
                             "isAvailable BIT," +
@@ -97,35 +91,49 @@ public class DataBaseContext implements IDataBaseContext {
                             "password NVARCHAR(255)," +
                             "type NVARCHAR(255)," +
                             "placeOfWork NVARCHAR(255)" +
-                            ");" +
-                            // Patients
-                            "CREATE TABLE IF NOT EXISTS Patient (" +
-                            "name NVARCHAR(255)," +
-                            "gender NVARCHAR(255)," +
-                            "phoneNumber NVARCHAR(255)," +
-                            "email NVARCHAR(255)," +
-                            "age INT," +
-                            "id INT IDENTITY(1,1) PRIMARY KEY," +
-                            "haveInsured BIT," +
-                            "description NVARCHAR(MAX)" +
-                            ");" +
-                            // Visits
-                            "CREATE TABLE IF NOT EXISTS Visit (" +
+                            ");";
+            // Patients
+            String patient = "CREATE TABLE IF NOT EXISTS Patient (" +
+                    "name TEXT," +
+                    "gender TEXT," +
+                    "phoneNumber TEXT," +
+                    "email TEXT," +
+                    "age INT," +
+                    "id INT," +
+                    "haveInsured BOOLEAN," +
+                    "description TEXT" +
+                    ");";
+
+            // Notes
+            String note = "CREATE TABLE IF NOT EXISTS Note (" +
+                    "id INT," +
+                    "VisitId INT," +
+                    "note TEXT" +
+                    ");";
+
+            String visit =
+                    // Visits
+                    "CREATE TABLE IF NOT EXISTS Visit (" +
                             "DoctorId INT," +
                             "PatientId INT," +
                             "VisitPrice BIGINT," +
-                            "id INT IDENTITY(1,1) PRIMARY KEY," +
+                            "id INT ," +
                             "date NVARCHAR(10)" +
                             ");";
-                            //Resume
-                            //TODO
-                            //PatientPayment
-                            //TODO
-                            //PatientHospitalizationRecord
-                            //TODO
-                            /////////////////
+            // Resume
+            // TODO
+            // PatientPayment
+            // TODO
+            // PatientHospitalizationRecord
+            // TODO
+            /////////////////
 
-            stmnt.execute(sql);
+            stmnt.execute(admin);
+            stmnt.execute(doctor);
+            stmnt.execute(nurse);
+            stmnt.execute(note);
+            stmnt.execute(patient);
+            stmnt.execute(visit);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
