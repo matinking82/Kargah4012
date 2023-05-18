@@ -6,7 +6,7 @@ public class Note {
     private String note;
     
     
-    public Note(int id, String note,int visitId) {
+    public Note(String note,int visitId) {
         this.id = id;
         this.note = note;
         this.visitId = visitId;
