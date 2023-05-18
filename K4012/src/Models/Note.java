@@ -6,9 +6,10 @@ public class Note {
     private String note;
     
     
-    public Note(int id, String note) {
+    public Note(int id, String note,int visitId) {
         this.id = id;
         this.note = note;
+        this.visitId = visitId;
     } 
     
     public Note() {
