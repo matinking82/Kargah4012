@@ -3,6 +3,7 @@ package DbContext;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import DbContext.Interfaces.IAdminDbServices;
 import DbContext.Interfaces.IDataBaseContext;
@@ -36,17 +37,99 @@ public class DataBaseContext implements IDataBaseContext {
             // create a connection to the database
             connection = DriverManager.getConnection(url);
 
+            createTables();
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-        } finally {
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
         }
+    }
+
+    private void createTables() {
+
+        try {
+            Statement stmnt = connection.createStatement();
+
+            String sql =
+                    // Admins
+                    "CREATE TABLE IF NOT EXISTS Admin (\n"
+                            + "password NVARCHAR(255),"
+                            + "id INT," 
+                            + "username NVARCHAR(255),"
+                            + "name NVARCHAR(255),"
+                            + "phoneNumber NVARCHAR(255),"
+                            + "email NVARCHAR(255),"
+                            + "age INT"
+                            + ");"
+                            ////// Doctors
+                            + "CREATE TABLE IF NOT EXISTS Doctor (" +
+                            "name NVARCHAR(255)," +
+                            "gender NVARCHAR(255)," +
+                            "phoneNumber NVARCHAR(255)," +
+                            "email NVARCHAR(255)," +
+                            "age INT," +
+                            "id INT," +
+                            "salary BIGINT," +
+                            "shift NVARCHAR(255)," +
+                            "isAvailable BIT," +
+                            "username NVARCHAR(255)," +
+                            "password NVARCHAR(255)," +
+                            "expertise NVARCHAR(255)" +
+                            ");" +
+                            // Notes
+                            "CREATE TABLE IF NOT EXISTS Note (" +
+                            "id INT," +
+                            "VisitId INT," +
+                            "note NVARCHAR(MAX)" +
+                            ");" +
+                            // Nurses
+                            "CREATE TABLE IF NOT EXISTS Doctor (" +
+                            "name NVARCHAR(255)," +
+                            "gender NVARCHAR(255)," +
+                            "phoneNumber NVARCHAR(255)," +
+                            "email NVARCHAR(255)," +
+                            "age INT," +
+                            "id INT," +
+                            "salary BIGINT," +
+                            "shift NVARCHAR(255)," +
+                            "isAvailable BIT," +
+                            "username NVARCHAR(255)," +
+                            "password NVARCHAR(255)," +
+                            "type NVARCHAR(255)," +
+                            "placeOfWork NVARCHAR(255)" +
+                            ");" +
+                            // Patients
+                            "CREATE TABLE IF NOT EXISTS Patient (" +
+                            "name NVARCHAR(255)," +
+                            "gender NVARCHAR(255)," +
+                            "phoneNumber NVARCHAR(255)," +
+                            "email NVARCHAR(255)," +
+                            "age INT," +
+                            "id INT," +
+                            "haveInsured BIT," +
+                            "description NVARCHAR(MAX)" +
+                            ");" +
+                            // Visits
+                            "CREATE TABLE IF NOT EXISTS Visit (" +
+                            "DoctorId INT," +
+                            "PatientId INT," +
+                            "VisitPrice BIGINT," +
+                            "id INT," +
+                            "date NVARCHAR(10)" +
+                            ");";
+                            //Resume
+                            //TODO
+                            //PatientPayment
+                            //TODO
+                            //PatientHospitalizationRecord
+                            //TODO
+                            /////////////////
+
+            stmnt.execute(sql);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     @Override
