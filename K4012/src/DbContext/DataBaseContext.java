@@ -121,12 +121,28 @@ public class DataBaseContext implements IDataBaseContext {
                             "date NVARCHAR(10)" +
                             ");";
             // Resume
-            // TODO
+            String resume = "CREATE TABLE Resume (" +
+                    "idPersonels INT PRIMARY KEY," +
+                    "University NVARCHAR(50)," +
+                    "GPA NVARCHAR(10)," +
+                    "LevelOfEducation NVARCHAR(50)" +
+                    ");";
+
             // PatientPayment
-            // TODO
+            String patientPayment = "CREATE TABLE PatientPayment (" +
+                    "patientId INT," +
+                    "hospitalizationId INT," +
+                    "visitId INT," +
+                    "isPaid BIT" +
+                    ");";
             // PatientHospitalizationRecord
-            // TODO
-            /////////////////
+            String patientHospitalizationRecord = "CREATE TABLE PatientHospitalizationRecord (" +
+                    "id INT PRIMARY KEY," +
+                    "doctorId INT," +
+                    "patientId INT," +
+                    "hospitalizationPrice BIGINT," +
+                    "date NVARCHAR(10)" +
+                    ");";
 
             stmnt.execute(admin);
             stmnt.execute(doctor);
@@ -134,6 +150,9 @@ public class DataBaseContext implements IDataBaseContext {
             stmnt.execute(note);
             stmnt.execute(patient);
             stmnt.execute(visit);
+            stmnt.execute(resume);
+            stmnt.execute(patientPayment);
+            stmnt.execute(patientHospitalizationRecord);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
