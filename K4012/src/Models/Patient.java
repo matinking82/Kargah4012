@@ -3,7 +3,7 @@ public class Patient extends Person{
 private boolean haveInsured;
 private String description;
 
-public Patient(String name, String phoneNumber, String emai, int age, int id, Gender gender, boolean haveInsured,
+public Patient(String name, String phoneNumber, String emai, int age, int id, String gender, boolean haveInsured,
         String description) {
     super(name, phoneNumber, emai, age, id, gender);
     this.haveInsured = haveInsured;
