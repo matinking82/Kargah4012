@@ -73,6 +73,7 @@ public class DataBaseContext implements IDataBaseContext {
                             "isAvailable BIT," +
                             "username NVARCHAR(255)," +
                             "password NVARCHAR(255)," +
+                            "off INT"+
                             "expertise NVARCHAR(255)" +
                             ");" +
                             // Notes
@@ -82,7 +83,7 @@ public class DataBaseContext implements IDataBaseContext {
                             "note NVARCHAR(MAX)" +
                             ");" +
                             // Nurses
-                            "CREATE TABLE IF NOT EXISTS Doctor (" +
+                            "CREATE TABLE IF NOT EXISTS Nurse (" +
                             "name NVARCHAR(255)," +
                             "gender NVARCHAR(255)," +
                             "phoneNumber NVARCHAR(255)," +
