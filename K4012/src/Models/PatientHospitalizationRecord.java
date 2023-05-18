@@ -11,9 +11,8 @@ public class PatientHospitalizationRecord {
     private String date;
 
 
-    public PatientHospitalizationRecord(int id, int doctorId, int patientId, long hospitalizationPrice,
+    public PatientHospitalizationRecord(int doctorId, int patientId, long hospitalizationPrice,
              String date) {
-        this.id = id;
         this.doctorId = doctorId;
         this.patientId = patientId;
         this.hospitalizationPrice = hospitalizationPrice;
