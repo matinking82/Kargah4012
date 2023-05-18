@@ -3,9 +3,9 @@ public class Patient extends Person{
 private boolean haveInsured;
 private String description;
 
-public Patient(String name, String phoneNumber, String emai, int age, int id, String gender, boolean haveInsured,
+public Patient(String name, String phoneNumber, String emai, int age, String gender, boolean haveInsured,
         String description) {
-    super(name, phoneNumber, emai, age, id, gender);
+    super(name, phoneNumber, emai, age, gender);
     this.haveInsured = haveInsured;
     this.description = description;
 }

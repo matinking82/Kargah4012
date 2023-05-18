@@ -8,9 +8,9 @@ public class Personel extends Person{
     private int off;
 
 
-    public Personel(String name, String phoneNumber, String emai, int age, int id, long salary, String shift,
+    public Personel(String name, String phoneNumber, String emai, int age, long salary, String shift,
             boolean isAvalable, String username, String password ,String gender , int off) {
-        super(name, phoneNumber, emai, age, id ,  gender);
+        super(name, phoneNumber, emai, age ,  gender);
         this.salary = salary;
         this.shift = shift;
         this.isAvalable = isAvalable;

@@ -8,9 +8,9 @@ public class Doctor extends Personel{
     }
 
 
-    public Doctor(String name, String phoneNumber, String emai, int age, int id, long salary, String shift,
-            boolean isAvalable, String username, String password, String expertise , Gender gender, int off) {
-        super(name, phoneNumber, emai, age, id, salary, shift, isAvalable, username, password ,gender , off);
+    public Doctor(String name, String phoneNumber, String emai, int age, long salary, String shift,
+            boolean isAvalable, String username, String password, String expertise , String gender, int off) {
+        super(name, phoneNumber, emai, age, salary, shift, isAvalable, username, password ,gender , off);
         this.expertise = expertise;
     }
     

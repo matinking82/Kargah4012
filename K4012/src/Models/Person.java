@@ -7,13 +7,12 @@ public class Person {
     private int age;
     private int id;
 
-    public Person(String name, String phoneNumber, String emai, int age, int id , String gender) {
+    public Person(String name, String phoneNumber, String emai, int age , String gender) {
         this.gender=gender;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = emai;
         this.age = age;
-        this.id = id;
     } 
 
     public Person() {
