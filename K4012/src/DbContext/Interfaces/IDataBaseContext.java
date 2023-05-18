@@ -8,5 +8,8 @@ public interface IDataBaseContext {
     public INurseDbServices Nurses();
     public IPatientDbServices Patients();
     public IVisitDbServices Visits();
+    public IResumeDbServices Resumes();
+    public IPatientPaymentDbServices PatientPayments();
+    public IPatientHospitalizationRecordDbServices PatientHospitalizationRecords();
     
 }

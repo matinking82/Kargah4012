@@ -11,6 +11,9 @@ import DbContext.Interfaces.IDoctorDbServices;
 import DbContext.Interfaces.INoteDbServices;
 import DbContext.Interfaces.INurseDbServices;
 import DbContext.Interfaces.IPatientDbServices;
+import DbContext.Interfaces.IPatientHospitalizationRecordDbServices;
+import DbContext.Interfaces.IPatientPaymentDbServices;
+import DbContext.Interfaces.IResumeDbServices;
 import DbContext.Interfaces.IVisitDbServices;
 
 public class DataBaseContext implements IDataBaseContext {
@@ -21,6 +24,9 @@ public class DataBaseContext implements IDataBaseContext {
     private INurseDbServices nurses;
     private IPatientDbServices patients;
     private IVisitDbServices visits;
+    private IResumeDbServices resumes;
+    private IPatientPaymentDbServices patientPayments;
+    private IPatientHospitalizationRecordDbServices patientHospitalizationRecords;
 
     private Connection connection;
 
@@ -174,7 +180,7 @@ public class DataBaseContext implements IDataBaseContext {
 
     @Override
     public IDoctorDbServices Doctors() {
-        if (doctors == nurses) {
+        if (doctors == null) {
             doctors = new DoctorDbServices(connection);
         }
         return doctors;
@@ -214,6 +220,33 @@ public class DataBaseContext implements IDataBaseContext {
         }
 
         return visits;
+    }
+
+    @Override
+    public IResumeDbServices Resumes() {
+        if (resumes == null) {
+            resumes = new ResumeDbServices(connection);
+        }
+
+        return resumes;
+    }
+
+    @Override
+    public IPatientPaymentDbServices PatientPayments() {
+        if (patientPayments == null) {
+            patientPayments = new PatientPaymentDbServices(connection);
+        }
+
+        return patientPayments;
+    }
+
+    @Override
+    public IPatientHospitalizationRecordDbServices PatientHospitalizationRecords() {
+        if (patientHospitalizationRecords == null) {
+            patientHospitalizationRecords = new PatientHospitalizationRecordDbServices(connection);
+        }
+
+        return patientHospitalizationRecords;
     }
 
 }
