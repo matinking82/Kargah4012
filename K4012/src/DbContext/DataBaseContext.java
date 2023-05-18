@@ -53,7 +53,7 @@ public class DataBaseContext implements IDataBaseContext {
                     // Admins
                     "CREATE TABLE IF NOT EXISTS Admin (\n"
                             + "password NVARCHAR(255),"
-                            + "id INT," 
+                            + "id INT IDENTITY(1,1) PRIMARY KEY," 
                             + "username NVARCHAR(255),"
                             + "name NVARCHAR(255),"
                             + "phoneNumber NVARCHAR(255),"
@@ -67,7 +67,7 @@ public class DataBaseContext implements IDataBaseContext {
                             "phoneNumber NVARCHAR(255)," +
                             "email NVARCHAR(255)," +
                             "age INT," +
-                            "id INT," +
+                            "id INT IDENTITY(1,1) PRIMARY KEY," +
                             "salary BIGINT," +
                             "shift NVARCHAR(255)," +
                             "isAvailable BIT," +
@@ -77,7 +77,7 @@ public class DataBaseContext implements IDataBaseContext {
                             ");" +
                             // Notes
                             "CREATE TABLE IF NOT EXISTS Note (" +
-                            "id INT," +
+                            "id INT IDENTITY(1,1) PRIMARY KEY," +
                             "VisitId INT," +
                             "note NVARCHAR(MAX)" +
                             ");" +
@@ -88,7 +88,7 @@ public class DataBaseContext implements IDataBaseContext {
                             "phoneNumber NVARCHAR(255)," +
                             "email NVARCHAR(255)," +
                             "age INT," +
-                            "id INT," +
+                            "id INT IDENTITY(1,1) PRIMARY KEY," +
                             "salary BIGINT," +
                             "shift NVARCHAR(255)," +
                             "isAvailable BIT," +
@@ -104,7 +104,7 @@ public class DataBaseContext implements IDataBaseContext {
                             "phoneNumber NVARCHAR(255)," +
                             "email NVARCHAR(255)," +
                             "age INT," +
-                            "id INT," +
+                            "id INT IDENTITY(1,1) PRIMARY KEY," +
                             "haveInsured BIT," +
                             "description NVARCHAR(MAX)" +
                             ");" +
@@ -113,7 +113,7 @@ public class DataBaseContext implements IDataBaseContext {
                             "DoctorId INT," +
                             "PatientId INT," +
                             "VisitPrice BIGINT," +
-                            "id INT," +
+                            "id INT IDENTITY(1,1) PRIMARY KEY," +
                             "date NVARCHAR(10)" +
                             ");";
                             //Resume
