@@ -121,22 +121,24 @@ public class DataBaseContext implements IDataBaseContext {
                             "date NVARCHAR(10)" +
                             ");";
             // Resume
-            String resume = "CREATE TABLE Resume (" +
-                    "idPersonels INT PRIMARY KEY," +
+            String resume = "CREATE TABLE IF NOT EXISTS Resume (" +
+                    "id INT PRIMARY KEY," +
+                    "idPersonels INT," +
                     "University NVARCHAR(50)," +
                     "GPA NVARCHAR(10)," +
                     "LevelOfEducation NVARCHAR(50)" +
                     ");";
 
             // PatientPayment
-            String patientPayment = "CREATE TABLE PatientPayment (" +
+            String patientPayment = "CREATE TABLE IF NOT EXISTS PatientPayment (" +
+                    "id INT PRIMARY KEY,"+
                     "patientId INT," +
                     "hospitalizationId INT," +
                     "visitId INT," +
                     "isPaid BIT" +
                     ");";
             // PatientHospitalizationRecord
-            String patientHospitalizationRecord = "CREATE TABLE PatientHospitalizationRecord (" +
+            String patientHospitalizationRecord = "CREATE TABLE IF NOT EXISTS PatientHospitalizationRecord (" +
                     "id INT PRIMARY KEY," +
                     "doctorId INT," +
                     "patientId INT," +
