@@ -5,7 +5,12 @@ public class ArticleForResume {
     private int ResumeId;
 
     //TODO
-
+    public ArticleForResume(int id, int resumeId) {
+        Id = id;
+        ResumeId = resumeId;
+    }
+    public ArticleForResume() {
+    }
     public int getId() {
         return Id;
     }

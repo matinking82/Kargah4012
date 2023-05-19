@@ -5,6 +5,13 @@ public class ExpeirenceForResume {
     private int ResumeId;
 
     //TODO
+    
+    public ExpeirenceForResume(int id, int resumeId) {
+        Id = id;
+        ResumeId = resumeId;
+    }
+    public ExpeirenceForResume() {
+    }
 
     public int getId() {
         return Id;
