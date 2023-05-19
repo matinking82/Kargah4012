@@ -1,28 +1,53 @@
 package Models;
 
 public class ExpeirenceForResume {
-    private int Id;
-    private int ResumeId;
+    private int id;
+    private int resumeId;
+    private String nameOfWorkplace;
+    private String startDate;
+    private String endDate;
+    
+    public ExpeirenceForResume(int id, int resumeId, String nameOfWorkplace, String startDate, String endDate) {
+        this.id = id;
+        this.resumeId = resumeId;
+        this.nameOfWorkplace = nameOfWorkplace;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 
     //TODO
-    
-    public ExpeirenceForResume(int id, int resumeId) {
-        Id = id;
-        ResumeId = resumeId;
-    }
     public ExpeirenceForResume() {
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
     public int getResumeId() {
-        return ResumeId;
+        return resumeId;
     }
     public void setResumeId(int resumeId) {
-        ResumeId = resumeId;
+        this.resumeId = resumeId;
+    }
+    public String getStartDate() {
+        return startDate;
+    }
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+    public String getNameOfWorkplace() {
+        return nameOfWorkplace;
+    }
+    public void setNameOfWorkplace(String nameOfWorkplace) {
+        this.nameOfWorkplace = nameOfWorkplace;
+    }
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 }
