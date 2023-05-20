@@ -6,10 +6,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import DbContext.Interfaces.IAdminDbServices;
+import DbContext.Interfaces.IArticleForResumeDbServices;
 import DbContext.Interfaces.IDataBaseContext;
 import DbContext.Interfaces.IDoctorDbServices;
+import DbContext.Interfaces.IExperienceForResumeDbServices;
 import DbContext.Interfaces.INoteDbServices;
 import DbContext.Interfaces.INurseDbServices;
+import DbContext.Interfaces.INurseHospitalizationRelationDbServices;
 import DbContext.Interfaces.IPatientDbServices;
 import DbContext.Interfaces.IPatientHospitalizationRecordDbServices;
 import DbContext.Interfaces.IPatientPaymentDbServices;
@@ -27,6 +30,9 @@ public class DataBaseContext implements IDataBaseContext {
     private IResumeDbServices resumes;
     private IPatientPaymentDbServices patientPayments;
     private IPatientHospitalizationRecordDbServices patientHospitalizationRecords;
+    private IArticleForResumeDbServices articleForResumeDbServices;
+    private IExperienceForResumeDbServices experienceForResumeDbServices;
+    private INurseHospitalizationRelationDbServices nurseHospitalizationRelationDbServices;
 
     private Connection connection;
 
@@ -267,6 +273,33 @@ public class DataBaseContext implements IDataBaseContext {
         }
 
         return patientHospitalizationRecords;
+    }
+
+    @Override
+    public IArticleForResumeDbServices ArticleForResumeDbServices() {
+        if (articleForResumeDbServices == null) {
+            articleForResumeDbServices = new ArticleForResumeDbServices(connection);
+        }
+
+        return articleForResumeDbServices;
+    }
+
+    @Override
+    public IExperienceForResumeDbServices ExperienceForResumeDbServices() {
+        if (experienceForResumeDbServices == null) {
+            experienceForResumeDbServices = new ExperienceForResumeDbServices(connection);
+        }
+
+        return experienceForResumeDbServices;
+    }
+
+    @Override
+    public INurseHospitalizationRelationDbServices NurseHospitalizationRelationDbServices() {
+        if (nurseHospitalizationRelationDbServices == null) {
+            nurseHospitalizationRelationDbServices = new NurseHospitalizationRelationDbServices(connection);
+        }
+
+        return nurseHospitalizationRelationDbServices;
     }
 
 }

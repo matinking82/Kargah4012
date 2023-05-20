@@ -11,5 +11,8 @@ public interface IDataBaseContext {
     public IResumeDbServices Resumes();
     public IPatientPaymentDbServices PatientPayments();
     public IPatientHospitalizationRecordDbServices PatientHospitalizationRecords();
+    public IArticleForResumeDbServices ArticleForResumeDbServices();
+    public IExperienceForResumeDbServices ExperienceForResumeDbServices();
+    public INurseHospitalizationRelationDbServices NurseHospitalizationRelationDbServices();
     
 }
