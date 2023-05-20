@@ -36,7 +36,7 @@ public class ArticleForResume {
     public float getImpactFactor() {
         return impactFactor;
     }
-    public void setImpactFactor(int impactFactor) {
+    public void setImpactFactor(float impactFactor) {
         this.impactFactor = impactFactor;
     }
 }
