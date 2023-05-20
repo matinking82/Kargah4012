@@ -11,4 +11,5 @@ public interface IExperienceForResumeDbServices {
     public boolean Remove(int expeirenceForResumeId);
     public boolean Remove(ExpeirenceForResume expeirenceForResume);
     public boolean Update(ExpeirenceForResume expeirenceForResume);
+    public List<ExpeirenceForResume> getExperiencesForResume(int resumeId);
 }

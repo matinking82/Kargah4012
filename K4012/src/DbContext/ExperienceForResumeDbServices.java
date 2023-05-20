@@ -138,4 +138,31 @@ public class ExperienceForResumeDbServices implements IExperienceForResumeDbServ
         return success;
     }
 
+    @Override
+    public List<ExpeirenceForResume> getExperiencesForResume(int resumeId) {
+        List<ExpeirenceForResume> experiences = new ArrayList<>();
+        try {
+            // Define the SQL query to retrieve experiences for a given resume
+            String query = "SELECT * FROM ExpeirenceForResume WHERE resumeId = ?;";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, resumeId);
+    
+            // Execute the SQL query and retrieve the results
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String nameOfWorkplace = resultSet.getString("nameOfWorkplace");
+                String startDate = resultSet.getString("startDate");
+                String endDate = resultSet.getString("endDate");
+                ExpeirenceForResume experience = new ExpeirenceForResume(id, resumeId, nameOfWorkplace, startDate, endDate);
+                experiences.add(experience);
+            }
+    
+            // Close the statement (the ResultSet is closed automatically when the statement is closed)
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return experiences;
+    }
 }
