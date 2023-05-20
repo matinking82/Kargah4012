@@ -9,6 +9,7 @@ import DbContext.Interfaces.IAdminDbServices;
 import DbContext.Interfaces.IArticleForResumeDbServices;
 import DbContext.Interfaces.IDataBaseContext;
 import DbContext.Interfaces.IDoctorDbServices;
+import DbContext.Interfaces.IDoctorRatingDbServices;
 import DbContext.Interfaces.IExperienceForResumeDbServices;
 import DbContext.Interfaces.INoteDbServices;
 import DbContext.Interfaces.INurseDbServices;
@@ -33,6 +34,7 @@ public class DataBaseContext implements IDataBaseContext {
     private IArticleForResumeDbServices articleForResumeDbServices;
     private IExperienceForResumeDbServices experienceForResumeDbServices;
     private INurseHospitalizationRelationDbServices nurseHospitalizationRelationDbServices;
+    private IDoctorRatingDbServices doctorRatingDbServices;
 
     private Connection connection;
 
@@ -309,6 +311,14 @@ public class DataBaseContext implements IDataBaseContext {
         }
 
         return nurseHospitalizationRelationDbServices;
+    }
+
+    @Override
+    public IDoctorRatingDbServices DoctorRatingDbServices() {
+        if (doctorRatingDbServices == null) {
+            doctorRatingDbServices = new DoctorRatingDbServices(connection);
+        }
+        return doctorRatingDbServices;
     }
 
 }
