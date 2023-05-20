@@ -8,16 +8,17 @@ public class PatientHospitalizationRecord {
     private int patientId;
     // private List<Integer> nursesId;
     private long hospitalizationPrice;
-    private String date;
+    private String startDate;
+    private String endDate;
 
-
-    public PatientHospitalizationRecord(int doctorId, int patientId, long hospitalizationPrice,
-             String date) {
+    public PatientHospitalizationRecord(int id, int doctorId, int patientId, long hospitalizationPrice,
+             String endDate , String startDate) {
+        this.id = id;
         this.doctorId = doctorId;
         this.patientId = patientId;
         this.hospitalizationPrice = hospitalizationPrice;
-        this.date = date;
-        
+        this.endDate = endDate;
+        this.startDate=startDate;
     }
     public PatientHospitalizationRecord()
     {
@@ -32,10 +33,10 @@ public class PatientHospitalizationRecord {
         this.id = id;
     }
     
-    public int getDoctorId() {
+    public int getPoctorId() {
         return doctorId;
     }
-    public void setDoctorId(int poctorId) {
+    public void setPoctorId(int poctorId) {
         this.doctorId = poctorId;
     }
     
@@ -52,11 +53,18 @@ public class PatientHospitalizationRecord {
         this.hospitalizationPrice = hospitalizationPrice;
     }
     
-    public String getDate() {
-        return date;
+    public String getStartDate() {
+        return startDate;
     }
-    public void setDate(String date) {
-        this.date = date;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+    
+    public String getEndDate() {
+        return endDate;
+    }
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
     
     
