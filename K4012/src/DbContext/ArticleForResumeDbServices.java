@@ -1,13 +1,16 @@
 package DbContext;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import DbContext.Interfaces.IArticleForResumeDbServices;
 import Models.ArticleForResume;
 
-public class ArticleForResumeDbServices implements IArticleForResumeDbServices{
-
+public class ArticleForResumeDbServices implements IArticleForResumeDbServices {
     private Connection connection;
 
     public ArticleForResumeDbServices(Connection connection) {
@@ -16,38 +19,90 @@ public class ArticleForResumeDbServices implements IArticleForResumeDbServices{
 
     @Override
     public List<ArticleForResume> getAllArticleForResumeList() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllArticleForResumeList'");
+        List<ArticleForResume> articleList = new ArrayList<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM ArticleForResume");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                ArticleForResume article = new ArticleForResume();
+                article.setId(resultSet.getInt("id"));
+                article.setResumeId(resultSet.getInt("resumeId"));
+                article.setName(resultSet.getString("name"));
+                article.setImpactFactor(resultSet.getFloat("impactFactor"));
+                articleList.add(article);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return articleList;
     }
 
     @Override
-    public ArticleForResume getById(int Id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getById'");
+    public ArticleForResume getById(int id) {
+        ArticleForResume article = null;
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM ArticleForResume WHERE id = ?");
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                article = new ArticleForResume();
+                article.setId(resultSet.getInt("id"));
+                article.setResumeId(resultSet.getInt("resumeId"));
+                article.setName(resultSet.getString("name"));
+                article.setImpactFactor(resultSet.getFloat("impactFactor"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return article;
     }
 
     @Override
-    public boolean Add(ArticleForResume articleForResume) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Add'");
+    public boolean Add(ArticleForResume article) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO ArticleForResume (resumeId, name, impactFactor) VALUES (?, ?, ?)");
+            statement.setInt(1, article.getResumeId());
+            statement.setString(2, article.getName());
+            statement.setFloat(3, article.getImpactFactor());
+            int rowsInserted = statement.executeUpdate();
+            return rowsInserted > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override
-    public boolean Remove(int articleForResumeId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Remove'");
+    public boolean Remove(int id) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM ArticleForResume WHERE id = ?");
+            statement.setInt(1, id);
+            int rowsDeleted = statement.executeUpdate();
+            return rowsDeleted > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override
-    public boolean Remove(ArticleForResume articleForResume) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Remove'");
+    public boolean Remove(ArticleForResume article) {
+        return Remove(article.getId());
     }
 
     @Override
-    public boolean Update(ArticleForResume articleForResume) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Update'");
+    public boolean Update(ArticleForResume article) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("UPDATE ArticleForResume SET resumeId = ?, name = ?, impactFactor = ? WHERE id = ?");
+            statement.setInt(1, article.getResumeId());
+            statement.setString(2, article.getName());
+            statement.setFloat(3, article.getImpactFactor());
+            statement.setInt(4, article.getId());
+            int rowsUpdated = statement.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
-    
 }
