@@ -87,6 +87,7 @@ public class ArticleForResumeDbServices implements IArticleForResumeDbServices {
             statement.setInt(1, article.getResumeId());
             statement.setString(2, article.getName());
             statement.setFloat(3, article.getImpactFactor());
+            statement.setInt(4, article.getId());
             int rowsInserted = statement.executeUpdate();
             return rowsInserted > 0;
         } catch (SQLException e) {
