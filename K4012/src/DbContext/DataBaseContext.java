@@ -137,7 +137,7 @@ public class DataBaseContext implements IDataBaseContext {
 
             // PatientPayment
             String patientPayment = "CREATE TABLE IF NOT EXISTS PatientPayment (" +
-                    "id INT PRIMARY KEY,"+
+                    "id INT PRIMARY KEY," +
                     "patientId INT," +
                     "hospitalizationId INT," +
                     "visitId INT," +
@@ -151,7 +151,24 @@ public class DataBaseContext implements IDataBaseContext {
                     "hospitalizationPrice BIGINT," +
                     "date NVARCHAR(10)" +
                     ");";
-
+            String expeirenceForResume = "CREATE TABLE ExpeirenceForResume (" +
+                    "id INT PRIMARY KEY IDENTITY(1,1)," +
+                    "resumeId INT NOT NULL," +
+                    "nameOfWorkplace VARCHAR(255) NOT NULL," +
+                    "startDate DATE NOT NULL," +
+                    "endDate DATE," +
+                    ");";
+            String articleForResume = "CREATE TABLE ArticleForResume (" +
+                    "id INT PRIMARY KEY IDENTITY(1,1)," +
+                    "resumeId INT NOT NULL," +
+                    "name VARCHAR(255) NOT NULL," +
+                    "impactFactor FLOAT NOT NULL," +
+                    ");";
+            String nurseHospitalizationRelation = "CREATE TABLE NurseHospitalizarionRelation (" +
+                    "id INT PRIMARY KEY IDENTITY(1,1)," +
+                    "nurseId INT NOT NULL," +
+                    "hospitalizationId INT NOT NULL," +
+                    ");";
             stmnt.execute(admin);
             stmnt.execute(doctor);
             stmnt.execute(nurse);
@@ -161,6 +178,9 @@ public class DataBaseContext implements IDataBaseContext {
             stmnt.execute(resume);
             stmnt.execute(patientPayment);
             stmnt.execute(patientHospitalizationRecord);
+            stmnt.execute(nurseHospitalizationRelation);
+            stmnt.execute(articleForResume);
+            stmnt.execute(expeirenceForResume);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
