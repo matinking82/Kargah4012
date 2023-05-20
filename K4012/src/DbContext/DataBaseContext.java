@@ -158,24 +158,31 @@ public class DataBaseContext implements IDataBaseContext {
                     "startDate NVARCHAR(10)" +
                     "endDate NVARCHAR(10)" +
                     ");";
-            String expeirenceForResume = "CREATE TABLE ExpeirenceForResume (" +
+            String expeirenceForResume = "CREATE TABLE IF NOT EXISTS ExpeirenceForResume (" +
                     "id INT PRIMARY KEY IDENTITY(1,1)," +
                     "resumeId INT NOT NULL," +
                     "nameOfWorkplace VARCHAR(255) NOT NULL," +
                     "startDate DATE NOT NULL," +
                     "endDate DATE," +
                     ");";
-            String articleForResume = "CREATE TABLE ArticleForResume (" +
+            String articleForResume = "CREATE TABLE IF NOT EXISTS ArticleForResume (" +
                     "id INT PRIMARY KEY IDENTITY(1,1)," +
                     "resumeId INT NOT NULL," +
                     "name VARCHAR(255) NOT NULL," +
                     "impactFactor FLOAT NOT NULL," +
                     ");";
-            String nurseHospitalizationRelation = "CREATE TABLE NurseHospitalizarionRelation (" +
+            String nurseHospitalizationRelation = "CREATE TABLE IF NOT EXISTS NurseHospitalizarionRelation (" +
                     "id INT PRIMARY KEY IDENTITY(1,1)," +
                     "nurseId INT NOT NULL," +
                     "hospitalizationId INT NOT NULL," +
                     ");";
+            String doctorRating = "CREATE TABLE IF NOT EXISTS DoctorRating (" +
+                    "id INT PRIMARY KEY," +
+                    "doctorId INT NOT NULL," +
+                    "patientId INT NOT NULL," +
+                    "rate FLOAT NOT NULL" +
+                    ");";
+
             stmnt.execute(admin);
             stmnt.execute(doctor);
             stmnt.execute(nurse);
@@ -188,6 +195,7 @@ public class DataBaseContext implements IDataBaseContext {
             stmnt.execute(nurseHospitalizationRelation);
             stmnt.execute(articleForResume);
             stmnt.execute(expeirenceForResume);
+            stmnt.execute(doctorRating);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
