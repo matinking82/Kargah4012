@@ -146,4 +146,40 @@ public class ResumeDbServices implements IResumeDbServices {
         }
         return success;
     }
+
+    @Override
+public List<Resume> getResumesForDoctor(int doctorId) {
+    List<Resume> resumes = new ArrayList<>();
+    try {
+        // Define the SQL query to retrieve resumes for a given doctor
+        String query = "SELECT * FROM Resume WHERE idPersonels = ?;";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setInt(1, doctorId);
+
+        // Execute the SQL query and retrieve the results
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            int id = resultSet.getInt("id");
+            int idPersonels = resultSet.getInt("idPersonels");
+            String university = resultSet.getString("University");
+            String gpa = resultSet.getString("GPA");
+            String levelOfEducation = resultSet.getString("LevelOfEducation");
+            
+            Resume resume = new Resume();
+            resume.setId(id);
+            resume.setIdPersonels(idPersonels);
+            resume.setUniversity(university);
+            resume.setGPA(gpa);
+            resume.setLevelOfEducation(levelOfEducation);
+
+            resumes.add(resume);
+        }
+
+        // Close the statement (the ResultSet is closed automatically when the statement is closed)
+        statement.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return resumes;
+}
 }

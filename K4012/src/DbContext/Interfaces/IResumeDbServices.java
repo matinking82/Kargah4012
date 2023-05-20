@@ -11,4 +11,6 @@ public interface IResumeDbServices {
     public boolean Remove(int resumeId);
     public boolean Remove(Resume resume);
     public boolean Update(Resume resume);
+    public List<Resume> getResumesForDoctor(int DoctorId);
+
 }
