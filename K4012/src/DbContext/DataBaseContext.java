@@ -155,7 +155,8 @@ public class DataBaseContext implements IDataBaseContext {
                     "doctorId INT," +
                     "patientId INT," +
                     "hospitalizationPrice BIGINT," +
-                    "date NVARCHAR(10)" +
+                    "startDate NVARCHAR(10)" +
+                    "endDate NVARCHAR(10)" +
                     ");";
             String expeirenceForResume = "CREATE TABLE ExpeirenceForResume (" +
                     "id INT PRIMARY KEY IDENTITY(1,1)," +

@@ -51,7 +51,8 @@ public class PatientHospitalizationRecordDbServices implements IPatientHospitali
                 patientHospitalizationRecord.setDoctorId(result.getInt("doctorId"));
                 patientHospitalizationRecord.setPatientId(result.getInt("patientId"));
                 patientHospitalizationRecord.setHospitalizationPrice(result.getLong("hospitalizationPrice"));
-                patientHospitalizationRecord.setDate(result.getString("date"));
+                patientHospitalizationRecord.setStartDate(result.getString("startDate"));
+                patientHospitalizationRecord.setEndDate(result.getString("endDate"));
                 patientHospitalizationRecords.add(patientHospitalizationRecord);
             }
         } catch (SQLException e) {
@@ -74,7 +75,8 @@ public class PatientHospitalizationRecordDbServices implements IPatientHospitali
                 patientHospitalizationRecord.setDoctorId(result.getInt("doctorId"));
                 patientHospitalizationRecord.setPatientId(result.getInt("patientId"));
                 patientHospitalizationRecord.setHospitalizationPrice(result.getLong("hospitalizationPrice"));
-                patientHospitalizationRecord.setDate(result.getString("date"));
+                patientHospitalizationRecord.setStartDate(result.getString("startDate"));
+                patientHospitalizationRecord.setEndDate(result.getString("endDate"));
             }
         } catch (SQLException e) {
             System.out.println("Error retrieving patient hospitalization record: " + e.getMessage());
@@ -87,13 +89,14 @@ public class PatientHospitalizationRecordDbServices implements IPatientHospitali
         boolean success = false;
         patientHospitalizationRecord.setId(getLastId() + 1);
         try {
-            String sql = "INSERT INTO PatientHospitalizationRecord (id, doctorId, patientId, hospitalizationPrice, date) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO PatientHospitalizationRecord (id, doctorId, patientId, hospitalizationPrice, startDate, endDate) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, patientHospitalizationRecord.getId());
             statement.setInt(2, patientHospitalizationRecord.getDoctorId());
             statement.setInt(3, patientHospitalizationRecord.getPatientId());
             statement.setLong(4, patientHospitalizationRecord.getHospitalizationPrice());
-            statement.setString(5, patientHospitalizationRecord.getDate());
+            statement.setString(5, patientHospitalizationRecord.getStartDate());
+            statement.setString(6, patientHospitalizationRecord.getEndDate());
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 success = true;
@@ -130,13 +133,14 @@ public class PatientHospitalizationRecordDbServices implements IPatientHospitali
     public boolean Update(PatientHospitalizationRecord patientHospitalizationRecord) {
         boolean success = false;
         try {
-            String sql = "UPDATE PatientHospitalizationRecord SET doctorId = ?, patientId = ?, hospitalizationPrice = ?, date = ? WHERE id = ?";
+            String sql = "UPDATE PatientHospitalizationRecord SET doctorId = ?, patientId = ?, hospitalizationPrice = ?, startDate = ?, endDate = ? WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, patientHospitalizationRecord.getDoctorId());
             statement.setInt(2, patientHospitalizationRecord.getPatientId());
             statement.setLong(3, patientHospitalizationRecord.getHospitalizationPrice());
-            statement.setString(4, patientHospitalizationRecord.getDate());
-            statement.setInt(5, patientHospitalizationRecord.getId());
+            statement.setString(4, patientHospitalizationRecord.getStartDate());
+            statement.setString(5, patientHospitalizationRecord.getEndDate());
+            statement.setInt(6, patientHospitalizationRecord.getId());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
                 success = true;
