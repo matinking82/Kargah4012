@@ -17,6 +17,27 @@ public class ArticleForResumeDbServices implements IArticleForResumeDbServices {
         this.connection = connection;
     }
 
+    private int getLastId() {
+        int lastId = -1;
+        try {
+            // Prepare the SQL statement
+            String sql = "SELECT MAX(id) AS MaxId FROM ArticleForResume;";
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            // Execute the SQL statement
+            ResultSet rs = statement.executeQuery();
+
+            // Check if the result set has a row
+            if (rs.next()) {
+                // Get the value of the MaxId column
+                lastId = rs.getInt("MaxId");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error getting last ID: " + e.getMessage());
+        }
+        return lastId;
+    }
+
     @Override
     public List<ArticleForResume> getAllArticleForResumeList() {
         List<ArticleForResume> articleList = new ArrayList<>();
@@ -59,8 +80,10 @@ public class ArticleForResumeDbServices implements IArticleForResumeDbServices {
 
     @Override
     public boolean Add(ArticleForResume article) {
+        article.setId(getLastId() + 1);
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO ArticleForResume (resumeId, name, impactFactor) VALUES (?, ?, ?)");
+            PreparedStatement statement = connection.prepareStatement(
+                    "INSERT INTO ArticleForResume (resumeId, name, impactFactor,id) VALUES (?, ?, ?, ?)");
             statement.setInt(1, article.getResumeId());
             statement.setString(2, article.getName());
             statement.setFloat(3, article.getImpactFactor());
@@ -93,7 +116,8 @@ public class ArticleForResumeDbServices implements IArticleForResumeDbServices {
     @Override
     public boolean Update(ArticleForResume article) {
         try {
-            PreparedStatement statement = connection.prepareStatement("UPDATE ArticleForResume SET resumeId = ?, name = ?, impactFactor = ? WHERE id = ?");
+            PreparedStatement statement = connection.prepareStatement(
+                    "UPDATE ArticleForResume SET resumeId = ?, name = ?, impactFactor = ? WHERE id = ?");
             statement.setInt(1, article.getResumeId());
             statement.setString(2, article.getName());
             statement.setFloat(3, article.getImpactFactor());
