@@ -6,9 +6,11 @@ import DbContext.DataBaseContext;
 import DbContext.Interfaces.IDataBaseContext;
 import Models.Doctor;
 import Models.Nurse;
+import Models.Personel;
 import Utils.BeutifulMenu;
 import Utils.BeutifulMenu.CreateDoctorCallBack;
 import Utils.BeutifulMenu.CreateNurseCallBack;
+import Utils.BeutifulMenu.CreatePersonelCallBack;
 import Utils.BeutifulMenu.ListCallback;
 import Utils.BeutifulMenu.MenuCallback;
 
@@ -366,9 +368,34 @@ public class App {
     }
 
     public static void ListPersonels() {
+        List<Personel> personels   = context.Personels().getAllPersonelsList();
+        BeutifulMenu.showPersonelsList(personels, "List of Personels", new ListCallback() {
+            @Override
+            public void onItemSelected(int id) {
+
+            }
+
+            @Override
+            public void onReturn() {
+                managePersonel();
+            }
+
+        });
+
     }
 
     public static void AddPersonels() {
+        BeutifulMenu.getPersonelFromUser(new CreatePersonelCallBack() {
+
+            @Override
+            public void onPersonelCreated(Personel personel) {
+
+                context.Personels().Add(personel);
+                managePersonel();
+            }
+            
+        });
+
 
     }
 
