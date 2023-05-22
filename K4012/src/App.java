@@ -4,13 +4,16 @@ import java.util.Scanner;
 
 import DbContext.DataBaseContext;
 import DbContext.Interfaces.IDataBaseContext;
+import Models.Doctor;
 import Utils.BeutifulMenu;
+import Utils.BeutifulMenu.ListCallback;
 import Utils.BeutifulMenu.MenuCallback;
 
 public class App {
     protected static final String ctors = null;
+    private static IDataBaseContext context;
     public static void main(String[] args) throws Exception {
-        
+        context = new DataBaseContext();
         mainMenu();
         
     }
@@ -37,6 +40,7 @@ public class App {
                     default:mainMenu();
                 }
             }
+
         });
     }
     public static void patientMenu()
@@ -45,6 +49,7 @@ public class App {
         Items.add("visit Request");
         Items.add("rate Personels");
         Items.add("Payment");
+        Items.add("return menu");
         BeutifulMenu.showMenu(Items,"patient panel" , new MenuCallback() {
             @Override
             public void onMenuSelected(int choice){
@@ -58,13 +63,15 @@ public class App {
         
                     case 3:paymentPatient();
                     break;
-        
 
+                    case 4:mainMenu();
+                    break;
         
                     default:personelMenu();
                 }
 
             }
+
         });
 
 
@@ -75,6 +82,7 @@ public class App {
         Items.add("Profile");
         Items.add("Off Request");
         Items.add("Payment");
+        Items.add("return menu");
 
         BeutifulMenu.showMenu(Items, "Personel panel", new MenuCallback() {
             @Override
@@ -89,12 +97,16 @@ public class App {
         
                     case 3:PaymentPersonel();
                     break;
+
+                    case 4:mainMenu();
+                    break;
         
                     default:personelMenu();
         
                 }
 
             }
+
         });
 
 
@@ -109,6 +121,7 @@ public class App {
         Items.add("Hospitalization");
         Items.add("Profile");
         Items.add("Payment");
+        Items.add("return menu");
         BeutifulMenu.showMenu(Items, "Admin panel", new MenuCallback() {
             @Override
             public void onMenuSelected(int choice){
@@ -131,6 +144,10 @@ public class App {
 
                     case 6:Payment();
                     break;
+
+                    case 7:mainMenu();
+                    break;
+                    
         
                     default: adminMenu();
                 }  
@@ -146,6 +163,7 @@ public class App {
         List<String> Items=new ArrayList<>();
         Items.add("paid");
         Items.add("Unpaid");
+        Items.add("return menu");
         BeutifulMenu.showMenu(Items, "Payment",new MenuCallback() {
             @Override
             public void onMenuSelected(int choice){
@@ -155,6 +173,9 @@ public class App {
                     break;
 
                     case 2:Unpaid();
+                    break;
+
+                    case 3:adminMenu();
                     break;
 
                     default:Payment();
@@ -180,6 +201,7 @@ public class App {
         List<String> Items=new ArrayList<>();
         Items.add("Add hospitalizations");
         Items.add("List of hospitalizations");
+        Items.add("return menu");
         BeutifulMenu.showMenu(Items, "hospitalizatio",new MenuCallback() {
             @Override
             public void onMenuSelected(int choice){
@@ -189,6 +211,9 @@ public class App {
                     break;
 
                     case 2:ListOfHospitalizations();
+                    break;
+
+                    case 3:adminMenu();
                     break;
 
                     default:hospitalization();
@@ -209,6 +234,7 @@ public class App {
         List<String> Items=new ArrayList<>();
         Items.add("List of visits ");
         Items.add("add visit");
+        Items.add("return menu");
         BeutifulMenu.showMenu(Items,"visit" ,new MenuCallback() {
         @Override
         public void onMenuSelected(int choice){
@@ -218,6 +244,9 @@ public class App {
                 break;
 
                 case 2:addvisit();
+                break;
+
+                case 3:adminMenu();
                 break;
 
                 default:visits();
@@ -243,7 +272,7 @@ public class App {
         List<String> Items=new ArrayList<>();
         Items.add("List Of Patient");
         Items.add("Add Patient");
-        Items.add("");
+        Items.add("return menu");
         BeutifulMenu.showMenu(Items ,"Manage patient",new MenuCallback() {
             @Override
             public void onMenuSelected(int choice){
@@ -253,6 +282,9 @@ public class App {
                     break;
 
                     case 2:AddPatient();
+                    break;
+
+                    case 3:adminMenu();
                     break;
 
                     default:manangePatient();
@@ -279,6 +311,7 @@ public class App {
      Items.add("Nurses");
      Items.add("Add a new Personel");
      Items.add("List Of Personels");
+     Items.add("return menu");
      BeutifulMenu.showMenu(Items, "Manage personel",new MenuCallback(){
         @Override
         public void onMenuSelected(int choice){
@@ -294,6 +327,9 @@ public class App {
                 break;
     
                 case 4:ListPersonels();
+                break;
+
+                case 5:adminMenu();
                 break;
                 
                 default: adminMenu();
@@ -315,6 +351,7 @@ public class App {
         List<String> Items=new ArrayList<>();
         Items.add("List Of Nurses");
         Items.add("Add Nurses");
+        Items.add("return menu");
         BeutifulMenu.showMenu(Items, "Nurses",new MenuCallback(){
             @Override
             public void onMenuSelected(int choice){
@@ -324,6 +361,9 @@ public class App {
                     break;
 
                     case 2:AddNurses();
+                    break;
+
+                    case 3:managePersonel();
                     break;
                     
                     default: adminMenu();
@@ -344,6 +384,7 @@ public class App {
         List<String> Items=new ArrayList<>();
         Items.add("List Of Doctors");
         Items.add("Add Doctors");
+        Items.add("return menu");
         BeutifulMenu.showMenu(Items, "Doctors",new MenuCallback(){
             @Override
             public void onMenuSelected(int choice){
@@ -355,6 +396,9 @@ public class App {
                     case 2:{
                         addDoctors();
                     }
+                    break;
+
+                    case 3:managePersonel();
                     break;
                     
                     default: adminMenu();
@@ -368,10 +412,25 @@ public class App {
     public static void addDoctors()
     {
 
+
     }
 
     public static void ListOfDoctors() {
+        List<Doctor> doctors = context.Doctors().getAllDoctorsList();
+        BeutifulMenu.showDoctorsList(doctors, "List of Doctors", new ListCallback() {
+            @Override
+            public void onItemSelected(int id)
+            {
 
+
+            }
+            @Override
+            public void onReturn()
+            {
+                Doctors();
+            }
+            
+        });
     }
 
 
@@ -381,6 +440,7 @@ public class App {
         Items.add("paid");
         Items.add("Unpaid");
         Items.add("Amount of fine");
+        Items.add("return menu");
         BeutifulMenu.showMenu(Items ,"Payment",new MenuCallback(){
             @Override
             public void onMenuSelected(int choice){
@@ -393,6 +453,9 @@ public class App {
                     break;
 
                     case 3:AmountOffine();
+                    break;
+
+                    case 4:patientMenu();
                     break;
 
                     default:PaymentPersonel();
