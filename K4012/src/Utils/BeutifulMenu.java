@@ -463,7 +463,6 @@ public class BeutifulMenu {
         // Show the JFrame
         frame.setVisible(true);
     }
-   
 
     public static void getDoctorFromUser(CreateDoctorCallBack createDoctorCallBack) {
         // Create a new JFrame to hold the input fields
@@ -772,12 +771,154 @@ public class BeutifulMenu {
         frame.setVisible(true);
     }
 
+    public static void getPersonelFromUser(CreatePersonelCallBack createPersonelCallBack) {
+        // Create a new JFrame to hold the input fields
+        JFrame frame = new JFrame("Nurse Information");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(Width, Height);
+        frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
+    
+        // Create the input fields and labels
+        JTextField salaryField = new JTextField();
+        salaryField.setPreferredSize(new Dimension(300, salaryField.getPreferredSize().height));
+        JLabel salaryLabel = new JLabel("Salary:");
+        JPanel salaryPanel = new JPanel();
+        salaryPanel.add(salaryLabel);
+        salaryPanel.add(salaryField);
+    
+        JTextField shiftField = new JTextField();
+        shiftField.setPreferredSize(new Dimension(300, shiftField.getPreferredSize().height));
+        JLabel shiftLabel = new JLabel("Shift:");
+        JPanel shiftPanel = new JPanel();
+        shiftPanel.add(shiftLabel);
+        shiftPanel.add(shiftField);
+    
+        JTextField usernameField = new JTextField();
+        usernameField.setPreferredSize(new Dimension(300, usernameField.getPreferredSize().height));
+        JLabel usernameLabel = new JLabel("Username:");
+        JPanel usernamePanel = new JPanel();
+        usernamePanel.add(usernameLabel);
+        usernamePanel.add(usernameField);
+    
+        JPasswordField passwordField = new JPasswordField();
+        passwordField.setPreferredSize(new Dimension(300, passwordField.getPreferredSize().height));
+        JLabel passwordLabel = new JLabel("Password:");
+        JPanel passwordPanel = new JPanel();
+        passwordPanel.add(passwordLabel);
+        passwordPanel.add(passwordField);
+    
+        JTextField nameField = new JTextField();
+        nameField.setPreferredSize(new Dimension(300, nameField.getPreferredSize().height));
+        JLabel nameLabel = new JLabel("Name:");
+        JPanel namePanel = new JPanel();
+        namePanel.add(nameLabel);
+        namePanel.add(nameField);
+    
+        JTextField genderField = new JTextField();
+        genderField.setPreferredSize(new Dimension(300, genderField.getPreferredSize().height));
+        JLabel genderLabel = new JLabel("Gender:");
+        JPanel genderPanel = new JPanel();
+        genderPanel.add(genderLabel);
+        genderPanel.add(genderField);
+    
+        JTextField phoneNumberField = new JTextField();
+        phoneNumberField.setPreferredSize(new Dimension(300, phoneNumberField.getPreferredSize().height));
+        JLabel phoneNumberLabel = new JLabel("Phone Number:");
+        JPanel phoneNumberPanel = new JPanel();
+        phoneNumberPanel.add(phoneNumberLabel);
+        phoneNumberPanel.add(phoneNumberField);
+    
+        JTextField emailField = new JTextField();
+        emailField.setPreferredSize(new Dimension(300, emailField.getPreferredSize().height));
+        JLabel emailLabel = new JLabel("Email:");
+        JPanel emailPanel = new JPanel();
+        emailPanel.add(emailLabel);
+        emailPanel.add(emailField);
+    
+        JTextField ageField = new JTextField();
+        ageField.setPreferredSize(new Dimension(300, ageField.getPreferredSize().height));
+        JLabel ageLabel = new JLabel("Age:");
+        JPanel agePanel = new JPanel();
+        agePanel.add(ageLabel);
+        agePanel.add(ageField);
+    
+        // Add the input fields and labels to the JFrame
+        frame.add(Box.createVerticalStrut(10));
+        frame.add(salaryPanel);
+        frame.add(Box.createVerticalStrut(10));
+        frame.add(shiftPanel);
+        frame.add(Box.createVerticalStrut(10));
+        frame.add(usernamePanel);
+        frame.add(Box.createVerticalStrut(10));
+        frame.add(passwordPanel);
+        frame.add(Box.createVerticalStrut(10));
+        frame.add(namePanel);
+        frame.add(Box.createVerticalStrut(10));
+        frame.add(genderPanel);
+        frame.add(Box.createVerticalStrut(10));
+        frame.add(phoneNumberPanel);
+        frame.add(Box.createVerticalStrut(10));
+        frame.add(emailPanel);
+        frame.add(Box.createVerticalStrut(10));
+        frame.add(agePanel);
+    
+        // Create a button for the user to submit their input
+        JButton submitButton= new JButton("Submit");
+        submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Get the input values from the fields
+                long salary = Long.parseLong(salaryField.getText());
+                String shift = shiftField.getText();
+                String username = usernameField.getText();
+                String password = new String(passwordField.getPassword());
+                String name = nameField.getText();
+                String gender = genderField.getText();
+                String phoneNumber = phoneNumberField.getText();
+                String email = emailField.getText();
+                int age = Integer.parseInt(ageField.getText());
+    
+                // Create a new Doctor object with the input values
+                Personel nurse = new Personel();
+                nurse.setSalary(salary);
+                nurse.setShift(shift);
+                nurse.setUsername(username);
+                nurse.setPassword(password);
+                nurse.setName(name);
+                nurse.setGender(gender);
+                nurse.setPhoneNumber(phoneNumber);
+                nurse.setEmail(email);
+                nurse.setAge(age);
+    
+                // Close the JFrame
+                frame.dispose();
+    
+                // Call the callback interface with the created Doctor object
+                createPersonelCallBack.onPersonelCreated(nurse);
+            }
+        });
+    
+        // Add the submit button to the JFrame
+        frame.add(Box.createVerticalStrut(20));
+        frame.add(submitButton);
+        frame.add(Box.createVerticalStrut(10));
+    
+        // Set the JFrame to visible
+        frame.setVisible(true);
+    }
+
+
     public interface CreateDoctorCallBack{
         public void onDoctorCreated(Doctor doctor);
     }
 
     public interface CreateNurseCallBack{
         public void onNurseCreated(Nurse nurse);
+    }
+
+    public interface CreatePersonelCallBack{
+        public void onPersonelCreated(Personel personel);
     }
 
     // TODO
