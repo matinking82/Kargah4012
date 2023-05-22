@@ -24,9 +24,9 @@ public class BeutifulMenu {
     public static int Width = 1000;
     public static int Height = 700;
 
-    public static void showMenu(List<String> menu, MenuCallback callback) {
+    public static void showMenu(List<String> menu,String title, MenuCallback callback) {
         // Create a new JFrame to display the menu
-        JFrame frame = new JFrame("Menu");
+        JFrame frame = new JFrame(title);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(Width, Height);
 
