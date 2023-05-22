@@ -76,13 +76,13 @@ public class BeutifulMenu {
         void onMenuSelected(int choice);
     }
 
-    public interface DoctorListCallback {
+    public interface ListCallback {
         void onItemSelected(int doctorId);
 
         void onReturn();
     }
 
-    public static void showDoctorsList(List<Doctor> doctorsList, String title, DoctorListCallback callback) {
+    public static void showDoctorsList(List<Doctor> doctorsList, String title, ListCallback callback) {
         // Create a new JFrame to display the list of doctors
         JFrame frame = new JFrame(title);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
