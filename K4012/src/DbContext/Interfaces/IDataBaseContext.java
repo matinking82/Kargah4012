@@ -15,5 +15,6 @@ public interface IDataBaseContext {
     public IExperienceForResumeDbServices ExperienceForResumeDbServices();
     public INurseHospitalizationRelationDbServices NurseHospitalizationRelationDbServices();
     public IDoctorRatingDbServices DoctorRatingDbServices();
+    public IPersonelDbServices PersonelDbServices();
     
 }

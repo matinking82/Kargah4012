@@ -17,6 +17,7 @@ import DbContext.Interfaces.INurseHospitalizationRelationDbServices;
 import DbContext.Interfaces.IPatientDbServices;
 import DbContext.Interfaces.IPatientHospitalizationRecordDbServices;
 import DbContext.Interfaces.IPatientPaymentDbServices;
+import DbContext.Interfaces.IPersonelDbServices;
 import DbContext.Interfaces.IResumeDbServices;
 import DbContext.Interfaces.IVisitDbServices;
 
@@ -35,6 +36,7 @@ public class DataBaseContext implements IDataBaseContext {
     private IExperienceForResumeDbServices experienceForResumeDbServices;
     private INurseHospitalizationRelationDbServices nurseHospitalizationRelationDbServices;
     private IDoctorRatingDbServices doctorRatingDbServices;
+    private IPersonelDbServices personelDbServices;
 
     private Connection connection;
 
@@ -319,6 +321,14 @@ public class DataBaseContext implements IDataBaseContext {
             doctorRatingDbServices = new DoctorRatingDbServices(connection);
         }
         return doctorRatingDbServices;
+    }
+
+    @Override
+    public IPersonelDbServices PersonelDbServices() {
+        if (personelDbServices==null) {
+            personelDbServices = new PersonelDbServices(connection);
+        }
+        return personelDbServices;
     }
 
 }
