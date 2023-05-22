@@ -324,7 +324,7 @@ public class DataBaseContext implements IDataBaseContext {
     }
 
     @Override
-    public IPersonelDbServices PersonelDbServices() {
+    public IPersonelDbServices Personels() {
         if (personelDbServices==null) {
             personelDbServices = new PersonelDbServices(connection);
         }
