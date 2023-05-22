@@ -5,80 +5,90 @@ import java.util.Scanner;
 import DbContext.DataBaseContext;
 import DbContext.Interfaces.IDataBaseContext;
 import Models.Doctor;
+import Models.Nurse;
 import Utils.BeutifulMenu;
+import Utils.BeutifulMenu.CreateDoctorCallBack;
+import Utils.BeutifulMenu.CreateNurseCallBack;
 import Utils.BeutifulMenu.ListCallback;
 import Utils.BeutifulMenu.MenuCallback;
 
 public class App {
     protected static final String ctors = null;
     private static IDataBaseContext context;
+
     public static void main(String[] args) throws Exception {
         context = new DataBaseContext();
         mainMenu();
-        
+
     }
 
     public static void mainMenu() {
-        List<String> Items=new ArrayList<>();
+        List<String> Items = new ArrayList<>();
         Items.add("Admin panel");
         Items.add("Personel panel");
         Items.add("Patient panel");
-        BeutifulMenu.showMenu(Items ,"Main menu",new MenuCallback() {
+        BeutifulMenu.showMenu(Items, "Main menu", new MenuCallback() {
             @Override
-            public void onMenuSelected(int choice){
-                switch(choice)
-                {
-                    case 1:adminMenu();
-                    break;
-        
-                    case 2:personelMenu();
-                    break;
-        
-                    case 3:patientMenu();
-                    break;
-        
-                    default:mainMenu();
+            public void onMenuSelected(int choice) {
+                switch (choice) {
+                    case 1:
+                        adminMenu();
+                        break;
+
+                    case 2:
+                        personelMenu();
+                        break;
+
+                    case 3:
+                        patientMenu();
+                        break;
+
+                    default:
+                        mainMenu();
                 }
             }
 
         });
     }
-    public static void patientMenu()
-    {
-        List<String> Items=new ArrayList<>();
+
+    public static void patientMenu() {
+        List<String> Items = new ArrayList<>();
         Items.add("visit Request");
         Items.add("rate Personels");
         Items.add("Payment");
         Items.add("return menu");
-        BeutifulMenu.showMenu(Items,"patient panel" , new MenuCallback() {
+        BeutifulMenu.showMenu(Items, "patient panel", new MenuCallback() {
             @Override
-            public void onMenuSelected(int choice){
-                switch(choice)
-                {
-                    case 1:visitRequest();
-                    break;
-        
-                    case 2:ratePersonels();
-                    break;
-        
-                    case 3:paymentPatient();
-                    break;
+            public void onMenuSelected(int choice) {
+                switch (choice) {
+                    case 1:
+                        visitRequest();
+                        break;
 
-                    case 4:mainMenu();
-                    break;
-        
-                    default:personelMenu();
+                    case 2:
+                        ratePersonels();
+                        break;
+
+                    case 3:
+                        paymentPatient();
+                        break;
+
+                    case 4:
+                        mainMenu();
+                        break;
+
+                    default:
+                        personelMenu();
                 }
 
             }
 
         });
 
-
     }
-    public static void personelMenu()
-    {
-        List<String> Items=new ArrayList<>();
+
+    public static void personelMenu() {
+        List<String> Items = new ArrayList<>();
         Items.add("Profile");
         Items.add("Off Request");
         Items.add("Payment");
@@ -86,35 +96,37 @@ public class App {
 
         BeutifulMenu.showMenu(Items, "Personel panel", new MenuCallback() {
             @Override
-            public void onMenuSelected(int choice){
-                switch(choice)
-                {
-                    case 1:profilePersonels();
-                    break;
-        
-                    case 2:OffRequest();
-                    break;
-        
-                    case 3:PaymentPersonel();
-                    break;
+            public void onMenuSelected(int choice) {
+                switch (choice) {
+                    case 1:
+                        profilePersonels();
+                        break;
 
-                    case 4:mainMenu();
-                    break;
-        
-                    default:personelMenu();
-        
+                    case 2:
+                        OffRequest();
+                        break;
+
+                    case 3:
+                        PaymentPersonel();
+                        break;
+
+                    case 4:
+                        mainMenu();
+                        break;
+
+                    default:
+                        personelMenu();
+
                 }
 
             }
 
         });
 
-
-
     }
-    public static void adminMenu()
-    {
-        List<String> Items=new ArrayList<>();
+
+    public static void adminMenu() {
+        List<String> Items = new ArrayList<>();
         Items.add("Manage Personel");
         Items.add("Manange Patient");
         Items.add("visits");
@@ -124,63 +136,69 @@ public class App {
         Items.add("return menu");
         BeutifulMenu.showMenu(Items, "Admin panel", new MenuCallback() {
             @Override
-            public void onMenuSelected(int choice){
-                switch(choice)
-                {
-                    case 1:managePersonel();
-                    break;
-        
-                    case 2:manangePatient();
-                    break;
-        
-                    case 3:visits();
-                    break;
-        
-                    case 4:hospitalization();
-                    break;
-        
-                    case 5: ProfileAdmin();
-                    break;
+            public void onMenuSelected(int choice) {
+                switch (choice) {
+                    case 1:
+                        managePersonel();
+                        break;
 
-                    case 6:Payment();
-                    break;
+                    case 2:
+                        manangePatient();
+                        break;
 
-                    case 7:mainMenu();
-                    break;
-                    
-        
-                    default: adminMenu();
-                }  
+                    case 3:
+                        visits();
+                        break;
+
+                    case 4:
+                        hospitalization();
+                        break;
+
+                    case 5:
+                        ProfileAdmin();
+                        break;
+
+                    case 6:
+                        Payment();
+                        break;
+
+                    case 7:
+                        mainMenu();
+                        break;
+
+                    default:
+                        adminMenu();
+                }
 
             }
         });
     }
-    
 
-
-    
     public static void Payment() {
-        List<String> Items=new ArrayList<>();
+        List<String> Items = new ArrayList<>();
         Items.add("paid");
         Items.add("Unpaid");
         Items.add("return menu");
-        BeutifulMenu.showMenu(Items, "Payment",new MenuCallback() {
+        BeutifulMenu.showMenu(Items, "Payment", new MenuCallback() {
             @Override
-            public void onMenuSelected(int choice){
-                switch(choice)
-                {
-                    case 1:paid();
-                    break;
+            public void onMenuSelected(int choice) {
+                switch (choice) {
+                    case 1:
+                        paid();
+                        break;
 
-                    case 2:Unpaid();
-                    break;
+                    case 2:
+                        Unpaid();
+                        break;
 
-                    case 3:adminMenu();
-                    break;
+                    case 3:
+                        adminMenu();
+                        break;
 
-                    default:Payment();
-                    
-                }  
+                    default:
+                        Payment();
+
+                }
 
             }
         });
@@ -195,35 +213,38 @@ public class App {
 
     public static void ProfileAdmin() {
 
-
     }
+
     public static void hospitalization() {
-        List<String> Items=new ArrayList<>();
+        List<String> Items = new ArrayList<>();
         Items.add("Add hospitalizations");
         Items.add("List of hospitalizations");
         Items.add("return menu");
-        BeutifulMenu.showMenu(Items, "hospitalizatio",new MenuCallback() {
+        BeutifulMenu.showMenu(Items, "hospitalizatio", new MenuCallback() {
             @Override
-            public void onMenuSelected(int choice){
-                switch(choice)
-                {
-                    case 1:Addhospitalizations();
-                    break;
+            public void onMenuSelected(int choice) {
+                switch (choice) {
+                    case 1:
+                        Addhospitalizations();
+                        break;
 
-                    case 2:ListOfHospitalizations();
-                    break;
+                    case 2:
+                        ListOfHospitalizations();
+                        break;
 
-                    case 3:adminMenu();
-                    break;
+                    case 3:
+                        adminMenu();
+                        break;
 
-                    default:hospitalization();
-                }  
+                    default:
+                        hospitalization();
+                }
 
             }
         });
 
-
     }
+
     public static void ListOfHospitalizations() {
     }
 
@@ -231,33 +252,34 @@ public class App {
     }
 
     public static void visits() {
-        List<String> Items=new ArrayList<>();
+        List<String> Items = new ArrayList<>();
         Items.add("List of visits ");
         Items.add("add visit");
         Items.add("return menu");
-        BeutifulMenu.showMenu(Items,"visit" ,new MenuCallback() {
-        @Override
-        public void onMenuSelected(int choice){
-            switch(choice)
-            {
-                case 1:ListOfVisits();
-                break;
+        BeutifulMenu.showMenu(Items, "visit", new MenuCallback() {
+            @Override
+            public void onMenuSelected(int choice) {
+                switch (choice) {
+                    case 1:
+                        ListOfVisits();
+                        break;
 
-                case 2:addvisit();
-                break;
+                    case 2:
+                        addvisit();
+                        break;
 
-                case 3:adminMenu();
-                break;
+                    case 3:
+                        adminMenu();
+                        break;
 
-                default:visits();
+                    default:
+                        visits();
 
-                
-            }  
+                }
 
-        }
-    });
-}
-
+            }
+        });
+    }
 
     public static void addvisit() {
     }
@@ -265,39 +287,38 @@ public class App {
     public static void ListOfVisits() {
     }
 
-
-    
     public static void manangePatient() {
-    
-        List<String> Items=new ArrayList<>();
+
+        List<String> Items = new ArrayList<>();
         Items.add("List Of Patient");
         Items.add("Add Patient");
         Items.add("return menu");
-        BeutifulMenu.showMenu(Items ,"Manage patient",new MenuCallback() {
+        BeutifulMenu.showMenu(Items, "Manage patient", new MenuCallback() {
             @Override
-            public void onMenuSelected(int choice){
-                switch(choice)
-                {
-                    case 1:ListOfPatient();
-                    break;
+            public void onMenuSelected(int choice) {
+                switch (choice) {
+                    case 1:
+                        ListOfPatient();
+                        break;
 
-                    case 2:AddPatient();
-                    break;
+                    case 2:
+                        AddPatient();
+                        break;
 
-                    case 3:adminMenu();
-                    break;
+                    case 3:
+                        adminMenu();
+                        break;
 
-                    default:manangePatient();
+                    default:
+                        manangePatient();
 
-
-                }  
+                }
 
             }
         });
 
-
-
     }
+
     public static void AddPatient() {
     }
 
@@ -305,169 +326,206 @@ public class App {
     }
 
     public static void managePersonel() {
-        
-     List<String> Items=new ArrayList<>();
-     Items.add("Doctors");
-     Items.add("Nurses");
-     Items.add("Add a new Personel");
-     Items.add("List Of Personels");
-     Items.add("return menu");
-     BeutifulMenu.showMenu(Items, "Manage personel",new MenuCallback(){
-        @Override
-        public void onMenuSelected(int choice){
-            switch(choice)
-            {
-                case 1:Doctors();
-                break;
-    
-                case 2:Nurses();
-                break;
-    
-                case 3:AddPersonels();
-                break;
-    
-                case 4:ListPersonels();
-                break;
 
-                case 5:adminMenu();
-                break;
-                
-                default: adminMenu();
-            } 
-        }
-    });
+        List<String> Items = new ArrayList<>();
+        Items.add("Doctors");
+        Items.add("Nurses");
+        Items.add("Add a new Personel");
+        Items.add("List Of Personels");
+        Items.add("return menu");
+        BeutifulMenu.showMenu(Items, "Manage personel", new MenuCallback() {
+            @Override
+            public void onMenuSelected(int choice) {
+                switch (choice) {
+                    case 1:
+                        Doctors();
+                        break;
 
-}
+                    case 2:
+                        Nurses();
+                        break;
 
-     
+                    case 3:
+                        AddPersonels();
+                        break;
+
+                    case 4:
+                        ListPersonels();
+                        break;
+
+                    case 5:
+                        adminMenu();
+                        break;
+
+                    default:
+                        adminMenu();
+                }
+            }
+        });
+
+    }
+
     public static void ListPersonels() {
     }
 
     public static void AddPersonels() {
 
-    } 
+    }
 
     public static void Nurses() {
-        List<String> Items=new ArrayList<>();
+        List<String> Items = new ArrayList<>();
         Items.add("List Of Nurses");
         Items.add("Add Nurses");
         Items.add("return menu");
-        BeutifulMenu.showMenu(Items, "Nurses",new MenuCallback(){
+        BeutifulMenu.showMenu(Items, "Nurses", new MenuCallback() {
             @Override
-            public void onMenuSelected(int choice){
-                switch(choice)
-                {
-                    case 1:ListOfNurses();
-                    break;
+            public void onMenuSelected(int choice) {
+                switch (choice) {
+                    case 1:
+                        ListOfNurses();
+                        break;
 
-                    case 2:AddNurses();
-                    break;
+                    case 2:
+                        AddNurses();
+                        break;
 
-                    case 3:managePersonel();
-                    break;
-                    
-                    default: adminMenu();
-                } 
+                    case 3:
+                        managePersonel();
+                        break;
+
+                    default:
+                        adminMenu();
+                }
             }
 
         });
 
     }
-        
+
     public static void AddNurses() {
+        BeutifulMenu.getNurseFromUser(new CreateNurseCallBack() {
+
+            @Override
+            public void onNurseCreated(Nurse nurse) {
+                context.Nurses().Add(nurse);
+                Nurses();
+            }
+            
+        });
+        
     }
 
     public static void ListOfNurses() {
-    }
-
-    public static void Doctors() {
-        List<String> Items=new ArrayList<>();
-        Items.add("List Of Doctors");
-        Items.add("Add Doctors");
-        Items.add("return menu");
-        BeutifulMenu.showMenu(Items, "Doctors",new MenuCallback(){
+        List<Nurse> nurses  = context.Nurses().getAllNursesList();
+        BeutifulMenu.showNursesList(nurses, "List of Nurses", new ListCallback() {
             @Override
-            public void onMenuSelected(int choice){
-                switch(choice)
-                {
-                    case 1:ListOfDoctors();
-                    break;
+            public void onItemSelected(int id) {
 
-                    case 2:{
-                        addDoctors();
-                    }
-                    break;
+            }
 
-                    case 3:managePersonel();
-                    break;
-                    
-                    default: adminMenu();
-                } 
+            @Override
+            public void onReturn() {
+                Nurses();
             }
 
         });
-        
+
     }
 
-    public static void addDoctors()
-    {
+    public static void Doctors() {
+        List<String> Items = new ArrayList<>();
+        Items.add("List Of Doctors");
+        Items.add("Add Doctors");
+        Items.add("return menu");
+        BeutifulMenu.showMenu(Items, "Doctors", new MenuCallback() {
+            @Override
+            public void onMenuSelected(int choice) {
+                switch (choice) {
+                    case 1:
+                        ListOfDoctors();
+                        break;
 
+                    case 2: {
+                        addDoctors();
+                    }
+                        break;
 
+                    case 3:
+                        managePersonel();
+                        break;
+
+                    default:
+                        adminMenu();
+                }
+            }
+
+        });
+
+    }
+
+    public static void addDoctors() {
+        BeutifulMenu.getDoctorFromUser(new CreateDoctorCallBack() {
+            public void onDoctorCreated(Doctor doctor) {
+                    doctor.setAvalable(true);
+                    context.Doctors().Add(doctor);
+                    Doctors();
+            }
+        });
     }
 
     public static void ListOfDoctors() {
         List<Doctor> doctors = context.Doctors().getAllDoctorsList();
         BeutifulMenu.showDoctorsList(doctors, "List of Doctors", new ListCallback() {
             @Override
-            public void onItemSelected(int id)
-            {
-
+            public void onItemSelected(int id) {
 
             }
+
             @Override
-            public void onReturn()
-            {
+            public void onReturn() {
                 Doctors();
             }
-            
+
         });
     }
 
-
     public static void paymentPatient() {
-        List<String> Items=new ArrayList<>();
+        List<String> Items = new ArrayList<>();
 
         Items.add("paid");
         Items.add("Unpaid");
         Items.add("Amount of fine");
         Items.add("return menu");
-        BeutifulMenu.showMenu(Items ,"Payment",new MenuCallback(){
+        BeutifulMenu.showMenu(Items, "Payment", new MenuCallback() {
             @Override
-            public void onMenuSelected(int choice){
-                switch(choice)
-                {
-                    case 1:PaidPatient();
-                    break;
+            public void onMenuSelected(int choice) {
+                switch (choice) {
+                    case 1:
+                        PaidPatient();
+                        break;
 
-                    case 2:UnpaidPatient();
-                    break;
+                    case 2:
+                        UnpaidPatient();
+                        break;
 
-                    case 3:AmountOffine();
-                    break;
+                    case 3:
+                        AmountOffine();
+                        break;
 
-                    case 4:patientMenu();
-                    break;
+                    case 4:
+                        patientMenu();
+                        break;
 
-                    default:PaymentPersonel();
+                    default:
+                        PaymentPersonel();
 
-
-                } 
+                }
             }
 
         });
 
-
     }
+
     public static void AmountOffine() {
 
     }
@@ -480,25 +538,21 @@ public class App {
 
     public static void ratePersonels() {
 
-
     }
+
     public static void visitRequest() {
 
     }
-    public static void profilePersonels()
-    {
+
+    public static void profilePersonels() {
 
     }
-    public static void OffRequest()
-    {
-    
+
+    public static void OffRequest() {
 
     }
-    public static void PaymentPersonel()
-    {
 
-
+    public static void PaymentPersonel() {
 
     }
 }
-
