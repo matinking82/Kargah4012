@@ -81,12 +81,6 @@ public class BeutifulMenu {
         void onMenuSelected(int choice);
     }
 
-    public interface ListCallback {
-        void onItemSelected(int doctorId);
-
-        void onReturn();
-    }
-
     public static void showDoctorsList(List<Doctor> doctorsList, String title, ListCallback callback) {
         // Create a new JFrame to display the list of doctors
         JFrame frame = new JFrame(title);
@@ -1139,6 +1133,13 @@ public class BeutifulMenu {
         frame.setVisible(true);
     }
 
+
+    
+    public interface ListCallback {
+        void onItemSelected(int doctorId);
+
+        void onReturn();
+    }
 
     public interface CreateDoctorCallBack{
         public void onDoctorCreated(Doctor doctor);
