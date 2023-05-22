@@ -20,7 +20,7 @@ public class App {
         Items.add("Admin panel");
         Items.add("Personel panel");
         Items.add("Patient panel");
-        BeutifulMenu.showMenu(Items,new MenuCallback() {
+        BeutifulMenu.showMenu(Items ,"Main menu",new MenuCallback() {
             @Override
             public void onMenuSelected(int choice){
                 switch(choice)
@@ -45,7 +45,7 @@ public class App {
         Items.add("visit Request");
         Items.add("rate Personels");
         Items.add("Payment");
-        BeutifulMenu.showMenu(Items,new MenuCallback() {
+        BeutifulMenu.showMenu(Items,"patient panel" , new MenuCallback() {
             @Override
             public void onMenuSelected(int choice){
                 switch(choice)
@@ -76,7 +76,7 @@ public class App {
         Items.add("Off Request");
         Items.add("Payment");
 
-        BeutifulMenu.showMenu(Items,new MenuCallback() {
+        BeutifulMenu.showMenu(Items, "Personel panel", new MenuCallback() {
             @Override
             public void onMenuSelected(int choice){
                 switch(choice)
@@ -109,7 +109,7 @@ public class App {
         Items.add("Hospitalization");
         Items.add("Profile");
         Items.add("Payment");
-        BeutifulMenu.showMenu(Items,new MenuCallback() {
+        BeutifulMenu.showMenu(Items, "Admin panel", new MenuCallback() {
             @Override
             public void onMenuSelected(int choice){
                 switch(choice)
@@ -146,7 +146,7 @@ public class App {
         List<String> Items=new ArrayList<>();
         Items.add("paid");
         Items.add("Unpaid");
-        BeutifulMenu.showMenu(Items,new MenuCallback() {
+        BeutifulMenu.showMenu(Items, "Payment",new MenuCallback() {
             @Override
             public void onMenuSelected(int choice){
                 switch(choice)
@@ -180,7 +180,7 @@ public class App {
         List<String> Items=new ArrayList<>();
         Items.add("Add hospitalizations");
         Items.add("List of hospitalizations");
-        BeutifulMenu.showMenu(Items,new MenuCallback() {
+        BeutifulMenu.showMenu(Items, "hospitalizatio",new MenuCallback() {
             @Override
             public void onMenuSelected(int choice){
                 switch(choice)
@@ -209,7 +209,7 @@ public class App {
         List<String> Items=new ArrayList<>();
         Items.add("List of visits ");
         Items.add("add visit");
-        BeutifulMenu.showMenu(Items,new MenuCallback() {
+        BeutifulMenu.showMenu(Items,"visit" ,new MenuCallback() {
         @Override
         public void onMenuSelected(int choice){
             switch(choice)
@@ -244,7 +244,7 @@ public class App {
         Items.add("List Of Patient");
         Items.add("Add Patient");
         Items.add("");
-        BeutifulMenu.showMenu(Items,new MenuCallback() {
+        BeutifulMenu.showMenu(Items ,"Manage patient",new MenuCallback() {
             @Override
             public void onMenuSelected(int choice){
                 switch(choice)
@@ -279,7 +279,7 @@ public class App {
      Items.add("Nurses");
      Items.add("Add a new Personel");
      Items.add("List Of Personels");
-     BeutifulMenu.showMenu(Items,new MenuCallback(){
+     BeutifulMenu.showMenu(Items, "Manage personel",new MenuCallback(){
         @Override
         public void onMenuSelected(int choice){
             switch(choice)
@@ -315,7 +315,7 @@ public class App {
         List<String> Items=new ArrayList<>();
         Items.add("List Of Nurses");
         Items.add("Add Nurses");
-        BeutifulMenu.showMenu(Items,new MenuCallback(){
+        BeutifulMenu.showMenu(Items, "Nurses",new MenuCallback(){
             @Override
             public void onMenuSelected(int choice){
                 switch(choice)
@@ -344,7 +344,7 @@ public class App {
         List<String> Items=new ArrayList<>();
         Items.add("List Of Doctors");
         Items.add("Add Doctors");
-        BeutifulMenu.showMenu(Items,new MenuCallback(){
+        BeutifulMenu.showMenu(Items, "Doctors",new MenuCallback(){
             @Override
             public void onMenuSelected(int choice){
                 switch(choice)
@@ -381,7 +381,7 @@ public class App {
         Items.add("paid");
         Items.add("Unpaid");
         Items.add("Amount of fine");
-        BeutifulMenu.showMenu(Items,new MenuCallback(){
+        BeutifulMenu.showMenu(Items ,"Payment",new MenuCallback(){
             @Override
             public void onMenuSelected(int choice){
                 switch(choice)
