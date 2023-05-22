@@ -6,10 +6,12 @@ import DbContext.DataBaseContext;
 import DbContext.Interfaces.IDataBaseContext;
 import Models.Doctor;
 import Models.Nurse;
+import Models.Patient;
 import Models.Personel;
 import Utils.BeutifulMenu;
 import Utils.BeutifulMenu.CreateDoctorCallBack;
 import Utils.BeutifulMenu.CreateNurseCallBack;
+import Utils.BeutifulMenu.CreatePatientCallBack;
 import Utils.BeutifulMenu.CreatePersonelCallBack;
 import Utils.BeutifulMenu.ListCallback;
 import Utils.BeutifulMenu.MenuCallback;
@@ -322,9 +324,33 @@ public class App {
     }
 
     public static void AddPatient() {
+        BeutifulMenu.getPatientFromUser(new CreatePatientCallBack() {
+
+            @Override
+            public void onPatientCreated(Patient patient) {
+                context.Patients().Add(patient);
+                manangePatient();
+
+            }
+            
+        });
+       
     }
 
     public static void ListOfPatient() {
+        List<Patient> patients   = context.Patients().getAllPatientsList();
+        BeutifulMenu.showPatientsList(patients, "List of Patients", new ListCallback() {
+            @Override
+            public void onItemSelected(int id) {
+
+            }
+
+            @Override
+            public void onReturn() {
+                manangePatient();
+            }
+
+        });
     }
 
     public static void managePersonel() {
