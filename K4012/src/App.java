@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -279,6 +280,37 @@ public class App {
         }
 
     public static void Addhospitalizations() {
+
+        List<Visit> visits   = context.Visits().getAllVisitsList();
+        BeutifulMenu.showVisitsListForSelection(visits, "List of Visit", new ListCallback() {
+
+            @Override
+            public void onItemSelected(int Id) {
+
+                Visit visit=context.Visits().getById(Id);
+                PatientHospitalizationRecord patientHospitalizationRecord=new PatientHospitalizationRecord();
+                patientHospitalizationRecord.setDoctorId(visit.getDoctorId());
+                patientHospitalizationRecord.setPatientId(visit.getPatientId());
+                patientHospitalizationRecord.setStartDate((new Date()).toString());
+                context.PatientHospitalizationRecords().Add(patientHospitalizationRecord);
+                hospitalization();
+ 
+                
+            }
+
+            @Override
+            public void onItemSelectedForRemove(int Id) {
+
+    
+                }
+
+
+            @Override
+            public void onReturn() {
+                visits();
+            }
+
+        });
     }
 
     public static void visits() {
