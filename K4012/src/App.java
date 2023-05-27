@@ -9,6 +9,7 @@ import Models.Doctor;
 import Models.Nurse;
 import Models.Patient;
 import Models.PatientHospitalizationRecord;
+import Models.PatientPayment;
 import Models.Personel;
 import Models.Visit;
 import Utils.BeutifulMenu;
@@ -307,7 +308,7 @@ public class App {
 
             @Override
             public void onReturn() {
-                visits();
+                hospitalization();
             }
 
         });
@@ -741,9 +742,58 @@ public class App {
     }
 
     public static void UnpaidPatient() {
+        List<PatientPayment> patientPayments = context.PatientPayments().getAllUnPaidPayments();
+        BeutifulMenu.showPatientPaymentsList(patientPayments, "List of unpaid payment ", new ListCallback(){
+
+            @Override
+            public void onItemSelected(int doctorId) {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'onItemSelected'");
+            }
+
+            @Override
+            public void onItemSelectedForRemove(int Id) {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'onItemSelectedForRemove'");
+            }
+
+            @Override
+            public void onReturn() {
+                paymentPatient();
+
+            }
+
+      
+    }
+        );
+
     }
 
     public static void PaidPatient() {
+        List<PatientPayment> patientPayments = context.PatientPayments().getAllPaidPayments();
+        BeutifulMenu.showPatientPaymentsList(patientPayments, "List of paid payment ", new ListCallback(){
+
+            @Override
+            public void onItemSelected(int doctorId) {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'onItemSelected'");
+            }
+
+            @Override
+            public void onItemSelectedForRemove(int Id) {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'onItemSelectedForRemove'");
+            }
+
+            @Override
+            public void onReturn() {
+                paymentPatient();
+
+            }
+
+      
+    }
+        );
     }
 
     public static void ratePersonels() {
