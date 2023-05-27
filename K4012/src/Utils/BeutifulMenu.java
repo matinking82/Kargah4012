@@ -1165,13 +1165,6 @@ public class BeutifulMenu {
         JTextField usernameField = new JTextField();
         usernameField.setText(oldDoctor.getUsername());
 
-        JPasswordField passwordField = new JPasswordField();
-        passwordField.setPreferredSize(new Dimension(300, passwordField.getPreferredSize().height));
-        JLabel passwordLabel = new JLabel("Password:");
-        JPanel passwordPanel = new JPanel();
-        passwordPanel.add(passwordLabel);
-        passwordPanel.add(passwordField);
-
         JTextField nameField = new JTextField();
         nameField.setPreferredSize(new Dimension(300, nameField.getPreferredSize().height));
         JLabel nameLabel = new JLabel("Name:");
@@ -1220,8 +1213,6 @@ public class BeutifulMenu {
         frame.add(Box.createVerticalStrut(10));
         frame.add(shiftPanel);
         frame.add(Box.createVerticalStrut(10));
-        frame.add(passwordPanel);
-        frame.add(Box.createVerticalStrut(10));
         frame.add(namePanel);
         frame.add(Box.createVerticalStrut(10));
         frame.add(genderPanel);
@@ -1243,7 +1234,6 @@ public class BeutifulMenu {
                 long salary = Long.parseLong(salaryField.getText());
                 String shift = shiftField.getText();
                 String username = usernameField.getText();
-                String password = new String(passwordField.getPassword());
                 String name = nameField.getText();
                 String gender = genderField.getText();
                 String phoneNumber = phoneNumberField.getText();
@@ -1256,7 +1246,7 @@ public class BeutifulMenu {
                 doctor.setSalary(salary);
                 doctor.setShift(shift);
                 doctor.setUsername(username);
-                doctor.setPassword(password);
+                doctor.setPassword(oldDoctor.getPassword());
                 doctor.setName(name);
                 doctor.setGender(gender);
                 doctor.setPhoneNumber(phoneNumber);
@@ -2098,8 +2088,5 @@ public class BeutifulMenu {
     public interface CreatePersonelCallBack {
         public void onPersonelCreated(Personel personel);
     }
-
-    // TODO
-    // showPaymentsList
 
 }
