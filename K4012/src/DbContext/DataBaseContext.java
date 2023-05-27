@@ -198,7 +198,9 @@ public class DataBaseContext implements IDataBaseContext {
                     "shift NVARCHAR(255)," +
                     "isAvailable BIT," +
                     "username NVARCHAR(255)," +
-                    "password NVARCHAR(255),";
+                    "password NVARCHAR(255)"+
+                    ");";
+
 
             stmnt.execute(admin);
             stmnt.execute(doctor);
