@@ -11,4 +11,6 @@ public interface IPatientPaymentDbServices {
     public boolean Remove(int visitId);
     public boolean Remove(PatientPayment patientPayment);
     public boolean Update(PatientPayment patientPayment);
+    public List<PatientPayment> getAllPaidPayments();
+    public List<PatientPayment> getAllUnPaidPayments();
 }

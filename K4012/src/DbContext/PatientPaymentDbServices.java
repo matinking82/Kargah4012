@@ -145,4 +145,16 @@ public class PatientPaymentDbServices implements IPatientPaymentDbServices {
         }
         return success;
     }
+
+    @Override
+    public List<PatientPayment> getAllPaidPayments() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAllPaidPayments'");
+    }
+
+    @Override
+    public List<PatientPayment> getAllUnPaidPayments() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAllUnPaidPayments'");
+    }
 }
