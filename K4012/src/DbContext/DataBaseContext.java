@@ -187,7 +187,7 @@ public class DataBaseContext implements IDataBaseContext {
                     "rate FLOAT NOT NULL" +
                     ");";
 
-            String personel = "CREATE TABLE IF NOT EXISTS Nurse (" +
+            String personel = "CREATE TABLE IF NOT EXISTS Personel (" +
                     "name NVARCHAR(255)," +
                     "gender NVARCHAR(255)," +
                     "phoneNumber NVARCHAR(255)," +
