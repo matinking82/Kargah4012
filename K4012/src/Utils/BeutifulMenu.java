@@ -28,7 +28,7 @@ public class BeutifulMenu {
     public static int Width = 1000;
     public static int Height = 700;
 
-    public static void showMenu(List<String> menu,String title, MenuCallback callback) {
+    public static void showMenu(List<String> menu, String title, MenuCallback callback) {
         // Create a new JFrame to display the menu
         JFrame frame = new JFrame(title);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -212,7 +212,7 @@ public class BeutifulMenu {
         // Show the JFrame
         frame.setVisible(true);
     }
-    
+
     public static void showNursesList(List<Nurse> nursesList, String title, ListCallback callback) {
         // Create a new JFrame to display the list of doctors
         JFrame frame = new JFrame(title);
@@ -270,7 +270,7 @@ public class BeutifulMenu {
                 JLabel phoneLabel = new JLabel("phone: " + nurse.getPhoneNumber());
                 phoneLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(phoneLabel);
-                
+
                 JLabel typeLabel = new JLabel("Type: " + nurse.getType());
                 typeLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(typeLabel);
@@ -342,7 +342,7 @@ public class BeutifulMenu {
         // Show the JFrame
         frame.setVisible(true);
     }
-   
+
     public static void showPersonelsList(List<Personel> personelsList, String title, ListCallback callback) {
         // Create a new JFrame to display the list of doctors
         JFrame frame = new JFrame(title);
@@ -400,7 +400,7 @@ public class BeutifulMenu {
                 JLabel phoneLabel = new JLabel("phone: " + personel.getPhoneNumber());
                 phoneLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(phoneLabel);
-                
+
                 JLabel statusLabel = new JLabel("status: " + (personel.isAvalable() ? "Available" : "Not available"));
                 statusLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(statusLabel);
@@ -522,11 +522,12 @@ public class BeutifulMenu {
                 JLabel phoneLabel = new JLabel("phone: " + patient.getPhoneNumber());
                 phoneLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(phoneLabel);
-                
-                JLabel statusLabel = new JLabel("insurance: " + (patient.isHaveInsured() ? "Available" : "Not available"));
+
+                JLabel statusLabel = new JLabel(
+                        "insurance: " + (patient.isHaveInsured() ? "Available" : "Not available"));
                 statusLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(statusLabel);
-                
+
                 JLabel descriptionLabel = new JLabel("description: " + patient.getDescription());
                 descriptionLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(descriptionLabel);
@@ -597,7 +598,7 @@ public class BeutifulMenu {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(Width, Height);
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
-    
+
         // Create the input fields and labels
         JTextField expertiseField = new JTextField();
         expertiseField.setPreferredSize(new Dimension(300, expertiseField.getPreferredSize().height));
@@ -605,70 +606,70 @@ public class BeutifulMenu {
         JPanel expertisePanel = new JPanel();
         expertisePanel.add(expertiseLabel);
         expertisePanel.add(expertiseField);
-    
+
         JTextField salaryField = new JTextField();
         salaryField.setPreferredSize(new Dimension(300, salaryField.getPreferredSize().height));
         JLabel salaryLabel = new JLabel("Salary:");
         JPanel salaryPanel = new JPanel();
         salaryPanel.add(salaryLabel);
         salaryPanel.add(salaryField);
-    
+
         JTextField shiftField = new JTextField();
         shiftField.setPreferredSize(new Dimension(300, shiftField.getPreferredSize().height));
         JLabel shiftLabel = new JLabel("Shift:");
         JPanel shiftPanel = new JPanel();
         shiftPanel.add(shiftLabel);
         shiftPanel.add(shiftField);
-    
+
         JTextField usernameField = new JTextField();
         usernameField.setPreferredSize(new Dimension(300, usernameField.getPreferredSize().height));
         JLabel usernameLabel = new JLabel("Username:");
         JPanel usernamePanel = new JPanel();
         usernamePanel.add(usernameLabel);
         usernamePanel.add(usernameField);
-    
+
         JPasswordField passwordField = new JPasswordField();
         passwordField.setPreferredSize(new Dimension(300, passwordField.getPreferredSize().height));
         JLabel passwordLabel = new JLabel("Password:");
         JPanel passwordPanel = new JPanel();
         passwordPanel.add(passwordLabel);
         passwordPanel.add(passwordField);
-    
+
         JTextField nameField = new JTextField();
         nameField.setPreferredSize(new Dimension(300, nameField.getPreferredSize().height));
         JLabel nameLabel = new JLabel("Name:");
         JPanel namePanel = new JPanel();
         namePanel.add(nameLabel);
         namePanel.add(nameField);
-    
+
         JTextField genderField = new JTextField();
         genderField.setPreferredSize(new Dimension(300, genderField.getPreferredSize().height));
         JLabel genderLabel = new JLabel("Gender:");
         JPanel genderPanel = new JPanel();
         genderPanel.add(genderLabel);
         genderPanel.add(genderField);
-    
+
         JTextField phoneNumberField = new JTextField();
         phoneNumberField.setPreferredSize(new Dimension(300, phoneNumberField.getPreferredSize().height));
         JLabel phoneNumberLabel = new JLabel("Phone Number:");
         JPanel phoneNumberPanel = new JPanel();
         phoneNumberPanel.add(phoneNumberLabel);
         phoneNumberPanel.add(phoneNumberField);
-    
+
         JTextField emailField = new JTextField();
         emailField.setPreferredSize(new Dimension(300, emailField.getPreferredSize().height));
         JLabel emailLabel = new JLabel("Email:");
         JPanel emailPanel = new JPanel();
         emailPanel.add(emailLabel);
         emailPanel.add(emailField);
-    
+
         JTextField ageField = new JTextField();
         ageField.setPreferredSize(new Dimension(300, ageField.getPreferredSize().height));
         JLabel ageLabel = new JLabel("Age:");
         JPanel agePanel = new JPanel();
         agePanel.add(ageLabel);
         agePanel.add(ageField);
-    
+
         // Add the input fields and labels to the JFrame
         frame.add(Box.createVerticalStrut(10));
         frame.add(expertisePanel);
@@ -690,9 +691,9 @@ public class BeutifulMenu {
         frame.add(emailPanel);
         frame.add(Box.createVerticalStrut(10));
         frame.add(agePanel);
-    
+
         // Create a button for the user to submit their input
-        JButton submitButton= new JButton("Submit");
+        JButton submitButton = new JButton("Submit");
         submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         submitButton.addActionListener(new ActionListener() {
             @Override
@@ -708,7 +709,7 @@ public class BeutifulMenu {
                 String phoneNumber = phoneNumberField.getText();
                 String email = emailField.getText();
                 int age = Integer.parseInt(ageField.getText());
-    
+
                 // Create a new Doctor object with the input values
                 Doctor doctor = new Doctor();
                 doctor.setExpertise(expertise);
@@ -721,20 +722,170 @@ public class BeutifulMenu {
                 doctor.setPhoneNumber(phoneNumber);
                 doctor.setEmail(email);
                 doctor.setAge(age);
-    
+
                 // Close the JFrame
                 frame.dispose();
-    
+
                 // Call the callback interface with the created Doctor object
                 createDoctorCallBack.onDoctorCreated(doctor);
             }
         });
-    
+
         // Add the submit button to the JFrame
         frame.add(Box.createVerticalStrut(20));
         frame.add(submitButton);
         frame.add(Box.createVerticalStrut(10));
-    
+
+        // Set the JFrame to visible
+        frame.setVisible(true);
+    }
+
+    public static void getDoctorFromUserForEdit(CreateDoctorCallBack createDoctorCallBack, Doctor oldDoctor) {
+        // Create a new JFrame to hold the input fields
+        JFrame frame = new JFrame("Edit Doctor " + oldDoctor.getUsername());
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(Width, Height);
+        frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
+
+        // Create the input fields and labels
+        JTextField expertiseField = new JTextField();
+        expertiseField.setPreferredSize(new Dimension(300, expertiseField.getPreferredSize().height));
+        JLabel expertiseLabel = new JLabel("Expertise:");
+        JPanel expertisePanel = new JPanel();
+        expertiseField.setText(oldDoctor.getExpertise());
+        expertisePanel.add(expertiseLabel);
+        expertisePanel.add(expertiseField);
+
+        JTextField salaryField = new JTextField();
+        salaryField.setPreferredSize(new Dimension(300, salaryField.getPreferredSize().height));
+        JLabel salaryLabel = new JLabel("Salary:");
+        JPanel salaryPanel = new JPanel();
+        salaryField.setText(Long.toString(oldDoctor.getSalary()));
+        salaryPanel.add(salaryLabel);
+        salaryPanel.add(salaryField);
+
+        JTextField shiftField = new JTextField();
+        shiftField.setPreferredSize(new Dimension(300, shiftField.getPreferredSize().height));
+        JLabel shiftLabel = new JLabel("Shift:");
+        JPanel shiftPanel = new JPanel();
+        shiftField.setText(oldDoctor.getShift());
+        shiftPanel.add(shiftLabel);
+        shiftPanel.add(shiftField);
+
+        JTextField usernameField = new JTextField();
+        usernameField.setText(oldDoctor.getUsername());
+
+        JPasswordField passwordField = new JPasswordField();
+        passwordField.setPreferredSize(new Dimension(300, passwordField.getPreferredSize().height));
+        JLabel passwordLabel = new JLabel("Password:");
+        JPanel passwordPanel = new JPanel();
+        passwordPanel.add(passwordLabel);
+        passwordPanel.add(passwordField);
+
+        JTextField nameField = new JTextField();
+        nameField.setPreferredSize(new Dimension(300, nameField.getPreferredSize().height));
+        JLabel nameLabel = new JLabel("Name:");
+        JPanel namePanel = new JPanel();
+        nameField.setText(oldDoctor.getName());
+        namePanel.add(nameLabel);
+        namePanel.add(nameField);
+
+        JTextField genderField = new JTextField();
+        genderField.setPreferredSize(new Dimension(300, genderField.getPreferredSize().height));
+        JLabel genderLabel = new JLabel("Gender:");
+        JPanel genderPanel = new JPanel();
+        genderField.setText(oldDoctor.getGender());
+        genderPanel.add(genderLabel);
+        genderPanel.add(genderField);
+
+        JTextField phoneNumberField = new JTextField();
+        phoneNumberField.setPreferredSize(new Dimension(300, phoneNumberField.getPreferredSize().height));
+        JLabel phoneNumberLabel = new JLabel("Phone Number:");
+        JPanel phoneNumberPanel = new JPanel();
+        phoneNumberField.setText(oldDoctor.getPhoneNumber());
+        phoneNumberPanel.add(phoneNumberLabel);
+        phoneNumberPanel.add(phoneNumberField);
+
+        JTextField emailField = new JTextField();
+        emailField.setPreferredSize(new Dimension(300, emailField.getPreferredSize().height));
+        JLabel emailLabel = new JLabel("Email:");
+        JPanel emailPanel = new JPanel();
+        emailField.setText(oldDoctor.getEmail());
+        emailPanel.add(emailLabel);
+        emailPanel.add(emailField);
+
+        JTextField ageField = new JTextField();
+        ageField.setPreferredSize(new Dimension(300, ageField.getPreferredSize().height));
+        JLabel ageLabel = new JLabel("Age:");
+        JPanel agePanel = new JPanel();
+        ageField.setText(Integer.toString(oldDoctor.getAge()));
+        agePanel.add(ageLabel);
+        agePanel.add(ageField);
+
+        // Add the input fields and labels to the JFrame
+        frame.add(Box.createVerticalStrut(10));
+        frame.add(expertisePanel);
+        frame.add(Box.createVerticalStrut(10));
+        frame.add(salaryPanel);
+        frame.add(Box.createVerticalStrut(10));
+        frame.add(shiftPanel);
+        frame.add(Box.createVerticalStrut(10));
+        frame.add(passwordPanel);
+        frame.add(Box.createVerticalStrut(10));
+        frame.add(namePanel);
+        frame.add(Box.createVerticalStrut(10));
+        frame.add(genderPanel);
+        frame.add(Box.createVerticalStrut(10));
+        frame.add(phoneNumberPanel);
+        frame.add(Box.createVerticalStrut(10));
+        frame.add(emailPanel);
+        frame.add(Box.createVerticalStrut(10));
+        frame.add(agePanel);
+
+        // Create a button for the user to submit their input
+        JButton submitButton = new JButton("Submit");
+        submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Get the input values from the fields
+                String expertise = expertiseField.getText();
+                long salary = Long.parseLong(salaryField.getText());
+                String shift = shiftField.getText();
+                String username = usernameField.getText();
+                String password = new String(passwordField.getPassword());
+                String name = nameField.getText();
+                String gender = genderField.getText();
+                String phoneNumber = phoneNumberField.getText();
+                String email = emailField.getText();
+                int age = Integer.parseInt(ageField.getText());
+
+                // Create a new Doctor object with the input values
+                Doctor doctor = new Doctor();
+                doctor.setExpertise(expertise);
+                doctor.setSalary(salary);
+                doctor.setShift(shift);
+                doctor.setUsername(username);
+                doctor.setPassword(password);
+                doctor.setName(name);
+                doctor.setGender(gender);
+                doctor.setPhoneNumber(phoneNumber);
+                doctor.setEmail(email);
+                doctor.setAge(age);
+
+                // Close the JFrame
+                frame.dispose();
+
+                // Call the callback interface with the created Doctor object
+                createDoctorCallBack.onDoctorCreated(doctor);
+            }
+        });
+
+        // Add the submit button to the JFrame
+        frame.add(Box.createVerticalStrut(20));
+        frame.add(submitButton);
+        frame.add(Box.createVerticalStrut(10));
+
         // Set the JFrame to visible
         frame.setVisible(true);
     }
@@ -745,7 +896,7 @@ public class BeutifulMenu {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(Width, Height);
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
-    
+
         // Create the input fields and labels
         JTextField TypeField = new JTextField();
         TypeField.setPreferredSize(new Dimension(300, TypeField.getPreferredSize().height));
@@ -753,77 +904,77 @@ public class BeutifulMenu {
         JPanel typePanel = new JPanel();
         typePanel.add(typeLabel);
         typePanel.add(TypeField);
-       
+
         JTextField placeOfWorkField = new JTextField();
         placeOfWorkField.setPreferredSize(new Dimension(300, placeOfWorkField.getPreferredSize().height));
         JLabel placeOfWordkLabel = new JLabel("place of work:");
         JPanel placeOfWorkPanel = new JPanel();
         placeOfWorkPanel.add(placeOfWordkLabel);
         placeOfWorkPanel.add(placeOfWorkField);
-    
+
         JTextField salaryField = new JTextField();
         salaryField.setPreferredSize(new Dimension(300, salaryField.getPreferredSize().height));
         JLabel salaryLabel = new JLabel("Salary:");
         JPanel salaryPanel = new JPanel();
         salaryPanel.add(salaryLabel);
         salaryPanel.add(salaryField);
-    
+
         JTextField shiftField = new JTextField();
         shiftField.setPreferredSize(new Dimension(300, shiftField.getPreferredSize().height));
         JLabel shiftLabel = new JLabel("Shift:");
         JPanel shiftPanel = new JPanel();
         shiftPanel.add(shiftLabel);
         shiftPanel.add(shiftField);
-    
+
         JTextField usernameField = new JTextField();
         usernameField.setPreferredSize(new Dimension(300, usernameField.getPreferredSize().height));
         JLabel usernameLabel = new JLabel("Username:");
         JPanel usernamePanel = new JPanel();
         usernamePanel.add(usernameLabel);
         usernamePanel.add(usernameField);
-    
+
         JPasswordField passwordField = new JPasswordField();
         passwordField.setPreferredSize(new Dimension(300, passwordField.getPreferredSize().height));
         JLabel passwordLabel = new JLabel("Password:");
         JPanel passwordPanel = new JPanel();
         passwordPanel.add(passwordLabel);
         passwordPanel.add(passwordField);
-    
+
         JTextField nameField = new JTextField();
         nameField.setPreferredSize(new Dimension(300, nameField.getPreferredSize().height));
         JLabel nameLabel = new JLabel("Name:");
         JPanel namePanel = new JPanel();
         namePanel.add(nameLabel);
         namePanel.add(nameField);
-    
+
         JTextField genderField = new JTextField();
         genderField.setPreferredSize(new Dimension(300, genderField.getPreferredSize().height));
         JLabel genderLabel = new JLabel("Gender:");
         JPanel genderPanel = new JPanel();
         genderPanel.add(genderLabel);
         genderPanel.add(genderField);
-    
+
         JTextField phoneNumberField = new JTextField();
         phoneNumberField.setPreferredSize(new Dimension(300, phoneNumberField.getPreferredSize().height));
         JLabel phoneNumberLabel = new JLabel("Phone Number:");
         JPanel phoneNumberPanel = new JPanel();
         phoneNumberPanel.add(phoneNumberLabel);
         phoneNumberPanel.add(phoneNumberField);
-    
+
         JTextField emailField = new JTextField();
         emailField.setPreferredSize(new Dimension(300, emailField.getPreferredSize().height));
         JLabel emailLabel = new JLabel("Email:");
         JPanel emailPanel = new JPanel();
         emailPanel.add(emailLabel);
         emailPanel.add(emailField);
-    
+
         JTextField ageField = new JTextField();
         ageField.setPreferredSize(new Dimension(300, ageField.getPreferredSize().height));
         JLabel ageLabel = new JLabel("Age:");
         JPanel agePanel = new JPanel();
         agePanel.add(ageLabel);
         agePanel.add(ageField);
-    
+
         // Add the input fields and labels to the JFrame
         frame.add(Box.createVerticalStrut(10));
         frame.add(typePanel);
@@ -847,9 +998,9 @@ public class BeutifulMenu {
         frame.add(emailPanel);
         frame.add(Box.createVerticalStrut(10));
         frame.add(agePanel);
-    
+
         // Create a button for the user to submit their input
-        JButton submitButton= new JButton("Submit");
+        JButton submitButton = new JButton("Submit");
         submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         submitButton.addActionListener(new ActionListener() {
             @Override
@@ -866,7 +1017,7 @@ public class BeutifulMenu {
                 String phoneNumber = phoneNumberField.getText();
                 String email = emailField.getText();
                 int age = Integer.parseInt(ageField.getText());
-    
+
                 // Create a new Doctor object with the input values
                 Nurse nurse = new Nurse();
                 nurse.setType(type);
@@ -880,20 +1031,20 @@ public class BeutifulMenu {
                 nurse.setPhoneNumber(phoneNumber);
                 nurse.setEmail(email);
                 nurse.setAge(age);
-    
+
                 // Close the JFrame
                 frame.dispose();
-    
+
                 // Call the callback interface with the created Doctor object
                 createNurseCallBack.onNurseCreated(nurse);
             }
         });
-    
+
         // Add the submit button to the JFrame
         frame.add(Box.createVerticalStrut(20));
         frame.add(submitButton);
         frame.add(Box.createVerticalStrut(10));
-    
+
         // Set the JFrame to visible
         frame.setVisible(true);
     }
@@ -904,7 +1055,7 @@ public class BeutifulMenu {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(Width, Height);
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
-    
+
         // Create the input fields and labels
         JTextField salaryField = new JTextField();
         salaryField.setPreferredSize(new Dimension(300, salaryField.getPreferredSize().height));
@@ -912,63 +1063,63 @@ public class BeutifulMenu {
         JPanel salaryPanel = new JPanel();
         salaryPanel.add(salaryLabel);
         salaryPanel.add(salaryField);
-    
+
         JTextField shiftField = new JTextField();
         shiftField.setPreferredSize(new Dimension(300, shiftField.getPreferredSize().height));
         JLabel shiftLabel = new JLabel("Shift:");
         JPanel shiftPanel = new JPanel();
         shiftPanel.add(shiftLabel);
         shiftPanel.add(shiftField);
-    
+
         JTextField usernameField = new JTextField();
         usernameField.setPreferredSize(new Dimension(300, usernameField.getPreferredSize().height));
         JLabel usernameLabel = new JLabel("Username:");
         JPanel usernamePanel = new JPanel();
         usernamePanel.add(usernameLabel);
         usernamePanel.add(usernameField);
-    
+
         JPasswordField passwordField = new JPasswordField();
         passwordField.setPreferredSize(new Dimension(300, passwordField.getPreferredSize().height));
         JLabel passwordLabel = new JLabel("Password:");
         JPanel passwordPanel = new JPanel();
         passwordPanel.add(passwordLabel);
         passwordPanel.add(passwordField);
-    
+
         JTextField nameField = new JTextField();
         nameField.setPreferredSize(new Dimension(300, nameField.getPreferredSize().height));
         JLabel nameLabel = new JLabel("Name:");
         JPanel namePanel = new JPanel();
         namePanel.add(nameLabel);
         namePanel.add(nameField);
-    
+
         JTextField genderField = new JTextField();
         genderField.setPreferredSize(new Dimension(300, genderField.getPreferredSize().height));
         JLabel genderLabel = new JLabel("Gender:");
         JPanel genderPanel = new JPanel();
         genderPanel.add(genderLabel);
         genderPanel.add(genderField);
-    
+
         JTextField phoneNumberField = new JTextField();
         phoneNumberField.setPreferredSize(new Dimension(300, phoneNumberField.getPreferredSize().height));
         JLabel phoneNumberLabel = new JLabel("Phone Number:");
         JPanel phoneNumberPanel = new JPanel();
         phoneNumberPanel.add(phoneNumberLabel);
         phoneNumberPanel.add(phoneNumberField);
-    
+
         JTextField emailField = new JTextField();
         emailField.setPreferredSize(new Dimension(300, emailField.getPreferredSize().height));
         JLabel emailLabel = new JLabel("Email:");
         JPanel emailPanel = new JPanel();
         emailPanel.add(emailLabel);
         emailPanel.add(emailField);
-    
+
         JTextField ageField = new JTextField();
         ageField.setPreferredSize(new Dimension(300, ageField.getPreferredSize().height));
         JLabel ageLabel = new JLabel("Age:");
         JPanel agePanel = new JPanel();
         agePanel.add(ageLabel);
         agePanel.add(ageField);
-    
+
         // Add the input fields and labels to the JFrame
         frame.add(Box.createVerticalStrut(10));
         frame.add(salaryPanel);
@@ -988,9 +1139,9 @@ public class BeutifulMenu {
         frame.add(emailPanel);
         frame.add(Box.createVerticalStrut(10));
         frame.add(agePanel);
-    
+
         // Create a button for the user to submit their input
-        JButton submitButton= new JButton("Submit");
+        JButton submitButton = new JButton("Submit");
         submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         submitButton.addActionListener(new ActionListener() {
             @Override
@@ -1005,7 +1156,7 @@ public class BeutifulMenu {
                 String phoneNumber = phoneNumberField.getText();
                 String email = emailField.getText();
                 int age = Integer.parseInt(ageField.getText());
-    
+
                 // Create a new Doctor object with the input values
                 Personel nurse = new Personel();
                 nurse.setSalary(salary);
@@ -1017,20 +1168,20 @@ public class BeutifulMenu {
                 nurse.setPhoneNumber(phoneNumber);
                 nurse.setEmail(email);
                 nurse.setAge(age);
-    
+
                 // Close the JFrame
                 frame.dispose();
-    
+
                 // Call the callback interface with the created Doctor object
                 createPersonelCallBack.onPersonelCreated(nurse);
             }
         });
-    
+
         // Add the submit button to the JFrame
         frame.add(Box.createVerticalStrut(20));
         frame.add(submitButton);
         frame.add(Box.createVerticalStrut(10));
-    
+
         // Set the JFrame to visible
         frame.setVisible(true);
     }
@@ -1041,7 +1192,7 @@ public class BeutifulMenu {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(Width, Height);
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
-    
+
         // Create the input fields and labels
         JTextField nameField = new JTextField();
         nameField.setPreferredSize(new Dimension(300, nameField.getPreferredSize().height));
@@ -1049,28 +1200,28 @@ public class BeutifulMenu {
         JPanel namePanel = new JPanel();
         namePanel.add(nameLabel);
         namePanel.add(nameField);
-    
+
         JTextField genderField = new JTextField();
         genderField.setPreferredSize(new Dimension(300, genderField.getPreferredSize().height));
         JLabel genderLabel = new JLabel("Gender:");
         JPanel genderPanel = new JPanel();
         genderPanel.add(genderLabel);
         genderPanel.add(genderField);
-    
+
         JTextField phoneNumberField = new JTextField();
         phoneNumberField.setPreferredSize(new Dimension(300, phoneNumberField.getPreferredSize().height));
         JLabel phoneNumberLabel = new JLabel("Phone Number:");
         JPanel phoneNumberPanel = new JPanel();
         phoneNumberPanel.add(phoneNumberLabel);
         phoneNumberPanel.add(phoneNumberField);
-    
+
         JTextField emailField = new JTextField();
         emailField.setPreferredSize(new Dimension(300, emailField.getPreferredSize().height));
         JLabel emailLabel = new JLabel("Email:");
         JPanel emailPanel = new JPanel();
         emailPanel.add(emailLabel);
         emailPanel.add(emailField);
-    
+
         JTextField ageField = new JTextField();
         ageField.setPreferredSize(new Dimension(300, ageField.getPreferredSize().height));
         JLabel ageLabel = new JLabel("Age:");
@@ -1098,9 +1249,9 @@ public class BeutifulMenu {
         frame.add(agePanel);
         frame.add(Box.createVerticalStrut(10));
         frame.add(descriptionPanel);
-    
+
         // Create a button for the user to submit their input
-        JButton submitButton= new JButton("Submit");
+        JButton submitButton = new JButton("Submit");
         submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         submitButton.addActionListener(new ActionListener() {
             @Override
@@ -1112,7 +1263,7 @@ public class BeutifulMenu {
                 String email = emailField.getText();
                 int age = Integer.parseInt(ageField.getText());
                 String description = descriptionField.getText();
-    
+
                 // Create a new Doctor object with the input values
                 Patient patient = new Patient();
                 patient.setName(name);
@@ -1121,47 +1272,45 @@ public class BeutifulMenu {
                 patient.setEmail(email);
                 patient.setAge(age);
                 patient.setDescription(description);
-    
+
                 // Close the JFrame
                 frame.dispose();
-    
+
                 // Call the callback interface with the created Doctor object
                 createPatientCallBack.onPatientCreated(patient);
             }
         });
-    
+
         // Add the submit button to the JFrame
         frame.add(Box.createVerticalStrut(20));
         frame.add(submitButton);
         frame.add(Box.createVerticalStrut(10));
-    
+
         // Set the JFrame to visible
         frame.setVisible(true);
     }
 
-
-
-
-    
     public interface ListCallback {
         void onItemSelected(int doctorId);
+
         void onItemSelectedForRemove(int doctorId);
+
         void onReturn();
     }
 
-    public interface CreateDoctorCallBack{
+    public interface CreateDoctorCallBack {
         public void onDoctorCreated(Doctor doctor);
     }
 
-    public interface CreatePatientCallBack{
+    public interface CreatePatientCallBack {
         public void onPatientCreated(Patient patient);
     }
 
-    public interface CreateNurseCallBack{
+    public interface CreateNurseCallBack {
         public void onNurseCreated(Nurse nurse);
     }
 
-    public interface CreatePersonelCallBack{
+    public interface CreatePersonelCallBack {
         public void onPersonelCreated(Personel personel);
     }
 
