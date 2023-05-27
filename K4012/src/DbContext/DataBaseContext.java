@@ -187,6 +187,19 @@ public class DataBaseContext implements IDataBaseContext {
                     "rate FLOAT NOT NULL" +
                     ");";
 
+            String personel = "CREATE TABLE IF NOT EXISTS Nurse (" +
+                    "name NVARCHAR(255)," +
+                    "gender NVARCHAR(255)," +
+                    "phoneNumber NVARCHAR(255)," +
+                    "email NVARCHAR(255)," +
+                    "age INT," +
+                    "id INT ," +
+                    "salary BIGINT," +
+                    "shift NVARCHAR(255)," +
+                    "isAvailable BIT," +
+                    "username NVARCHAR(255)," +
+                    "password NVARCHAR(255),";
+
             stmnt.execute(admin);
             stmnt.execute(doctor);
             stmnt.execute(nurse);
@@ -200,6 +213,7 @@ public class DataBaseContext implements IDataBaseContext {
             stmnt.execute(articleForResume);
             stmnt.execute(expeirenceForResume);
             stmnt.execute(doctorRating);
+            stmnt.execute(personel);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -325,7 +339,7 @@ public class DataBaseContext implements IDataBaseContext {
 
     @Override
     public IPersonelDbServices Personels() {
-        if (personelDbServices==null) {
+        if (personelDbServices == null) {
             personelDbServices = new PersonelDbServices(connection);
         }
         return personelDbServices;
