@@ -23,6 +23,7 @@ import Models.Doctor;
 import Models.Nurse;
 import Models.Patient;
 import Models.PatientHospitalizationRecord;
+import Models.PatientPayment;
 import Models.Personel;
 import Models.Visit;
 
@@ -976,6 +977,10 @@ public class BeutifulMenu {
 
         // Show the JFrame
         frame.setVisible(true);
+    }
+
+    public static void showPatientPaymentsList(List<PatientPayment> visitsList, String title, ListCallback callback) {
+        //TODO
     }
 
     public static void getDoctorFromUser(CreateDoctorCallBack createDoctorCallBack) {
