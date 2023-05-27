@@ -148,13 +148,45 @@ public class PatientPaymentDbServices implements IPatientPaymentDbServices {
 
     @Override
     public List<PatientPayment> getAllPaidPayments() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllPaidPayments'");
+        List<PatientPayment> patientPayments = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM PatientPayment WHERE isPaid = true";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                PatientPayment patientPayment = new PatientPayment();
+                patientPayment.setId(result.getInt("id"));
+                patientPayment.setPatientId(result.getInt("patientId"));
+                patientPayment.setHospitalizationId(result.getInt("hospitalizationId"));
+                patientPayment.setVisitId(result.getInt("visitId"));
+                patientPayment.setPaid(result.getBoolean("isPaid"));
+                patientPayments.add(patientPayment);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error retrieving paid patient payments: " + e.getMessage());
+        }
+        return patientPayments;
     }
 
     @Override
     public List<PatientPayment> getAllUnPaidPayments() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllUnPaidPayments'");
+        List<PatientPayment> patientPayments = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM PatientPayment WHERE isPaid = false";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                PatientPayment patientPayment = new PatientPayment();
+                patientPayment.setId(result.getInt("id"));
+                patientPayment.setPatientId(result.getInt("patientId"));
+                patientPayment.setHospitalizationId(result.getInt("hospitalizationId"));
+                patientPayment.setVisitId(result.getInt("visitId"));
+                patientPayment.setPaid(result.getBoolean("isPaid"));
+                patientPayments.add(patientPayment);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error retrieving unpaid patient payments: " + e.getMessage());
+        }
+        return patientPayments;
     }
 }
