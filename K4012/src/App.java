@@ -342,12 +342,29 @@ public class App {
         BeutifulMenu.showPatientsList(patients, "List of Patients", new ListCallback() {
             @Override
             public void onItemSelected(int id) {
+                Patient patient=context.Patients().getById(id);
+                BeutifulMenu.getPatientFromUserForEdit(new CreatePatientCallBack() {
+
+                    @Override
+                    public void onPatientCreated(Patient patient) {
+                        context.Patients().Update(patient);
+                        ListOfPatient();
+
+                    }
+                    
+                }, patient);
 
             }
 
             @Override
             public void onReturn() {
                 manangePatient();
+            }
+
+            @Override
+            public void onItemSelectedForRemove(int Id) {
+                context.Patients().Remove(Id);
+
             }
 
         });
@@ -398,12 +415,33 @@ public class App {
         BeutifulMenu.showPersonelsList(personels, "List of Personels", new ListCallback() {
             @Override
             public void onItemSelected(int id) {
+                Personel personel=context.Personels().getById(id);
+                BeutifulMenu.getPersonelFromUserForEdit(new CreatePersonelCallBack() {
+
+                    @Override
+                    public void onPersonelCreated(Personel personel) {
+                        context.Personels().Update(personel);
+                        ListPersonels();
+
+                    }
+                    
+                    
+                }, personel);
+
 
             }
 
             @Override
             public void onReturn() {
                 managePersonel();
+            }
+
+            @Override
+            public void onItemSelectedForRemove(int Id) {
+                context.Personels().Remove(Id);
+                ListPersonels();
+                
+
             }
 
         });
@@ -473,12 +511,29 @@ public class App {
         BeutifulMenu.showNursesList(nurses, "List of Nurses", new ListCallback() {
             @Override
             public void onItemSelected(int id) {
+                Nurse nurse=context.Nurses().getById(id);
+                BeutifulMenu.getNurseFromUserForEdit(new CreateNurseCallBack() {
+
+                    @Override
+                    public void onNurseCreated(Nurse nurse) {
+                        context.Nurses().Update(nurse);
+                        ListOfNurses();
+
+                    }
+                    
+                }, nurse);
 
             }
 
             @Override
             public void onReturn() {
                 Nurses();
+            }
+
+            @Override
+            public void onItemSelectedForRemove(int Id) {
+                context.Nurses().Remove(Id);
+                ListOfNurses();
             }
 
         });
@@ -531,12 +586,31 @@ public class App {
         BeutifulMenu.showDoctorsList(doctors, "List of Doctors", new ListCallback() {
             @Override
             public void onItemSelected(int id) {
+                Doctor doctor=context.Doctors().getById(id);
+                BeutifulMenu.getDoctorFromUserForEdit(new CreateDoctorCallBack() {
+
+                    @Override
+                    public void onDoctorCreated(Doctor doctor) {
+                        context.Doctors().Update(doctor);
+                        ListOfDoctors();
+                    }
+                    
+                }, doctor);
+
 
             }
 
             @Override
             public void onReturn() {
                 Doctors();
+            }
+
+            @Override
+            public void onItemSelectedForRemove(int Id) {
+                context.Doctors().Remove(Id);
+                ListOfDoctors();
+
+
             }
 
         });
