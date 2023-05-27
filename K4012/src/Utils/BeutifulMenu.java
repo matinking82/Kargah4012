@@ -288,12 +288,18 @@ public class BeutifulMenu {
                 statusLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(statusLabel);
 
-                JButton btnSelect = new JButton("Select");
+                JButton btnSelect = new JButton("Edit");
                 btnSelect.addActionListener(ee -> {
                     frame.dispose(); // Close the JFrame
                     callback.onItemSelected(nurse.getId());
                 });
+                JButton btnRemove = new JButton("Remove");
+                btnRemove.addActionListener(ee -> {
+                    frame.dispose(); // Close the JFrame
+                    callback.onItemSelectedForRemove(nurse.getId());
+                });
                 infoPanel.add(btnSelect);
+                infoPanel.add(btnRemove);
 
                 // Repaint the infoPanel to display the selected doctor's information
                 infoPanel.revalidate();
@@ -410,12 +416,18 @@ public class BeutifulMenu {
                 statusLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(statusLabel);
 
-                JButton btnSelect = new JButton("Select");
+                JButton btnSelect = new JButton("Edit");
                 btnSelect.addActionListener(ee -> {
                     frame.dispose(); // Close the JFrame
                     callback.onItemSelected(personel.getId());
                 });
+                JButton btnRemove = new JButton("Remove");
+                btnRemove.addActionListener(ee -> {
+                    frame.dispose(); // Close the JFrame
+                    callback.onItemSelectedForRemove(personel.getId());
+                });
                 infoPanel.add(btnSelect);
+                infoPanel.add(btnRemove);
 
                 // Repaint the infoPanel to display the selected doctor's information
                 infoPanel.revalidate();
@@ -537,12 +549,18 @@ public class BeutifulMenu {
                 descriptionLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(descriptionLabel);
 
-                JButton btnSelect = new JButton("Select");
+                JButton btnSelect = new JButton("Edit");
                 btnSelect.addActionListener(ee -> {
                     frame.dispose(); // Close the JFrame
                     callback.onItemSelected(patient.getId());
                 });
+                JButton btnRemove = new JButton("Remove");
+                btnRemove.addActionListener(ee -> {
+                    frame.dispose(); // Close the JFrame
+                    callback.onItemSelectedForRemove(patient.getId());
+                });
                 infoPanel.add(btnSelect);
+                infoPanel.add(btnRemove);
 
                 // Repaint the infoPanel to display the selected doctor's information
                 infoPanel.revalidate();
