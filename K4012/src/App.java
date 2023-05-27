@@ -24,6 +24,7 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         context = new DataBaseContext();
+        BeutifulMenu.context =context;
         mainMenu();
 
     }
