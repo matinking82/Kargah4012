@@ -1087,7 +1087,7 @@ public class BeutifulMenu {
         frame.add(Box.createVerticalStrut(10));
         frame.add(phoneNumberPanel);
         frame.add(Box.createVerticalStrut(10));
-        frame.add(descriptionPanel);
+        frame.add(emailPanel);
         frame.add(Box.createVerticalStrut(10));
         frame.add(agePanel);
         frame.add(Box.createVerticalStrut(10));
