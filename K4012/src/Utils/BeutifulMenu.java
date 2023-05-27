@@ -1294,7 +1294,7 @@ public class BeutifulMenu {
     public interface ListCallback {
         void onItemSelected(int doctorId);
 
-        void onItemSelectedForRemove(int doctorId);
+        void onItemSelectedForRemove(int Id);
 
         void onReturn();
     }
