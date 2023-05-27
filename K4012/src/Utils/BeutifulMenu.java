@@ -147,12 +147,18 @@ public class BeutifulMenu {
                 statusLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(statusLabel);
 
-                JButton btnSelect = new JButton("Select");
+                JButton btnSelect = new JButton("Edit");
                 btnSelect.addActionListener(ee -> {
                     frame.dispose(); // Close the JFrame
                     callback.onItemSelected(doctor.getId());
                 });
+                JButton btnRemove = new JButton("Remove");
+                btnRemove.addActionListener(ee -> {
+                    frame.dispose(); // Close the JFrame
+                    callback.onItemSelectedForRemove(doctor.getId());
+                });
                 infoPanel.add(btnSelect);
+                infoPanel.add(btnRemove);
 
                 // Repaint the infoPanel to display the selected doctor's information
                 infoPanel.revalidate();
@@ -1134,10 +1140,12 @@ public class BeutifulMenu {
     }
 
 
+
+
     
     public interface ListCallback {
         void onItemSelected(int doctorId);
-
+        void onItemSelectedForRemove(int doctorId);
         void onReturn();
     }
 
