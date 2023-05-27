@@ -7,7 +7,9 @@ import DbContext.Interfaces.IDataBaseContext;
 import Models.Doctor;
 import Models.Nurse;
 import Models.Patient;
+import Models.PatientHospitalizationRecord;
 import Models.Personel;
+import Models.Visit;
 import Utils.BeutifulMenu;
 import Utils.BeutifulMenu.CreateDoctorCallBack;
 import Utils.BeutifulMenu.CreateNurseCallBack;
@@ -250,7 +252,30 @@ public class App {
     }
 
     public static void ListOfHospitalizations() {
-    }
+        List<PatientHospitalizationRecord> hospitalizationRecords=context.PatientHospitalizationRecords()
+        .getAllPatientHospitalizationRecordsList();
+        BeutifulMenu.showHospitalizationList(hospitalizationRecords, "List of Hospitalization", new ListCallback() {
+
+            @Override
+            public void onItemSelected(int Id) {
+
+            }
+
+            @Override
+            public void onItemSelectedForRemove(int Id) {
+                context.PatientHospitalizationRecords().Remove(Id);
+                ListOfHospitalizations();
+            }
+
+            @Override
+            public void onReturn() {
+
+                hospitalization();
+            }
+            
+        });
+            
+        }
 
     public static void Addhospitalizations() {
     }
@@ -286,9 +311,33 @@ public class App {
     }
 
     public static void addvisit() {
+
+
     }
 
     public static void ListOfVisits() {
+        List<Visit> visit   = context.Visits().getAllVisitsList();
+        BeutifulMenu.showVisitsList(visit, "List of Visit", new ListCallback() {
+
+            @Override
+            public void onItemSelected(int Id) {
+                
+            }
+
+            @Override
+            public void onItemSelectedForRemove(int Id) {
+
+                    context.Visits().Remove(Id);
+    
+                }
+
+
+            @Override
+            public void onReturn() {
+                visits();
+            }
+
+        });
     }
 
     public static void manangePatient() {
