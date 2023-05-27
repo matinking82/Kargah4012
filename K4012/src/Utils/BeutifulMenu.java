@@ -872,6 +872,7 @@ public class BeutifulMenu {
                 doctor.setPhoneNumber(phoneNumber);
                 doctor.setEmail(email);
                 doctor.setAge(age);
+                doctor.setId(oldDoctor.getId());
 
                 // Close the JFrame
                 frame.dispose();
