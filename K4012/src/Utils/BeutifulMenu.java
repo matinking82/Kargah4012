@@ -22,6 +22,7 @@ import Models.Doctor;
 import Models.Nurse;
 import Models.Patient;
 import Models.Personel;
+import Models.Visit;
 
 public class BeutifulMenu {
 
@@ -592,6 +593,15 @@ public class BeutifulMenu {
         frame.setVisible(true);
     }
 
+    public static void showVisitsList(List<Visit> visitsList, String title, ListCallback callback) {
+        //TODO
+    }
+
+    public static void showHospitalizationList(List<Visit> visitsList, String title, ListCallback callback) {
+        //TODO
+    }
+
+
     public static void getDoctorFromUser(CreateDoctorCallBack createDoctorCallBack) {
         // Create a new JFrame to hold the input fields
         JFrame frame = new JFrame("Doctor Information");
@@ -1049,6 +1059,7 @@ public class BeutifulMenu {
         // Set the JFrame to visible
         frame.setVisible(true);
     }
+    
     public static void getNurseFromUserForEdit(CreateNurseCallBack createNurseCallBack,Nurse oldNurse) {
         // Create a new JFrame to hold the input fields
         JFrame frame = new JFrame("Nurse Information");
@@ -1344,6 +1355,7 @@ public class BeutifulMenu {
         // Set the JFrame to visible
         frame.setVisible(true);
     }
+    
     public static void getPersonelFromUserForEdit(CreatePersonelCallBack createPersonelCallBack,Personel oldPersonel) {
         // Create a new JFrame to hold the input fields
         JFrame frame = new JFrame("Personel Information");
