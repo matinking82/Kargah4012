@@ -329,6 +329,7 @@ public class App {
             public void onItemSelectedForRemove(int Id) {
 
                     context.Visits().Remove(Id);
+                    ListOfVisits();
     
                 }
 
