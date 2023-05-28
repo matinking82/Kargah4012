@@ -1912,10 +1912,17 @@ public class BeutifulMenu {
 
         JTextField descriptionField = new JTextField();
         descriptionField.setPreferredSize(new Dimension(300, descriptionField.getPreferredSize().height));
-        JLabel descriptionLabel = new JLabel("Email:");
+        JLabel descriptionLabel = new JLabel("Description:");
         JPanel descriptionPanel = new JPanel();
         descriptionPanel.add(descriptionLabel);
         descriptionPanel.add(descriptionField);
+
+        JCheckBox insuredBox = new JCheckBox();
+        insuredBox.setPreferredSize(new Dimension(300, descriptionField.getPreferredSize().height));
+        JLabel insuredLabel = new JLabel("Have insured:");
+        JPanel insuredPanel = new JPanel();
+        insuredPanel.add(insuredLabel);
+        insuredPanel.add(insuredBox);
 
         // Add the input fields and labels to the JFrame
         frame.add(Box.createVerticalStrut(10));
@@ -1930,6 +1937,8 @@ public class BeutifulMenu {
         frame.add(agePanel);
         frame.add(Box.createVerticalStrut(10));
         frame.add(descriptionPanel);
+        frame.add(Box.createVerticalStrut(10));
+        frame.add(insuredPanel);
 
         // Create a button for the user to submit their input
         JButton submitButton = new JButton("Submit");
@@ -1944,6 +1953,7 @@ public class BeutifulMenu {
                 String email = emailField.getText();
                 int age = Integer.parseInt(ageField.getText());
                 String description = descriptionField.getText();
+                Boolean insurance = insuredBox.isSelected();
 
                 // Create a new Doctor object with the input values
                 Patient patient = new Patient();
@@ -1953,6 +1963,7 @@ public class BeutifulMenu {
                 patient.setEmail(email);
                 patient.setAge(age);
                 patient.setDescription(description);
+                patient.setHaveInsured(insurance);
 
                 // Close the JFrame
                 frame.dispose();
@@ -1973,7 +1984,7 @@ public class BeutifulMenu {
 
     public static void getPatientFromUserForEdit(CreatePatientCallBack createPatientCallBack, Patient oldPatient) {
         // Create a new JFrame to hold the input fields
-        JFrame frame = new JFrame("Patient Information");
+        JFrame frame = new JFrame("Edit Patient: "+oldPatient.getName());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(Width, Height);
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
@@ -1983,6 +1994,7 @@ public class BeutifulMenu {
         nameField.setPreferredSize(new Dimension(300, nameField.getPreferredSize().height));
         JLabel nameLabel = new JLabel("Name:");
         JPanel namePanel = new JPanel();
+        nameField.setText(oldPatient.getName());
         namePanel.add(nameLabel);
         namePanel.add(nameField);
 
@@ -1990,6 +2002,7 @@ public class BeutifulMenu {
         genderField.setPreferredSize(new Dimension(300, genderField.getPreferredSize().height));
         JLabel genderLabel = new JLabel("Gender:");
         JPanel genderPanel = new JPanel();
+        genderField.setText(oldPatient.getGender());
         genderPanel.add(genderLabel);
         genderPanel.add(genderField);
 
@@ -1997,6 +2010,7 @@ public class BeutifulMenu {
         phoneNumberField.setPreferredSize(new Dimension(300, phoneNumberField.getPreferredSize().height));
         JLabel phoneNumberLabel = new JLabel("Phone Number:");
         JPanel phoneNumberPanel = new JPanel();
+        phoneNumberField.setText(oldPatient.getPhoneNumber());
         phoneNumberPanel.add(phoneNumberLabel);
         phoneNumberPanel.add(phoneNumberField);
 
@@ -2004,6 +2018,7 @@ public class BeutifulMenu {
         emailField.setPreferredSize(new Dimension(300, emailField.getPreferredSize().height));
         JLabel emailLabel = new JLabel("Email:");
         JPanel emailPanel = new JPanel();
+        emailField.setText(oldPatient.getEmail());
         emailPanel.add(emailLabel);
         emailPanel.add(emailField);
 
@@ -2011,15 +2026,25 @@ public class BeutifulMenu {
         ageField.setPreferredSize(new Dimension(300, ageField.getPreferredSize().height));
         JLabel ageLabel = new JLabel("Age:");
         JPanel agePanel = new JPanel();
+        ageField.setText(Integer.toString(oldPatient.getAge()));
         agePanel.add(ageLabel);
         agePanel.add(ageField);
 
         JTextField descriptionField = new JTextField();
         descriptionField.setPreferredSize(new Dimension(300, descriptionField.getPreferredSize().height));
-        JLabel descriptionLabel = new JLabel("Email:");
+        JLabel descriptionLabel = new JLabel("Description:");
         JPanel descriptionPanel = new JPanel();
+        descriptionField.setText(oldPatient.getDescription());
         descriptionPanel.add(descriptionLabel);
         descriptionPanel.add(descriptionField);
+
+        JCheckBox insuredBox = new JCheckBox();
+        insuredBox.setPreferredSize(new Dimension(300, descriptionField.getPreferredSize().height));
+        JLabel insuredLabel = new JLabel("Have insured:");
+        JPanel insuredPanel = new JPanel();
+        insuredBox.setSelected(oldPatient.isHaveInsured());
+        insuredPanel.add(insuredLabel);
+        insuredPanel.add(insuredBox);
 
         // Add the input fields and labels to the JFrame
         frame.add(Box.createVerticalStrut(10));
@@ -2034,6 +2059,8 @@ public class BeutifulMenu {
         frame.add(agePanel);
         frame.add(Box.createVerticalStrut(10));
         frame.add(descriptionPanel);
+        frame.add(Box.createVerticalStrut(10));
+        frame.add(insuredPanel);
 
         // Create a button for the user to submit their input
         JButton submitButton = new JButton("Submit");
@@ -2048,6 +2075,7 @@ public class BeutifulMenu {
                 String email = emailField.getText();
                 int age = Integer.parseInt(ageField.getText());
                 String description = descriptionField.getText();
+                Boolean insurance = insuredBox.isSelected();
 
                 // Create a new Doctor object with the input values
                 Patient patient = new Patient();
@@ -2057,6 +2085,8 @@ public class BeutifulMenu {
                 patient.setEmail(email);
                 patient.setAge(age);
                 patient.setDescription(description);
+                patient.setId(oldPatient.getId());
+                patient.setHaveInsured(insurance);
 
                 // Close the JFrame
                 frame.dispose();
