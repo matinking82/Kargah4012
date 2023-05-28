@@ -1450,7 +1450,7 @@ public class BeutifulMenu {
 
     public static void getNurseFromUserForEdit(CreateNurseCallBack createNurseCallBack, Nurse oldNurse) {
         // Create a new JFrame to hold the input fields
-        JFrame frame = new JFrame("Nurse Information");
+        JFrame frame = new JFrame("Edit Nurse: " + oldNurse.getUsername());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(Width, Height);
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
@@ -1740,7 +1740,7 @@ public class BeutifulMenu {
 
     public static void getPersonelFromUserForEdit(CreatePersonelCallBack createPersonelCallBack, Personel oldPersonel) {
         // Create a new JFrame to hold the input fields
-        JFrame frame = new JFrame("Personel Information");
+        JFrame frame = new JFrame("Edit Personel: "+oldPersonel.getUsername());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(Width, Height);
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
@@ -1750,6 +1750,7 @@ public class BeutifulMenu {
         salaryField.setPreferredSize(new Dimension(300, salaryField.getPreferredSize().height));
         JLabel salaryLabel = new JLabel("Salary:");
         JPanel salaryPanel = new JPanel();
+        salaryField.setText(Long.toString(oldPersonel.getSalary()));
         salaryPanel.add(salaryLabel);
         salaryPanel.add(salaryField);
 
@@ -1757,27 +1758,18 @@ public class BeutifulMenu {
         shiftField.setPreferredSize(new Dimension(300, shiftField.getPreferredSize().height));
         JLabel shiftLabel = new JLabel("Shift:");
         JPanel shiftPanel = new JPanel();
+        shiftField.setText(oldPersonel.getShift());
         shiftPanel.add(shiftLabel);
         shiftPanel.add(shiftField);
 
         JTextField usernameField = new JTextField();
-        usernameField.setPreferredSize(new Dimension(300, usernameField.getPreferredSize().height));
-        JLabel usernameLabel = new JLabel("Username:");
-        JPanel usernamePanel = new JPanel();
-        usernamePanel.add(usernameLabel);
-        usernamePanel.add(usernameField);
-
-        JPasswordField passwordField = new JPasswordField();
-        passwordField.setPreferredSize(new Dimension(300, passwordField.getPreferredSize().height));
-        JLabel passwordLabel = new JLabel("Password:");
-        JPanel passwordPanel = new JPanel();
-        passwordPanel.add(passwordLabel);
-        passwordPanel.add(passwordField);
+        usernameField.setText(oldPersonel.getUsername());
 
         JTextField nameField = new JTextField();
         nameField.setPreferredSize(new Dimension(300, nameField.getPreferredSize().height));
         JLabel nameLabel = new JLabel("Name:");
         JPanel namePanel = new JPanel();
+        nameField.setText(oldPersonel.getName());
         namePanel.add(nameLabel);
         namePanel.add(nameField);
 
@@ -1785,6 +1777,7 @@ public class BeutifulMenu {
         genderField.setPreferredSize(new Dimension(300, genderField.getPreferredSize().height));
         JLabel genderLabel = new JLabel("Gender:");
         JPanel genderPanel = new JPanel();
+        genderField.setText(oldPersonel.getGender());
         genderPanel.add(genderLabel);
         genderPanel.add(genderField);
 
@@ -1792,6 +1785,7 @@ public class BeutifulMenu {
         phoneNumberField.setPreferredSize(new Dimension(300, phoneNumberField.getPreferredSize().height));
         JLabel phoneNumberLabel = new JLabel("Phone Number:");
         JPanel phoneNumberPanel = new JPanel();
+        phoneNumberField.setText(oldPersonel.getPhoneNumber());
         phoneNumberPanel.add(phoneNumberLabel);
         phoneNumberPanel.add(phoneNumberField);
 
@@ -1799,6 +1793,7 @@ public class BeutifulMenu {
         emailField.setPreferredSize(new Dimension(300, emailField.getPreferredSize().height));
         JLabel emailLabel = new JLabel("Email:");
         JPanel emailPanel = new JPanel();
+        emailField.setText(oldPersonel.getEmail());
         emailPanel.add(emailLabel);
         emailPanel.add(emailField);
 
@@ -1806,6 +1801,7 @@ public class BeutifulMenu {
         ageField.setPreferredSize(new Dimension(300, ageField.getPreferredSize().height));
         JLabel ageLabel = new JLabel("Age:");
         JPanel agePanel = new JPanel();
+        ageField.setText(Integer.toString(oldPersonel.getAge()));
         agePanel.add(ageLabel);
         agePanel.add(ageField);
 
@@ -1814,10 +1810,6 @@ public class BeutifulMenu {
         frame.add(salaryPanel);
         frame.add(Box.createVerticalStrut(10));
         frame.add(shiftPanel);
-        frame.add(Box.createVerticalStrut(10));
-        frame.add(usernamePanel);
-        frame.add(Box.createVerticalStrut(10));
-        frame.add(passwordPanel);
         frame.add(Box.createVerticalStrut(10));
         frame.add(namePanel);
         frame.add(Box.createVerticalStrut(10));
@@ -1839,7 +1831,6 @@ public class BeutifulMenu {
                 long salary = Long.parseLong(salaryField.getText());
                 String shift = shiftField.getText();
                 String username = usernameField.getText();
-                String password = new String(passwordField.getPassword());
                 String name = nameField.getText();
                 String gender = genderField.getText();
                 String phoneNumber = phoneNumberField.getText();
@@ -1847,22 +1838,23 @@ public class BeutifulMenu {
                 int age = Integer.parseInt(ageField.getText());
 
                 // Create a new Doctor object with the input values
-                Personel nurse = new Personel();
-                nurse.setSalary(salary);
-                nurse.setShift(shift);
-                nurse.setUsername(username);
-                nurse.setPassword(password);
-                nurse.setName(name);
-                nurse.setGender(gender);
-                nurse.setPhoneNumber(phoneNumber);
-                nurse.setEmail(email);
-                nurse.setAge(age);
+                Personel personel = new Personel();
+                personel.setSalary(salary);
+                personel.setShift(shift);
+                personel.setUsername(username);
+                personel.setPassword(oldPersonel.getPassword());
+                personel.setName(name);
+                personel.setGender(gender);
+                personel.setPhoneNumber(phoneNumber);
+                personel.setEmail(email);
+                personel.setAge(age);
+                personel.setId(oldPersonel.getId());
 
                 // Close the JFrame
                 frame.dispose();
 
                 // Call the callback interface with the created Doctor object
-                createPersonelCallBack.onPersonelCreated(nurse);
+                createPersonelCallBack.onPersonelCreated(personel);
             }
         });
 
