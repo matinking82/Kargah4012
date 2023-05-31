@@ -146,4 +146,10 @@ public class VisitDbServices implements IVisitDbServices {
         }
         return success;
     }
+
+    @Override
+    public List<Visit> GetAllUnacceptedVisits() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'GetAllUnacceptedVisits'");
+    }
 }

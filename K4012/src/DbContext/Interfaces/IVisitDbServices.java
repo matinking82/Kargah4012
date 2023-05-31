@@ -11,4 +11,5 @@ public interface IVisitDbServices {
     public boolean Remove(int visitId);
     public boolean Remove(Visit visit);
     public boolean Update(Visit visit);
+    public List<Visit> GetAllUnacceptedVisits();
 }
