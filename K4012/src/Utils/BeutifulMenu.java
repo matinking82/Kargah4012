@@ -19,12 +19,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import DbContext.Interfaces.IDataBaseContext;
+import Models.ArticleForResume;
 import Models.Doctor;
 import Models.Nurse;
 import Models.Patient;
 import Models.PatientHospitalizationRecord;
 import Models.PatientPayment;
 import Models.Personel;
+import Models.Resume;
 import Models.Visit;
 
 public class BeutifulMenu {
@@ -859,6 +861,14 @@ public class BeutifulMenu {
 
         // Show the JFrame
         frame.setVisible(true);
+    }
+
+    public static void showDoctorsListForSelection(List<Doctor> doctorsList, String title, ListCallback callback) {
+        // TODO
+    }
+
+    public static void showPatientsListForSelection(List<Patient> patientsList, String title, ListCallback callback) {
+        // TODO
     }
 
     public static void showHospitalizationList(List<PatientHospitalizationRecord> hospitalizationList, String title,
@@ -1740,7 +1750,7 @@ public class BeutifulMenu {
 
     public static void getPersonelFromUserForEdit(CreatePersonelCallBack createPersonelCallBack, Personel oldPersonel) {
         // Create a new JFrame to hold the input fields
-        JFrame frame = new JFrame("Edit Personel: "+oldPersonel.getUsername());
+        JFrame frame = new JFrame("Edit Personel: " + oldPersonel.getUsername());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(Width, Height);
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
@@ -1984,7 +1994,7 @@ public class BeutifulMenu {
 
     public static void getPatientFromUserForEdit(CreatePatientCallBack createPatientCallBack, Patient oldPatient) {
         // Create a new JFrame to hold the input fields
-        JFrame frame = new JFrame("Edit Patient: "+oldPatient.getName());
+        JFrame frame = new JFrame("Edit Patient: " + oldPatient.getName());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(Width, Height);
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
@@ -2103,6 +2113,14 @@ public class BeutifulMenu {
 
         // Set the JFrame to visible
         frame.setVisible(true);
+    }
+
+    public static void getAndSendDoctorResume(SendDoctorResumeCallBack callBack) {
+        //TODO
+    }
+
+    public interface SendDoctorResumeCallBack {
+        void onRequestCreated(Doctor doctor, Resume resume, List<ArticleForResume> articles);
     }
 
     public interface ListCallback {
