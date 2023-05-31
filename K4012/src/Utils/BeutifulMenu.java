@@ -22,6 +22,7 @@ import DbContext.Interfaces.IDataBaseContext;
 import Models.Admin;
 import Models.ArticleForResume;
 import Models.Doctor;
+import Models.ExpeirenceForResume;
 import Models.Nurse;
 import Models.Patient;
 import Models.PatientHospitalizationRecord;
@@ -2149,7 +2150,7 @@ public class BeutifulMenu {
     }
 
     public interface SendDoctorResumeCallBack {
-        void onRequestCreated(Doctor doctor, Resume resume, List<ArticleForResume> articles);
+        void onRequestCreated(Doctor doctor, Resume resume, List<ArticleForResume> articles, List<ExpeirenceForResume> expeirences);
     }
 
     public interface CreateVisitRequestCallBack {
