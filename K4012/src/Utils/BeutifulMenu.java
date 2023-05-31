@@ -866,7 +866,11 @@ public class BeutifulMenu {
     public static void showDoctorsListForSelection(List<Doctor> doctorsList, String title, ListCallback callback) {
         // TODO
     }
-
+    
+    public static void showNursesListForSelection(List<Nurse> nursesList, String title, ListCallback callback) {
+        // TODO
+    }
+   
     public static void showPatientsListForSelection(List<Patient> patientsList, String title, ListCallback callback) {
         // TODO
     }
