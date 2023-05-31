@@ -2123,8 +2123,16 @@ public class BeutifulMenu {
         //TODO
     }
 
+    public static void getVisitRequest(CreateVisitRequestCallBack callBack){
+        //TODO
+    }
+
     public interface SendDoctorResumeCallBack {
         void onRequestCreated(Doctor doctor, Resume resume, List<ArticleForResume> articles);
+    }
+
+    public interface CreateVisitRequestCallBack{
+        void onRequestCreated(Visit visit);
     }
 
     public interface ListCallback {
