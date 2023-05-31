@@ -17,6 +17,7 @@ import Utils.BeutifulMenu.CreateDoctorCallBack;
 import Utils.BeutifulMenu.CreateNurseCallBack;
 import Utils.BeutifulMenu.CreatePatientCallBack;
 import Utils.BeutifulMenu.CreatePersonelCallBack;
+import Utils.BeutifulMenu.CreateVisitRequestCallBack;
 import Utils.BeutifulMenu.ListCallback;
 import Utils.BeutifulMenu.MenuCallback;
 
@@ -345,6 +346,7 @@ public class App {
     }
 
     public static void addvisit() {
+        
 
 
     }
@@ -801,6 +803,19 @@ public class App {
     }
 
     public static void visitRequest() {
+        BeutifulMenu.getVisitRequest(new CreateVisitRequestCallBack() {
+
+            @Override
+            public void onRequestCreated(Visit visit) {
+                if(visit!=null)
+                {
+                    context.Visits().Add(visit);
+                }
+                patientMenu();
+
+            }
+            
+        });
 
     }
 
