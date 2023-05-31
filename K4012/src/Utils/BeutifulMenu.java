@@ -2151,6 +2151,7 @@ public class BeutifulMenu {
 
     public interface SendDoctorResumeCallBack {
         void onRequestCreated(Doctor doctor, Resume resume, List<ArticleForResume> articles, List<ExpeirenceForResume> expeirences);
+        void onReturn();
     }
 
     public interface CreateVisitRequestCallBack {
