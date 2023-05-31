@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import DbContext.Interfaces.IDataBaseContext;
+import Models.Admin;
 import Models.ArticleForResume;
 import Models.Doctor;
 import Models.Nurse;
@@ -866,11 +867,11 @@ public class BeutifulMenu {
     public static void showDoctorsListForSelection(List<Doctor> doctorsList, String title, ListCallback callback) {
         // TODO
     }
-    
+
     public static void showNursesListForSelection(List<Nurse> nursesList, String title, ListCallback callback) {
         // TODO
     }
-   
+
     public static void showPatientsListForSelection(List<Patient> patientsList, String title, ListCallback callback) {
         // TODO
     }
@@ -1014,9 +1015,24 @@ public class BeutifulMenu {
         // TODO
     }
 
-    
     public static void showVisitsListForAcception(List<Visit> visitsList, String title, ListCallback callback) {
-        //TODO
+        // TODO
+    }
+
+    public static void showAdminProfile(Admin admin, List<String> menuItems, MenuCallback callback) {
+        // TODO
+    }
+
+    public static void showDoctorProfile(Doctor doctor, List<String> menuItems, MenuCallback callback) {
+        // TODO
+    }
+
+    public static void showNurseProfile(Nurse nurse, List<String> menuItems, MenuCallback callback) {
+        // TODO
+    }
+
+    public static void showPersonelProfile(Personel personel, List<String> menuItems, MenuCallback callback) {
+        // TODO
     }
 
     public static void getDoctorFromUser(CreateDoctorCallBack createDoctorCallBack) {
@@ -2125,20 +2141,18 @@ public class BeutifulMenu {
     }
 
     public static void getAndSendDoctorResume(SendDoctorResumeCallBack callBack) {
-        //TODO
+        // TODO
     }
 
-    public static void getVisitRequest(CreateVisitRequestCallBack callBack){
-        //TODO
+    public static void getVisitRequest(CreateVisitRequestCallBack callBack) {
+        // TODO
     }
-
-
 
     public interface SendDoctorResumeCallBack {
         void onRequestCreated(Doctor doctor, Resume resume, List<ArticleForResume> articles);
     }
 
-    public interface CreateVisitRequestCallBack{
+    public interface CreateVisitRequestCallBack {
         void onRequestCreated(Visit visit);
     }
 
