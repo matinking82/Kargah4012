@@ -1015,6 +1015,10 @@ public class BeutifulMenu {
     public static void showPatientPaymentsList(List<PatientPayment> visitsList, String title, ListCallback callback) {
         // TODO
     }
+    
+    public static void showDoctorsResumeListForAcception(List<Doctor> doctorsList, String title, ListCallback callback) {
+        // TODO
+    }
 
     public static void showVisitsListForAcception(List<Visit> visitsList, String title, ListCallback callback) {
         // TODO
