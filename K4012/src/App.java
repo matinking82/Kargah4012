@@ -6,13 +6,16 @@ import java.util.Scanner;
 import DbContext.DataBaseContext;
 import DbContext.Interfaces.IDataBaseContext;
 import Models.Admin;
+import Models.ArticleForResume;
 import Models.Doctor;
+import Models.ExpeirenceForResume;
 import Models.Nurse;
 import Models.NurseHospitalizarionRelation;
 import Models.Patient;
 import Models.PatientHospitalizationRecord;
 import Models.PatientPayment;
 import Models.Personel;
+import Models.Resume;
 import Models.Visit;
 import Utils.BeutifulMenu;
 import Utils.LoginInfo;
@@ -23,6 +26,7 @@ import Utils.BeutifulMenu.CreatePersonelCallBack;
 import Utils.BeutifulMenu.CreateVisitRequestCallBack;
 import Utils.BeutifulMenu.ListCallback;
 import Utils.BeutifulMenu.MenuCallback;
+import Utils.BeutifulMenu.SendDoctorResumeCallBack;
 import Utils.LoginInfo.loginType;
 
 public class App {
@@ -41,6 +45,7 @@ public class App {
         Items.add("Admin panel");
         Items.add("Personel panel");
         Items.add("Patient panel");
+        Items.add("Send Resume");
         BeutifulMenu.showMenu(Items, "Main menu", new MenuCallback() {
             @Override
             public void onMenuSelected(int choice) {
@@ -57,12 +62,53 @@ public class App {
                         patientMenu();
                         break;
 
+                    case 4:
+                    sendResume();
+                    break;
+
+
                     default:
                         mainMenu();
                 }
             }
 
+
+
         });
+    }
+    public static void sendResume() {
+        BeutifulMenu.getAndSendDoctorResume(new SendDoctorResumeCallBack() {
+
+            @Override
+            public void onRequestCreated(Doctor doctor, Resume resume, List<ArticleForResume> articles,
+                    List<ExpeirenceForResume> expeirences) {
+                        context.Doctors().Add(doctor);
+                        resume.setIdPersonels(doctor.getId());
+                        context.Resumes().Add(resume);
+                        for (ExpeirenceForResume expeirenceForResume : expeirences) {
+                            expeirenceForResume.setResumeId(resume.getId());
+                            context.ExperienceForResumeDbServices().Add(expeirenceForResume);
+                        }
+                        for (ArticleForResume articleForResume : articles) {
+                            articleForResume.setResumeId(resume.getId());
+                            context.ArticleForResumeDbServices().Add(articleForResume);
+                            
+                        }
+                        mainMenu();
+
+
+            }
+
+            @Override
+            public void onReturn() {
+                mainMenu();
+
+            }
+
+
+            
+        });
+
     }
 
     public static void patientMenu() {
@@ -147,7 +193,9 @@ public class App {
         Items.add("Hospitalization");
         Items.add("Profile");
         Items.add("Payment");
+        Items.add("Recieved Resumes");
         Items.add("return menu");
+        
         BeutifulMenu.showMenu(Items, "Admin panel", new MenuCallback() {
             @Override
             public void onMenuSelected(int choice) {
@@ -177,8 +225,12 @@ public class App {
                         break;
 
                     case 7:
-                        mainMenu();
+                        recievedResumes();
                         break;
+
+                    case 8:
+                    mainMenu();
+                    break;    
 
                     default:
                         adminMenu();
@@ -186,6 +238,33 @@ public class App {
 
             }
         });
+    }
+
+    public static void recievedResumes() {
+        List<Doctor> doctors=context.Doctors().getAllUnAcceptedDoctorsList();
+        BeutifulMenu.showDoctorsResumeListForAcception(doctors, "List Of Resume", new ListCallback() {
+
+            @Override
+            public void onItemSelected(int doctorId) {
+                //TODO
+
+
+            }
+
+            @Override
+            public void onItemSelectedForRemove(int Id) {
+                //TODO
+
+            }
+
+            @Override
+            public void onReturn() {
+                adminMenu();
+
+            }
+            
+        });
+
     }
 
     public static void Payment() {
