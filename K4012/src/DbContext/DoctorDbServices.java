@@ -198,4 +198,10 @@ public class DoctorDbServices implements IDoctorDbServices {
         }
         return success;
     }
+
+    @Override
+    public List<Doctor> getAllUnAcceptedDoctorsList() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAllUnAcceptedDoctorsList'");
+    }
 }

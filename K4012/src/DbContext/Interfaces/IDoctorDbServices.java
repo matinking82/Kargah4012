@@ -11,4 +11,6 @@ public interface IDoctorDbServices {
     public boolean Remove(int doctorId);
     public boolean Remove(Doctor doctor);
     public boolean Update(Doctor doctor);
+    public List<Doctor> getAllUnAcceptedDoctorsList();
+
 }
