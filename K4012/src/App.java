@@ -5,14 +5,17 @@ import java.util.Scanner;
 
 import DbContext.DataBaseContext;
 import DbContext.Interfaces.IDataBaseContext;
+import Models.Admin;
 import Models.Doctor;
 import Models.Nurse;
+import Models.NurseHospitalizarionRelation;
 import Models.Patient;
 import Models.PatientHospitalizationRecord;
 import Models.PatientPayment;
 import Models.Personel;
 import Models.Visit;
 import Utils.BeutifulMenu;
+import Utils.LoginInfo;
 import Utils.BeutifulMenu.CreateDoctorCallBack;
 import Utils.BeutifulMenu.CreateNurseCallBack;
 import Utils.BeutifulMenu.CreatePatientCallBack;
@@ -20,6 +23,7 @@ import Utils.BeutifulMenu.CreatePersonelCallBack;
 import Utils.BeutifulMenu.CreateVisitRequestCallBack;
 import Utils.BeutifulMenu.ListCallback;
 import Utils.BeutifulMenu.MenuCallback;
+import Utils.LoginInfo.loginType;
 
 public class App {
     protected static final String ctors = null;
@@ -222,6 +226,26 @@ public class App {
     }
 
     public static void ProfileAdmin() {
+        Admin admin=context.Admins().getById(LoginInfo.LoginId);
+        List<String> Items=new ArrayList<>();
+        Items.add("returne menu");
+        BeutifulMenu.showAdminProfile(admin, Items, new MenuCallback() {
+
+            @Override
+            public void onMenuSelected(int choice) {
+                switch(choice)
+                {
+                    case 1:adminMenu();
+                    break;
+
+                }
+
+
+            }
+            
+        });
+
+
 
     }
 
@@ -289,14 +313,38 @@ public class App {
             @Override
             public void onItemSelected(int Id) {
 
+
+                List<Nurse> nurses=context.Nurses().getAllNursesList();
+                BeutifulMenu.showNursesListForSelection(nurses, "List Of Nurses", new ListCallback() {
+
+                    @Override
+                    public void onItemSelected(int nurseId) {
+                        
                 Visit visit=context.Visits().getById(Id);
                 PatientHospitalizationRecord patientHospitalizationRecord=new PatientHospitalizationRecord();
                 patientHospitalizationRecord.setDoctorId(visit.getDoctorId());
                 patientHospitalizationRecord.setPatientId(visit.getPatientId());
                 patientHospitalizationRecord.setStartDate((new Date()).toString());
                 context.PatientHospitalizationRecords().Add(patientHospitalizationRecord);
+                NurseHospitalizarionRelation relation=new NurseHospitalizarionRelation(nurseId, patientHospitalizationRecord.getId());
+                context.NurseHospitalizationRelationDbServices().Add(relation);
                 hospitalization();
- 
+
+
+                    }
+
+                    @Override
+                    public void onItemSelectedForRemove(int Id) {
+
+                    }
+
+                    @Override
+                    public void onReturn() {
+                        hospitalization();
+
+                    }
+                    
+                });
                 
             }
 
@@ -346,7 +394,35 @@ public class App {
     }
 
     public static void addvisit() {
+        List<Visit> visits=context.Visits().GetAllUnacceptedVisits();
+        BeutifulMenu.showVisitsListForAcception(visits , "List Of visit requests", new ListCallback() {
+
+        @Override
+        public void onItemSelected(int Id) {
+            Visit visit= context.Visits().getById(Id);
+            Date date=new Date();
+            visit.setDate(date.toString());
+            context.Visits().Update(visit);
+            addvisit();
+            
+
+        }
+
+        @Override
+        public void onItemSelectedForRemove(int Id) {
+            context.Visits().Remove(Id);
+            addvisit();
+
+
+        }
+
+        @Override
+        public void onReturn() {
+            addvisit();
+        }
         
+    });
+
 
 
     }
@@ -820,6 +896,68 @@ public class App {
     }
 
     public static void profilePersonels() {
+        switch(LoginInfo.type)
+        {
+            case Doctor:{
+                Doctor doctor=context.Doctors().getById(LoginInfo.LoginId);
+                List<String> Items=new ArrayList<>();
+                Items.add("returne menu");
+                BeutifulMenu.showDoctorProfile(doctor, Items, new MenuCallback() {
+
+                    @Override
+                    public void onMenuSelected(int choice) {
+                        switch(choice)
+                        {
+                            case 1:personelMenu();
+                        }
+
+                    }
+                    
+                });
+                break;
+            }
+
+            case Nurse:
+            {
+                Nurse nurse=context.Nurses().getById(LoginInfo.LoginId);
+                List<String> Items=new ArrayList<>();
+                Items.add("returne menu");
+                BeutifulMenu.showNurseProfile(nurse, Items, new MenuCallback() {
+
+                    @Override
+                    public void onMenuSelected(int choice) {
+                        switch(choice)
+                        {
+                            case 1:personelMenu();
+                        }
+
+                    }
+                    
+                });
+            }
+            break;
+
+            case Personel:
+            {
+                Personel personel=context.Personels().getById(LoginInfo.LoginId);
+                List<String> Items=new ArrayList<>();
+                Items.add("returne menu");
+                BeutifulMenu.showPersonelProfile(personel, Items, new MenuCallback() {
+
+                    @Override
+                    public void onMenuSelected(int choice) {
+                        switch(choice)
+                        {
+                            case 1:personelMenu();
+                        }
+
+                    }
+                    
+                });
+          
+            }
+            break;
+        }
 
     }
 
