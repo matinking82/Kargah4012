@@ -1014,6 +1014,11 @@ public class BeutifulMenu {
         // TODO
     }
 
+    
+    public static void showVisitsListForAcception(List<Visit> visitsList, String title, ListCallback callback) {
+        //TODO
+    }
+
     public static void getDoctorFromUser(CreateDoctorCallBack createDoctorCallBack) {
         // Create a new JFrame to hold the input fields
         JFrame frame = new JFrame("Doctor Information");
@@ -2126,6 +2131,8 @@ public class BeutifulMenu {
     public static void getVisitRequest(CreateVisitRequestCallBack callBack){
         //TODO
     }
+
+
 
     public interface SendDoctorResumeCallBack {
         void onRequestCreated(Doctor doctor, Resume resume, List<ArticleForResume> articles);
