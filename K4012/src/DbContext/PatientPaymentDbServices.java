@@ -150,7 +150,7 @@ public class PatientPaymentDbServices implements IPatientPaymentDbServices {
     public List<PatientPayment> getAllPaidPayments() {
         List<PatientPayment> patientPayments = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM PatientPayment WHERE isPaid = true";
+            String sql = "SELECT * FROM PatientPayment WHERE isPaid = 1";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
@@ -172,7 +172,7 @@ public class PatientPaymentDbServices implements IPatientPaymentDbServices {
     public List<PatientPayment> getAllUnPaidPayments() {
         List<PatientPayment> patientPayments = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM PatientPayment WHERE isPaid = false";
+            String sql = "SELECT * FROM PatientPayment WHERE isPaid = 0";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
