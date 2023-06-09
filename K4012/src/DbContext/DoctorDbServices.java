@@ -204,7 +204,7 @@ public class DoctorDbServices implements IDoctorDbServices {
         List<Doctor> doctors = new ArrayList<>();
         try {
             // Prepare the SQL statement
-            String sql = "SELECT * FROM Doctor WHERE isAvailable = 1;";
+            String sql = "SELECT * FROM Doctor WHERE isAvailable = 0;";
             PreparedStatement statement = connection.prepareStatement(sql);
 
             // Execute the SQL statement
@@ -239,7 +239,7 @@ public class DoctorDbServices implements IDoctorDbServices {
         List<Doctor> doctors = new ArrayList<>();
         try {
             // Prepare the SQL statement
-            String sql = "SELECT * FROM Doctor WHERE isAvailable = 0;";
+            String sql = "SELECT * FROM Doctor WHERE isAvailable = 1;";
             PreparedStatement statement = connection.prepareStatement(sql);
 
             // Execute the SQL statement
