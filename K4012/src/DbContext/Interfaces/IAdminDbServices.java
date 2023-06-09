@@ -11,4 +11,5 @@ public interface IAdminDbServices {
     public boolean Remove(int adminId);
     public boolean Remove(Admin admin);
     public boolean Update(Admin admin);
+    public Admin IsExist(String username,String password);
 }

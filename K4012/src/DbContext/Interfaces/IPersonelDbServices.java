@@ -11,4 +11,6 @@ public interface IPersonelDbServices {
     public boolean Remove(int visitId);
     public boolean Remove(Personel personel);
     public boolean Update(Personel personel);
+    public Personel IsExist(String username,String password);
+    
 }

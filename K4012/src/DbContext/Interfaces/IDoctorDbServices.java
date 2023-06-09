@@ -13,5 +13,5 @@ public interface IDoctorDbServices {
     public boolean Update(Doctor doctor);
     public List<Doctor> getAllUnAcceptedDoctorsList();
     public List<Doctor> getAllAcceptedDoctorsList();
-
+    public Doctor IsExist(String username,String password);
 }

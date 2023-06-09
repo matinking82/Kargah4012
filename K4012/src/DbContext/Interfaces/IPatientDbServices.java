@@ -11,4 +11,5 @@ public interface IPatientDbServices {
     public boolean Remove(int patientId);
     public boolean Remove(Patient patient);
     public boolean Update(Patient patient);
+    public Patient IsExist(String email);
 }

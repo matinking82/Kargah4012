@@ -181,4 +181,35 @@ public class AdminDbServices implements IAdminDbServices {
         }
         return false;
     }
+
+    @Override
+    public Admin IsExist(String username, String password) {
+        Admin admin = null;
+        try {
+            // Prepare the SQL statement
+            String query = "SELECT * FROM Admin WHERE username = ? AND password = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, username);
+            statement.setString(2, password);
+
+            // Execute the SQL statement
+            ResultSet rs = statement.executeQuery();
+
+            // Check if the result set has a row
+            if (rs.next()) {
+                // Create a new Admin object and set its properties
+                admin = new Admin();
+                admin.setId(rs.getInt("id"));
+                admin.setPassword(rs.getString("password"));
+                admin.setUsername(rs.getString("username"));
+                admin.setName(rs.getString("name"));
+                admin.setPhoneNumber(rs.getString("phoneNumber"));
+                admin.setEmail(rs.getString("email"));
+                admin.setAge(rs.getInt("age"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error getting admin with username " + username + ": " + e.getMessage());
+        }
+        return admin;
+    }
 }

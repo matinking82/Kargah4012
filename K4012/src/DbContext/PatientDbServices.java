@@ -158,4 +158,29 @@ public class PatientDbServices implements IPatientDbServices {
         }
         return success;
     }
+
+    @Override
+    public Patient IsExist(String email) {
+        Patient patient = null;
+        try {
+            String sql = "SELECT * FROM Patient WHERE email = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, email);
+            ResultSet result = statement.executeQuery();
+            if (result.next()) {
+                patient = new Patient();
+                patient.setName(result.getString("name"));
+                patient.setGender(result.getString("gender"));
+                patient.setPhoneNumber(result.getString("phoneNumber"));
+                patient.setEmail(result.getString("email"));
+                patient.setAge(result.getInt("age"));
+                patient.setId(result.getInt("id"));
+                patient.setHaveInsured(result.getBoolean("haveInsured"));
+                patient.setDescription(result.getString("description"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error retrieving patient: " + e.getMessage());
+        }
+        return patient;
+    }
 }

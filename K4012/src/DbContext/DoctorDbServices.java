@@ -268,4 +268,41 @@ public class DoctorDbServices implements IDoctorDbServices {
         }
         return doctors;
     }
+
+    @Override
+    public Doctor IsExist(String username, String password) {
+        Doctor doctor = null;
+        try {
+            // Prepare the SQL statement
+            String sql = "SELECT * FROM Doctor WHERE username = ? AND password = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, username);
+            statement.setString(2, password);
+
+            // Execute the SQL statement
+            ResultSet rs = statement.executeQuery();
+
+            // Check if the result set has a row
+            if (rs.next()) {
+                // Create a new Doctor object and populate it with the data from the row
+                doctor = new Doctor();
+                doctor.setId(rs.getInt("id"));
+                doctor.setName(rs.getString("name"));
+                doctor.setGender(rs.getString("gender"));
+                doctor.setPhoneNumber(rs.getString("phoneNumber"));
+                doctor.setEmail(rs.getString("email"));
+                doctor.setAge(rs.getInt("age"));
+                doctor.setOff(rs.getInt("off"));
+                doctor.setSalary(rs.getLong("salary"));
+                doctor.setShift(rs.getString("shift"));
+                doctor.setAvalable(rs.getBoolean("isAvailable"));
+                doctor.setUsername(rs.getString("username"));
+                doctor.setPassword(rs.getString("password"));
+                doctor.setExpertise(rs.getString("expertise"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error getting doctor by ID: " + e.getMessage());
+        }
+        return doctor;
+    }
 }

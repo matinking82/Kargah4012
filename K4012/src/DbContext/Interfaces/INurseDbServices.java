@@ -11,4 +11,6 @@ public interface INurseDbServices {
     public boolean Remove(int nurseId);
     public boolean Remove(Nurse nurse);
     public boolean Update(Nurse nurse);
+    public Nurse IsExist(String username,String password);
+
 }

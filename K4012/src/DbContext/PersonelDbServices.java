@@ -165,4 +165,33 @@ public class PersonelDbServices implements IPersonelDbServices {
         return false;
     }
 
+    @Override
+    public Personel IsExist(String username, String password) {
+        Personel personel = null;
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM Personel WHERE username = ? AND password = ?");
+            statement.setString(1, username);
+            statement.setString(2, password);
+
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                personel = new Personel();
+                personel.setId(resultSet.getInt("id"));
+                personel.setName(resultSet.getString("name"));
+                personel.setGender(resultSet.getString("gender"));
+                personel.setPhoneNumber(resultSet.getString("phoneNumber"));
+                personel.setEmail(resultSet.getString("email"));
+                personel.setAge(resultSet.getInt("age"));
+                personel.setSalary(resultSet.getLong("salary"));
+                personel.setShift(resultSet.getString("shift"));
+                personel.setAvalable(resultSet.getBoolean("isAvailable"));
+                personel.setUsername(resultSet.getString("username"));
+                personel.setPassword(resultSet.getString("password"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return personel;
+    }
+
 }

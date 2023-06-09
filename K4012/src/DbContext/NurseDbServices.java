@@ -213,4 +213,39 @@ public class NurseDbServices implements INurseDbServices {
         }
         return success;
     }
+    @Override
+    public Nurse IsExist(String username, String password) {
+        Nurse nurse = null;
+        try {
+            // Prepare the SQL statement
+            String sql = "SELECT * FROM Nurse WHERE username = ? AND password = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, username);
+            statement.setString(2, password);
+
+            // Execute the SQL statement
+            ResultSet rs = statement.executeQuery();
+
+            // Check if the result set has a row and create a Nurse object
+            if (rs.next()) {
+                nurse = new Nurse();
+                nurse.setId(rs.getInt("id"));
+                nurse.setName(rs.getString("name"));
+                nurse.setGender(rs.getString("gender"));
+                nurse.setPhoneNumber(rs.getString("phoneNumber"));
+                nurse.setEmail(rs.getString("email"));
+                nurse.setAge(rs.getInt("age"));
+                nurse.setSalary(rs.getLong("salary"));
+                nurse.setShift(rs.getString("shift"));
+                nurse.setAvalable(rs.getBoolean("isAvailable"));
+                nurse.setUsername(rs.getString("username"));
+                nurse.setPassword(rs.getString("password"));
+                nurse.setType(rs.getString("type"));
+                nurse.setPlaceOfWork(rs.getString("placeOfWork"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error getting nurse by ID: " + e.getMessage());
+        }
+        return nurse;
+    }
 }
