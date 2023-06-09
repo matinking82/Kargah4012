@@ -130,4 +130,25 @@ public class ArticleForResumeDbServices implements IArticleForResumeDbServices {
         }
         return false;
     }
+
+    @Override
+    public List<ArticleForResume> getAllArticleForResumeList(int resumeId) {
+        List<ArticleForResume> articleList = new ArrayList<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM ArticleForResume WHERE resumeId = ?");
+            statement.setInt(1, resumeId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                ArticleForResume article = new ArticleForResume();
+                article.setId(resultSet.getInt("id"));
+                article.setResumeId(resultSet.getInt("resumeId"));
+                article.setName(resultSet.getString("name"));
+                article.setImpactFactor(resultSet.getFloat("impactFactor"));
+                articleList.add(article);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return articleList;
+    }
 }

@@ -11,4 +11,5 @@ public interface IArticleForResumeDbServices {
     public boolean Remove(int articleForResumeId);
     public boolean Remove(ArticleForResume articleForResume);
     public boolean Update(ArticleForResume articleForResume);
+    public List<ArticleForResume> getAllArticleForResumeList(int resumeId);
 }
