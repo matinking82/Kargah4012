@@ -233,4 +233,39 @@ public class DoctorDbServices implements IDoctorDbServices {
         }
         return doctors;
     }
+
+    @Override
+    public List<Doctor> getAllAcceptedDoctorsList() {
+        List<Doctor> doctors = new ArrayList<>();
+        try {
+            // Prepare the SQL statement
+            String sql = "SELECT * FROM Doctor WHERE isAvailable = 0;";
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            // Execute the SQL statement
+            ResultSet rs = statement.executeQuery();
+
+            // Loop through the result set and add each Doctor object to the list
+            while (rs.next()) {
+                Doctor doctor = new Doctor();
+                doctor.setId(rs.getInt("id"));
+                doctor.setName(rs.getString("name"));
+                doctor.setGender(rs.getString("gender"));
+                doctor.setPhoneNumber(rs.getString("phoneNumber"));
+                doctor.setEmail(rs.getString("email"));
+                doctor.setAge(rs.getInt("age"));
+                doctor.setOff(rs.getInt("off"));
+                doctor.setSalary(rs.getLong("salary"));
+                doctor.setShift(rs.getString("shift"));
+                doctor.setAvalable(rs.getBoolean("isAvailable"));
+                doctor.setUsername(rs.getString("username"));
+                doctor.setPassword(rs.getString("password"));
+                doctor.setExpertise(rs.getString("expertise"));
+                doctors.add(doctor);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error getting all doctors: " + e.getMessage());
+        }
+        return doctors;
+    }
 }
