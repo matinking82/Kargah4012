@@ -1864,6 +1864,109 @@ public class BeutifulMenu {
         // TODO
     }
 
+    public static void getUsernamePassFromUser(getUsernamePassCallBack callBack) {
+        // Create a new JFrame to display the window
+        JFrame frame = new JFrame("Enter username password");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(300, 150);
+
+        // Create a new JPanel to hold the components
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Create a new JLabel and two JTextFields for username and password
+        JLabel usernameLabel = new JLabel("Username:");
+        JTextField usernameField = new JTextField();
+
+        JLabel passwordLabel = new JLabel("Password:");
+        JPasswordField passwordField = new JPasswordField();
+
+        // Create a new JButton for submitting the credentials
+        JButton submitButton = new JButton("Submit");
+
+        // Create a new JPanel to hold the username components
+        JPanel usernamePanel = new JPanel(new BorderLayout());
+        usernamePanel.add(usernameLabel, BorderLayout.NORTH);
+        usernamePanel.add(usernameField, BorderLayout.CENTER);
+
+        // Create a new JPanel to hold the password components
+        JPanel passwordPanel = new JPanel(new BorderLayout());
+        passwordPanel.add(passwordLabel, BorderLayout.NORTH);
+        passwordPanel.add(passwordField, BorderLayout.CENTER);
+
+        // Add the username panel, password panel, and submit button to the main panel
+        panel.add(usernamePanel, BorderLayout.NORTH);
+        panel.add(passwordPanel, BorderLayout.CENTER);
+        panel.add(submitButton, BorderLayout.SOUTH);
+
+        // Add the main panel to the frame
+        frame.add(panel);
+
+        // Add an ActionListener to the submit button
+        submitButton.addActionListener(e -> {
+            String username = usernameField.getText();
+            String password = new String(passwordField.getPassword());
+            frame.dispose();
+            callBack.onSubmit(username, password);
+        });
+
+        // Show the frame
+        frame.setVisible(true);
+
+    }
+
+    public interface getUsernamePassCallBack {
+        void onSubmit(String username, String password);
+    }
+
+    public static void showAlert(String title, String message) {
+        JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public static void getEmailFromUser(getEmailCllBack callBack) {
+        // Create a new JFrame to display the window
+        JFrame frame = new JFrame("Enter email");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(300, 150);
+
+        // Create a new JPanel to hold the components
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Create a new JLabel and two JTextFields for username and password
+        JLabel emailLable = new JLabel("email:");
+        JTextField emailField = new JTextField();
+
+        // Create a new JButton for submitting the credentials
+        JButton submitButton = new JButton("Submit");
+
+        // Create a new JPanel to hold the username components
+        JPanel emailPanel = new JPanel(new BorderLayout());
+        emailPanel.add(emailLable, BorderLayout.NORTH);
+        emailPanel.add(emailField, BorderLayout.CENTER);
+
+        // Add the username panel, password panel, and submit button to the main panel
+        panel.add(emailPanel, BorderLayout.NORTH);
+        panel.add(submitButton, BorderLayout.SOUTH);
+
+        // Add the main panel to the frame
+        frame.add(panel);
+
+        // Add an ActionListener to the submit button
+        submitButton.addActionListener(e -> {
+            String email = emailField.getText();
+            frame.dispose();
+            callBack.onSubmit(email);
+        });
+
+        // Show the frame
+        frame.setVisible(true);
+    }
+
+    public interface getEmailCllBack {
+        void onSubmit(String email);
+    }
+
     public static void getDoctorFromUser(CreateDoctorCallBack createDoctorCallBack) {
         // Create a new JFrame to hold the input fields
         JFrame frame = new JFrame("Doctor Information");
@@ -2976,7 +3079,7 @@ public class BeutifulMenu {
         // Create a new JFrame to display the window
         JFrame frame = new JFrame("Doctor Resume");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize((int)(0.7*Width),(int)(0.7* Height));
+        frame.setSize((int) (0.7 * Width), (int) (0.7 * Height));
 
         // Create a new JPanel to hold the components
         JPanel panel = new JPanel(new GridBagLayout());
@@ -3173,21 +3276,21 @@ public class BeutifulMenu {
         JPanel agePanel = new JPanel();
         agePanel.add(ageLabel);
         agePanel.add(ageField);
-        
+
         JTextField universityField = new JTextField();
         universityField.setPreferredSize(new Dimension(300, universityField.getPreferredSize().height));
         JLabel universityLabel = new JLabel("university:");
         JPanel universityPanel = new JPanel();
         universityPanel.add(universityLabel);
         universityPanel.add(universityField);
-        
+
         JTextField GPAField = new JTextField();
         GPAField.setPreferredSize(new Dimension(300, GPAField.getPreferredSize().height));
         JLabel GPALabel = new JLabel("GPA:");
         JPanel GPAPanel = new JPanel();
         GPAPanel.add(GPALabel);
         GPAPanel.add(GPAField);
-        
+
         JTextField LevelField = new JTextField();
         LevelField.setPreferredSize(new Dimension(300, LevelField.getPreferredSize().height));
         JLabel LevelLabel = new JLabel("Level of education:");
@@ -3263,7 +3366,7 @@ public class BeutifulMenu {
                     public void onResumeCreated(List<ArticleForResume> articles,
                             List<ExpeirenceForResume> expeirences) {
                         Resume resume = new Resume();
-                            
+
                         resume.setUniversity(universityField.getText());
                         resume.setGPA(GPAField.getText());
                         resume.setLevelOfEducation(LevelField.getText());
