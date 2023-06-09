@@ -159,26 +159,26 @@ public class DataBaseContext implements IDataBaseContext {
                     "doctorId INT," +
                     "patientId INT," +
                     "hospitalizationPrice BIGINT," +
-                    "startDate NVARCHAR(10)" +
+                    "startDate NVARCHAR(10)," +
                     "endDate NVARCHAR(10)" +
                     ");";
             String expeirenceForResume = "CREATE TABLE IF NOT EXISTS ExpeirenceForResume (" +
-                    "id INT PRIMARY KEY IDENTITY(1,1)," +
+                    "id INT," +
                     "resumeId INT NOT NULL," +
                     "nameOfWorkplace VARCHAR(255) NOT NULL," +
-                    "startDate DATE NOT NULL," +
-                    "endDate DATE," +
+                    "startDate NVARCHAR(10) NOT NULL," +
+                    "endDate NVARCHAR(10)" +
                     ");";
             String articleForResume = "CREATE TABLE IF NOT EXISTS ArticleForResume (" +
-                    "id INT PRIMARY KEY IDENTITY(1,1)," +
+                    "id INT," +
                     "resumeId INT NOT NULL," +
                     "name VARCHAR(255) NOT NULL," +
-                    "impactFactor FLOAT NOT NULL," +
+                    "impactFactor FLOAT NOT NULL" +
                     ");";
             String nurseHospitalizationRelation = "CREATE TABLE IF NOT EXISTS NurseHospitalizarionRelation (" +
-                    "id INT PRIMARY KEY IDENTITY(1,1)," +
+                    "id INT," +
                     "nurseId INT NOT NULL," +
-                    "hospitalizationId INT NOT NULL," +
+                    "hospitalizationId INT NOT NULL" +
                     ");";
             String doctorRating = "CREATE TABLE IF NOT EXISTS DoctorRating (" +
                     "id INT PRIMARY KEY," +
