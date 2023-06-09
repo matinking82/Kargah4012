@@ -149,7 +149,23 @@ public class VisitDbServices implements IVisitDbServices {
 
     @Override
     public List<Visit> GetAllUnacceptedVisits() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'GetAllUnacceptedVisits'");
+        List<Visit> visits = new ArrayList<Visit>();
+        try {
+            String sql = "SELECT * FROM Visit WHERE [date] IS NULL";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                Visit visit = new Visit();
+                visit.setDoctorId(result.getInt("DoctorId"));
+                visit.setPatientId(result.getInt("PatientId"));
+                visit.setVisitPrice(result.getLong("VisitPrice"));
+                visit.setId(result.getInt("id"));
+                visit.setDate(result.getString("date"));
+                visits.add(visit);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error retrieving visits: " + e.getMessage());
+        }
+        return visits;
     }
 }
