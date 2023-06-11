@@ -13,4 +13,5 @@ public interface IPatientPaymentDbServices {
     public boolean Update(PatientPayment patientPayment);
     public List<PatientPayment> getAllPaidPayments();
     public List<PatientPayment> getAllUnPaidPayments();
+    public PatientPayment getByVisitId(int visitId);
 }

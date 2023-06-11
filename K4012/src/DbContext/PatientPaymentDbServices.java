@@ -189,4 +189,26 @@ public class PatientPaymentDbServices implements IPatientPaymentDbServices {
         }
         return patientPayments;
     }
+
+    @Override
+    public PatientPayment getByVisitId(int visitId) {
+        PatientPayment patientPayment = null;
+        try {
+            String sql = "SELECT * FROM PatientPayment WHERE visitId = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, visitId);
+            ResultSet result = statement.executeQuery();
+            if (result.next()) {
+                patientPayment = new PatientPayment();
+                patientPayment.setId(result.getInt("id"));
+                patientPayment.setPatientId(result.getInt("patientId"));
+                patientPayment.setHospitalizationId(result.getInt("hospitalizationId"));
+                patientPayment.setVisitId(result.getInt("visitId"));
+                patientPayment.setPaid(result.getBoolean("isPaid"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error retrieving patient payment: " + e.getMessage());
+        }
+        return patientPayment;
+    }
 }
