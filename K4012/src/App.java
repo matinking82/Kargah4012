@@ -368,20 +368,34 @@ public class App {
 
             @Override
             public void onItemSelected(int doctorId) {
-                // TODO
+                Doctor doctor = context.Doctors().getById(doctorId);
 
+                doctor.setAvalable(true);
+
+                context.Doctors().Update(doctor);
             }
 
             @Override
             public void onItemSelectedForRemove(int Id) {
-                // TODO
-
+                List<Resume> resumes = context.Resumes().getResumesForDoctor(Id);
+                for (Resume resume : resumes) {
+                    List<ArticleForResume> articles = context.ArticleForResumeDbServices().getAllArticleForResumeList(resume.getId());
+                    List<ExpeirenceForResume> expeirences = context.ExperienceForResumeDbServices().getExperiencesForResume(resume.getId());
+                    
+                    for (ArticleForResume art : articles) {
+                        context.ArticleForResumeDbServices().Remove(art);
+                    }
+                    for (ExpeirenceForResume exp : expeirences) {
+                        context.ExperienceForResumeDbServices().Remove(exp);
+                    }
+                    context.Resumes().Remove(resume);
+                }
+                context.Doctors().Remove(Id);
             }
 
             @Override
             public void onReturn() {
                 adminMenu();
-
             }
 
         });
