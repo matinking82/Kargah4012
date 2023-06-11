@@ -140,7 +140,7 @@ public class BeutifulMenu {
 
                 // Add the selected doctor's information to the infoPanel
                 JLabel nameLabel = new JLabel(
-                        "Name: " + (doctor.getGender() == "male" ? "mr " : "mrs ") + doctor.getName());
+                        "Name: " + (doctor.getGender() == "male" ? "mrs " : "mr ") + doctor.getName());
                 nameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(nameLabel);
 
@@ -272,7 +272,7 @@ public class BeutifulMenu {
 
                 // Add the selected doctor's information to the infoPanel
                 JLabel nameLabel = new JLabel(
-                        "Name: " + (nurse.getGender() == "male" ? "mr " : "mrs ") + nurse.getName());
+                        "Name: " + (nurse.getGender() == "male" ? "mrs " : "mr ") + nurse.getName());
                 nameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(nameLabel);
 
@@ -408,7 +408,7 @@ public class BeutifulMenu {
 
                 // Add the selected doctor's information to the infoPanel
                 JLabel nameLabel = new JLabel(
-                        "Name: " + (personel.getGender() == "male" ? "mr " : "mrs ") + personel.getName());
+                        "Name: " + (personel.getGender() == "male" ? "mrs " : "mr ") + personel.getName());
                 nameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(nameLabel);
 
@@ -536,7 +536,7 @@ public class BeutifulMenu {
 
                 // Add the selected doctor's information to the infoPanel
                 JLabel nameLabel = new JLabel(
-                        "Name: " + (patient.getGender() == "male" ? "mr " : "mrs ") + patient.getName());
+                        "Name: " + (patient.getGender() == "male" ? "mrs " : "mr ") + patient.getName());
                 nameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(nameLabel);
 
@@ -673,12 +673,12 @@ public class BeutifulMenu {
 
                 // Add the selected doctor's information to the infoPanel
                 JLabel doctorNameLabel = new JLabel(
-                        "Doctor Name: " + (doctor.getGender() == "male" ? "mr " : "mrs ") + doctor.getName());
+                        "Doctor Name: " + (doctor.getGender() == "male" ? "mrs " : "mr ") + doctor.getName());
                 doctorNameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(doctorNameLabel);
 
                 JLabel patientNameLabel = new JLabel(
-                        "Patient Name: " + (patient.getGender() == "male" ? "mr " : "mrs ") + patient.getName());
+                        "Patient Name: " + (patient.getGender() == "male" ? "mrs " : "mr ") + patient.getName());
                 patientNameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(patientNameLabel);
 
@@ -796,12 +796,12 @@ public class BeutifulMenu {
 
                 // Add the selected doctor's information to the infoPanel
                 JLabel doctorNameLabel = new JLabel(
-                        "Doctor Name: " + (doctor.getGender() == "male" ? "mr " : "mrs ") + doctor.getName());
+                        "Doctor Name: " + (doctor.getGender() == "male" ? "mrs " : "mr ") + doctor.getName());
                 doctorNameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(doctorNameLabel);
 
                 JLabel patientNameLabel = new JLabel(
-                        "Patient Name: " + (patient.getGender() == "male" ? "mr " : "mrs ") + patient.getName());
+                        "Patient Name: " + (patient.getGender() == "male" ? "mrs " : "mr ") + patient.getName());
                 patientNameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(patientNameLabel);
 
@@ -915,7 +915,7 @@ public class BeutifulMenu {
 
                 // Add the selected doctor's information to the infoPanel
                 JLabel nameLabel = new JLabel(
-                        "Name: " + (doctor.getGender() == "male" ? "mr " : "mrs ") + doctor.getName());
+                        "Name: " + (doctor.getGender() == "male" ? "mrs " : "mr ") + doctor.getName());
                 nameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(nameLabel);
 
@@ -1042,7 +1042,7 @@ public class BeutifulMenu {
 
                 // Add the selected doctor's information to the infoPanel
                 JLabel nameLabel = new JLabel(
-                        "Name: " + (nurse.getGender() == "male" ? "mr " : "mrs ") + nurse.getName());
+                        "Name: " + (nurse.getGender() == "male" ? "mrs " : "mr ") + nurse.getName());
                 nameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(nameLabel);
 
@@ -1172,7 +1172,7 @@ public class BeutifulMenu {
 
                 // Add the selected doctor's information to the infoPanel
                 JLabel nameLabel = new JLabel(
-                        "Name: " + (patient.getGender() == "male" ? "mr " : "mrs ") + patient.getName());
+                        "Name: " + (patient.getGender() == "male" ? "mrs " : "mr ") + patient.getName());
                 nameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(nameLabel);
 
@@ -1304,12 +1304,12 @@ public class BeutifulMenu {
 
                 // Add the selected doctor's information to the infoPanel
                 JLabel doctorNameLabel = new JLabel(
-                        "Doctor Name: " + (doctor.getGender() == "male" ? "mr " : "mrs ") + doctor.getName());
+                        "Doctor Name: " + (doctor.getGender() == "male" ? "mrs " : "mr ") + doctor.getName());
                 doctorNameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(doctorNameLabel);
 
                 JLabel patientNameLabel = new JLabel(
-                        "Patient Name: " + (patient.getGender() == "male" ? "mr " : "mrs ") + patient.getName());
+                        "Patient Name: " + (patient.getGender() == "male" ? "mrs " : "mr ") + patient.getName());
                 patientNameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(patientNameLabel);
 
@@ -1317,14 +1317,14 @@ public class BeutifulMenu {
                 startDateLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(startDateLabel);
 
-                if (!hospitalization.getEndDate().isEmpty()) {
+                if (!(hospitalization.getEndDate() == null) && !(hospitalization.getEndDate() == "")) {
                     JLabel endDateLabel = new JLabel("date of hospitalization: " + hospitalization.getEndDate());
                     endDateLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                     infoPanel.add(endDateLabel);
                 }
 
                 JLabel statusLabel = new JLabel(
-                        "status: " + (hospitalization.getEndDate().isEmpty() ? "active" : "ended"));
+                        "status: " + ((!(hospitalization.getEndDate() == null) && !(hospitalization.getEndDate() == "")) ? "ended" : "active"));
                 statusLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(statusLabel);
 
@@ -1442,7 +1442,7 @@ public class BeutifulMenu {
                 Doctor doctor = context.Doctors().getById(visit.getDoctorId());
 
                 JLabel doctorLabel = new JLabel(
-                        "Doctor name: " + (doctor.getGender() == "male" ? "Mr. " : "Mrs. ") + doctor.getName());
+                        "Doctor name: " + (doctor.getGender() == "male" ?  "Mrs. ":"Mr. ") + doctor.getName());
                 doctorLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(doctorLabel);
 
@@ -1623,7 +1623,7 @@ public class BeutifulMenu {
 
                 // Add the selected doctor's information to the infoPanel
                 JLabel nameLabel = new JLabel(
-                        "Name: " + (doctor.getGender() == "male" ? "mr " : "mrs ") + doctor.getName());
+                        "Name: " + (doctor.getGender() == "male" ? "mrs " : "mr ") + doctor.getName());
                 nameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(nameLabel);
 
@@ -1768,12 +1768,12 @@ public class BeutifulMenu {
 
                 // Add the selected doctor's information to the infoPanel
                 JLabel doctorNameLabel = new JLabel(
-                        "Doctor Name: " + (doctor.getGender() == "male" ? "mr " : "mrs ") + doctor.getName());
+                        "Doctor Name: " + (doctor.getGender() == "male" ? "mrs " : "mr ") + doctor.getName());
                 doctorNameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(doctorNameLabel);
 
                 JLabel patientNameLabel = new JLabel(
-                        "Patient Name: " + (patient.getGender() == "male" ? "mr " : "mrs ") + patient.getName());
+                        "Patient Name: " + (patient.getGender() == "male" ? "mrs " : "mr ") + patient.getName());
                 patientNameLabel.setFont(new Font("Arial", Font.PLAIN, 16));
                 infoPanel.add(patientNameLabel);
 
@@ -1852,9 +1852,9 @@ public class BeutifulMenu {
         JFrame frame = new JFrame("Admin Profile");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(Width, Height));
-    
+
         Box panel = Box.createVerticalBox();
-    
+
         JLabel nameLabel = new JLabel("Name: " + admin.getName());
         nameLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
         JLabel phoneLabel = new JLabel("Phone Number: " + admin.getPhoneNumber());
@@ -1865,7 +1865,7 @@ public class BeutifulMenu {
         emailLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
         JLabel ageLabel = new JLabel("Age: " + admin.getAge());
         ageLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
-    
+
         panel.add(nameLabel);
         panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
         panel.add(phoneLabel);
@@ -1876,7 +1876,7 @@ public class BeutifulMenu {
         panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
         panel.add(ageLabel);
         panel.add(Box.createRigidArea(new Dimension(0, 20))); // Add a larger rigid area for spacing
-    
+
         for (int i = 0; i < menuItems.size(); i++) {
             final int index = i; // Create a final variable to hold the value of i
             String menuItem = menuItems.get(i);
@@ -1888,7 +1888,7 @@ public class BeutifulMenu {
                 callback.onMenuSelected(index + 1);
             });
         }
-    
+
         frame.add(panel);
         frame.pack();
         frame.setVisible(true);
@@ -1898,9 +1898,9 @@ public class BeutifulMenu {
         JFrame frame = new JFrame("Admin Profile");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(Width, Height));
-    
+
         Box panel = Box.createVerticalBox();
-    
+
         JLabel nameLabel = new JLabel("Name: " + doctor.getName());
         nameLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
         JLabel phoneLabel = new JLabel("Phone Number: " + doctor.getPhoneNumber());
@@ -1930,7 +1930,7 @@ public class BeutifulMenu {
         panel.add(Box.createRigidArea(new Dimension(0, 20))); // Add a larger rigid area for spacing
         panel.add(salary);
         panel.add(Box.createRigidArea(new Dimension(0, 20))); // Add a larger rigid area for spacing
-    
+
         for (int i = 0; i < menuItems.size(); i++) {
             final int index = i; // Create a final variable to hold the value of i
             String menuItem = menuItems.get(i);
@@ -1942,19 +1942,19 @@ public class BeutifulMenu {
                 callback.onMenuSelected(index + 1);
             });
         }
-    
+
         frame.add(panel);
         frame.pack();
-        frame.setVisible(true);   
-     }
+        frame.setVisible(true);
+    }
 
     public static void showNurseProfile(Nurse nurse, List<String> menuItems, MenuCallback callback) {
         JFrame frame = new JFrame("Admin Profile");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(Width, Height));
-    
+
         Box panel = Box.createVerticalBox();
-    
+
         JLabel nameLabel = new JLabel("Name: " + nurse.getName());
         nameLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
         JLabel phoneLabel = new JLabel("Phone Number: " + nurse.getPhoneNumber());
@@ -1988,7 +1988,7 @@ public class BeutifulMenu {
         panel.add(Box.createRigidArea(new Dimension(0, 20))); // Add a larger rigid area for spacing
         panel.add(salary);
         panel.add(Box.createRigidArea(new Dimension(0, 20))); // Add a larger rigid area for spacing
-    
+
         for (int i = 0; i < menuItems.size(); i++) {
             final int index = i; // Create a final variable to hold the value of i
             String menuItem = menuItems.get(i);
@@ -2000,19 +2000,19 @@ public class BeutifulMenu {
                 callback.onMenuSelected(index + 1);
             });
         }
-    
+
         frame.add(panel);
         frame.pack();
-        frame.setVisible(true);  
+        frame.setVisible(true);
     }
 
     public static void showPersonelProfile(Personel personel, List<String> menuItems, MenuCallback callback) {
         JFrame frame = new JFrame("Admin Profile");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(Width, Height));
-    
+
         Box panel = Box.createVerticalBox();
-    
+
         JLabel nameLabel = new JLabel("Name: " + personel.getName());
         nameLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
         JLabel phoneLabel = new JLabel("Phone Number: " + personel.getPhoneNumber());
@@ -2038,7 +2038,7 @@ public class BeutifulMenu {
         panel.add(Box.createRigidArea(new Dimension(0, 20))); // Add a larger rigid area for spacing
         panel.add(salary);
         panel.add(Box.createRigidArea(new Dimension(0, 20))); // Add a larger rigid area for spacing
-    
+
         for (int i = 0; i < menuItems.size(); i++) {
             final int index = i; // Create a final variable to hold the value of i
             String menuItem = menuItems.get(i);
@@ -2050,10 +2050,11 @@ public class BeutifulMenu {
                 callback.onMenuSelected(index + 1);
             });
         }
-    
+
         frame.add(panel);
         frame.pack();
-        frame.setVisible(true);      }
+        frame.setVisible(true);
+    }
 
     public static void getUsernamePassFromUser(getUsernamePassCallBack callBack) {
         // Create a new JFrame to display the window
@@ -3604,31 +3605,31 @@ public class BeutifulMenu {
         JFrame frame = new JFrame("Pay Window");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(300, 200));
-    
+
         JLabel label = new JLabel(text);
         label.setFont(new Font("Arial", Font.PLAIN, 16));
         label.setHorizontalAlignment(SwingConstants.CENTER);
-    
+
         JButton payButton = new JButton("Pay");
         payButton.addActionListener(e -> {
             callBack.onPay();
             frame.dispose(); // Close the JFrame
         });
-    
+
         JButton returnButton = new JButton("Return");
         returnButton.addActionListener(e -> {
             callBack.onReturn();
             frame.dispose(); // Close the JFrame
         });
-    
+
         JPanel panel = new JPanel(new BorderLayout());
         panel.add(label, BorderLayout.CENTER);
-    
+
         JPanel buttonPanel = new JPanel(new FlowLayout());
         buttonPanel.add(payButton);
         buttonPanel.add(returnButton);
         panel.add(buttonPanel, BorderLayout.SOUTH);
-    
+
         frame.setContentPane(panel);
         frame.pack();
         frame.setVisible(true);
@@ -3674,7 +3675,7 @@ public class BeutifulMenu {
         public void onPersonelCreated(Personel personel);
     }
 
-    public interface PayFineCallBack{
+    public interface PayFineCallBack {
         void onPay();
 
         void onReturn();
