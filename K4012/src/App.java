@@ -451,9 +451,7 @@ public class App {
                     case 1:
                         adminMenu();
                         break;
-
                 }
-
             }
 
         });
@@ -1019,7 +1017,7 @@ public class App {
     }
 
     public static void AmountOffine() {
-
+        //TODO
     }
 
     public static void UnpaidPatient() {
@@ -1074,7 +1072,7 @@ public class App {
     }
 
     public static void ratePersonels() {
-
+        //TODO
     }
 
     public static void visitRequest() {
@@ -1157,10 +1155,10 @@ public class App {
     }
 
     public static void OffRequest() {
-
+        //TODO
     }
 
     public static void PaymentPersonel() {
-
+        //TODO
     }
 }

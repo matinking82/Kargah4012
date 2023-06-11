@@ -1849,20 +1849,211 @@ public class BeutifulMenu {
     }
 
     public static void showAdminProfile(Admin admin, List<String> menuItems, MenuCallback callback) {
-        // TODO
+        JFrame frame = new JFrame("Admin Profile");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setPreferredSize(new Dimension(Width, Height));
+    
+        Box panel = Box.createVerticalBox();
+    
+        JLabel nameLabel = new JLabel("Name: " + admin.getName());
+        nameLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel phoneLabel = new JLabel("Phone Number: " + admin.getPhoneNumber());
+        phoneLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel username = new JLabel("Username: " + admin.getUsername());
+        username.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel emailLabel = new JLabel("Email: " + admin.getEmail());
+        emailLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel ageLabel = new JLabel("Age: " + admin.getAge());
+        ageLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+    
+        panel.add(nameLabel);
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
+        panel.add(phoneLabel);
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
+        panel.add(username);
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
+        panel.add(emailLabel);
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
+        panel.add(ageLabel);
+        panel.add(Box.createRigidArea(new Dimension(0, 20))); // Add a larger rigid area for spacing
+    
+        for (int i = 0; i < menuItems.size(); i++) {
+            final int index = i; // Create a final variable to hold the value of i
+            String menuItem = menuItems.get(i);
+            JButton button = new JButton(menuItem);
+            panel.add(button);
+            panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
+            button.addActionListener(e -> {
+                frame.dispose(); // Close the JFrame
+                callback.onMenuSelected(index + 1);
+            });
+        }
+    
+        frame.add(panel);
+        frame.pack();
+        frame.setVisible(true);
     }
 
     public static void showDoctorProfile(Doctor doctor, List<String> menuItems, MenuCallback callback) {
-        // TODO
-    }
+        JFrame frame = new JFrame("Admin Profile");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setPreferredSize(new Dimension(Width, Height));
+    
+        Box panel = Box.createVerticalBox();
+    
+        JLabel nameLabel = new JLabel("Name: " + doctor.getName());
+        nameLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel phoneLabel = new JLabel("Phone Number: " + doctor.getPhoneNumber());
+        phoneLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel username = new JLabel("Username: " + doctor.getUsername());
+        username.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel emailLabel = new JLabel("Email: " + doctor.getEmail());
+        emailLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel ageLabel = new JLabel("Age: " + doctor.getAge());
+        ageLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel exp = new JLabel("Expertise: " + doctor.getExpertise());
+        exp.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel salary = new JLabel("Salary: " + doctor.getSalary());
+        salary.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+
+        panel.add(nameLabel);
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
+        panel.add(phoneLabel);
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
+        panel.add(username);
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
+        panel.add(emailLabel);
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
+        panel.add(ageLabel);
+        panel.add(Box.createRigidArea(new Dimension(0, 20))); // Add a larger rigid area for spacing
+        panel.add(exp);
+        panel.add(Box.createRigidArea(new Dimension(0, 20))); // Add a larger rigid area for spacing
+        panel.add(salary);
+        panel.add(Box.createRigidArea(new Dimension(0, 20))); // Add a larger rigid area for spacing
+    
+        for (int i = 0; i < menuItems.size(); i++) {
+            final int index = i; // Create a final variable to hold the value of i
+            String menuItem = menuItems.get(i);
+            JButton button = new JButton(menuItem);
+            panel.add(button);
+            panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
+            button.addActionListener(e -> {
+                frame.dispose(); // Close the JFrame
+                callback.onMenuSelected(index + 1);
+            });
+        }
+    
+        frame.add(panel);
+        frame.pack();
+        frame.setVisible(true);   
+     }
 
     public static void showNurseProfile(Nurse nurse, List<String> menuItems, MenuCallback callback) {
-        // TODO
+        JFrame frame = new JFrame("Admin Profile");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setPreferredSize(new Dimension(Width, Height));
+    
+        Box panel = Box.createVerticalBox();
+    
+        JLabel nameLabel = new JLabel("Name: " + nurse.getName());
+        nameLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel phoneLabel = new JLabel("Phone Number: " + nurse.getPhoneNumber());
+        phoneLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel username = new JLabel("Username: " + nurse.getUsername());
+        username.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel emailLabel = new JLabel("Email: " + nurse.getEmail());
+        emailLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel ageLabel = new JLabel("Age: " + nurse.getAge());
+        ageLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel type = new JLabel("Type: " + nurse.getType());
+        type.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel pow = new JLabel("Place of work: " + nurse.getPlaceOfWork());
+        pow.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel salary = new JLabel("Salary: " + nurse.getSalary());
+        salary.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+
+        panel.add(nameLabel);
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
+        panel.add(phoneLabel);
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
+        panel.add(username);
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
+        panel.add(emailLabel);
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
+        panel.add(ageLabel);
+        panel.add(Box.createRigidArea(new Dimension(0, 20))); // Add a larger rigid area for spacing
+        panel.add(type);
+        panel.add(Box.createRigidArea(new Dimension(0, 20))); // Add a larger rigid area for spacing
+        panel.add(pow);
+        panel.add(Box.createRigidArea(new Dimension(0, 20))); // Add a larger rigid area for spacing
+        panel.add(salary);
+        panel.add(Box.createRigidArea(new Dimension(0, 20))); // Add a larger rigid area for spacing
+    
+        for (int i = 0; i < menuItems.size(); i++) {
+            final int index = i; // Create a final variable to hold the value of i
+            String menuItem = menuItems.get(i);
+            JButton button = new JButton(menuItem);
+            panel.add(button);
+            panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
+            button.addActionListener(e -> {
+                frame.dispose(); // Close the JFrame
+                callback.onMenuSelected(index + 1);
+            });
+        }
+    
+        frame.add(panel);
+        frame.pack();
+        frame.setVisible(true);  
     }
 
     public static void showPersonelProfile(Personel personel, List<String> menuItems, MenuCallback callback) {
-        // TODO
-    }
+        JFrame frame = new JFrame("Admin Profile");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setPreferredSize(new Dimension(Width, Height));
+    
+        Box panel = Box.createVerticalBox();
+    
+        JLabel nameLabel = new JLabel("Name: " + personel.getName());
+        nameLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel phoneLabel = new JLabel("Phone Number: " + personel.getPhoneNumber());
+        phoneLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel username = new JLabel("Username: " + personel.getUsername());
+        username.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel emailLabel = new JLabel("Email: " + personel.getEmail());
+        emailLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel ageLabel = new JLabel("Age: " + personel.getAge());
+        ageLabel.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+        JLabel salary = new JLabel("Salary: " + personel.getSalary());
+        salary.setFont(new Font("Arial", Font.PLAIN, 32)); // Set font size to 32
+
+        panel.add(nameLabel);
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
+        panel.add(phoneLabel);
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
+        panel.add(username);
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
+        panel.add(emailLabel);
+        panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
+        panel.add(ageLabel);
+        panel.add(Box.createRigidArea(new Dimension(0, 20))); // Add a larger rigid area for spacing
+        panel.add(salary);
+        panel.add(Box.createRigidArea(new Dimension(0, 20))); // Add a larger rigid area for spacing
+    
+        for (int i = 0; i < menuItems.size(); i++) {
+            final int index = i; // Create a final variable to hold the value of i
+            String menuItem = menuItems.get(i);
+            JButton button = new JButton(menuItem);
+            panel.add(button);
+            panel.add(Box.createRigidArea(new Dimension(0, 10))); // Add a rigid area for spacing
+            button.addActionListener(e -> {
+                frame.dispose(); // Close the JFrame
+                callback.onMenuSelected(index + 1);
+            });
+        }
+    
+        frame.add(panel);
+        frame.pack();
+        frame.setVisible(true);      }
 
     public static void getUsernamePassFromUser(getUsernamePassCallBack callBack) {
         // Create a new JFrame to display the window
