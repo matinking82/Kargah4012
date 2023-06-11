@@ -190,7 +190,7 @@ public class AdminDbServices implements IAdminDbServices {
             String query = "SELECT * FROM Admin WHERE username = ? AND password = ?";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, username);
-            statement.setString(2, password);
+            statement.setString(2, PasswordHasher.ToSha256(password));
 
             // Execute the SQL statement
             ResultSet rs = statement.executeQuery();

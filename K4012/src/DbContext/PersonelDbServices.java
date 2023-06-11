@@ -171,7 +171,7 @@ public class PersonelDbServices implements IPersonelDbServices {
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM Personel WHERE username = ? AND password = ?");
             statement.setString(1, username);
-            statement.setString(2, password);
+            statement.setString(2, PasswordHasher.ToSha256(password));
 
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {

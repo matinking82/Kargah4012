@@ -221,7 +221,7 @@ public class NurseDbServices implements INurseDbServices {
             String sql = "SELECT * FROM Nurse WHERE username = ? AND password = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, username);
-            statement.setString(2, password);
+            statement.setString(2, PasswordHasher.ToSha256(password));
 
             // Execute the SQL statement
             ResultSet rs = statement.executeQuery();

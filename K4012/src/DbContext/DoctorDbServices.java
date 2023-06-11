@@ -277,7 +277,7 @@ public class DoctorDbServices implements IDoctorDbServices {
             String sql = "SELECT * FROM Doctor WHERE username = ? AND password = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, username);
-            statement.setString(2, password);
+            statement.setString(2, PasswordHasher.ToSha256(password));
 
             // Execute the SQL statement
             ResultSet rs = statement.executeQuery();
