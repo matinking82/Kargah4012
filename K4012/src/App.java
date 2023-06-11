@@ -26,6 +26,7 @@ import Utils.BeutifulMenu.CreatePersonelCallBack;
 import Utils.BeutifulMenu.CreateVisitRequestCallBack;
 import Utils.BeutifulMenu.ListCallback;
 import Utils.BeutifulMenu.MenuCallback;
+import Utils.BeutifulMenu.PayFineCallBack;
 import Utils.BeutifulMenu.SendDoctorResumeCallBack;
 import Utils.BeutifulMenu.getEmailCllBack;
 import Utils.BeutifulMenu.getUsernamePassCallBack;
@@ -34,9 +35,9 @@ import Utils.LoginInfo.loginType;
 public class App {
     private static IDataBaseContext context;
 
-    private static void setSeed(){
+    private static void setSeed() {
         List<Admin> admins = context.Admins().getAllAdminsList();
-        if (admins.size()==0) {
+        if (admins.size() == 0) {
             Admin admin = new Admin();
             admin.setName("Admin");
             admin.setAge(20);
@@ -46,6 +47,7 @@ public class App {
             context.Admins().Add(admin);
         }
     }
+
     public static void main(String[] args) throws Exception {
         context = new DataBaseContext();
         BeutifulMenu.context = context;
@@ -231,9 +233,9 @@ public class App {
                             @Override
                             public void onSubmit(String email) {
                                 Patient p = context.Patients().IsExist(email);
-                                if (p==null) {
+                                if (p == null) {
                                     BeutifulMenu.showAlert("Error", "patient with this email doesnt exist");
-                                }else{
+                                } else {
                                     LoginInfo.IsLogged = true;
                                     LoginInfo.LoginId = p.getId();
                                 }
@@ -245,7 +247,7 @@ public class App {
                             @Override
                             public void onPatientCreated(Patient patient) {
                                 Patient p = context.Patients().IsExist(patient.getEmail());
-                                if (p==null) {
+                                if (p == null) {
                                     context.Patients().Add(patient);
                                     p = patient;
                                 }
@@ -379,9 +381,11 @@ public class App {
             public void onItemSelectedForRemove(int Id) {
                 List<Resume> resumes = context.Resumes().getResumesForDoctor(Id);
                 for (Resume resume : resumes) {
-                    List<ArticleForResume> articles = context.ArticleForResumeDbServices().getAllArticleForResumeList(resume.getId());
-                    List<ExpeirenceForResume> expeirences = context.ExperienceForResumeDbServices().getExperiencesForResume(resume.getId());
-                    
+                    List<ArticleForResume> articles = context.ArticleForResumeDbServices()
+                            .getAllArticleForResumeList(resume.getId());
+                    List<ExpeirenceForResume> expeirences = context.ExperienceForResumeDbServices()
+                            .getExperiencesForResume(resume.getId());
+
                     for (ArticleForResume art : articles) {
                         context.ArticleForResumeDbServices().Remove(art);
                     }
@@ -537,8 +541,17 @@ public class App {
                         NurseHospitalizarionRelation relation = new NurseHospitalizarionRelation(nurseId,
                                 patientHospitalizationRecord.getId());
                         context.NurseHospitalizationRelationDbServices().Add(relation);
-                        hospitalization();
 
+                        PatientPayment payment = context.PatientPayments().getByVisitId(visit.getId());
+                        if (payment == null || payment.isPaid()) {
+                            payment = new PatientPayment(visit.getPatientId(), patientHospitalizationRecord.getId(), 0);
+                            context.PatientPayments().Add(payment);
+                        } else {
+                            payment.setHospitalizationId(patientHospitalizationRecord.getId());
+                            context.PatientPayments().Update(payment);
+                        }
+
+                        hospitalization();
                     }
 
                     @Override
@@ -1017,7 +1030,36 @@ public class App {
     }
 
     public static void AmountOffine() {
-        //TODO
+        List<PatientPayment> unpaidPayments = context.PatientPayments().getAllUnPaidPayments();
+        long fine = 0;
+        for (PatientPayment patientPayment : unpaidPayments) {
+            Visit v = context.Visits().getById(patientPayment.getVisitId());
+            PatientHospitalizationRecord p = context.PatientHospitalizationRecords()
+                    .getById(patientPayment.getHospitalizationId());
+            if (v != null) {
+                fine += v.getVisitPrice();
+            }
+            if (p != null) {
+                fine += p.getHospitalizationPrice();
+            }
+        }
+        BeutifulMenu.showPayWindow("You have to pay " + fine, new PayFineCallBack() {
+
+            @Override
+            public void onPay() {
+                for (PatientPayment patientPayment : unpaidPayments) {
+                    patientPayment.setPaid(true);
+                    context.PatientPayments().Update(patientPayment);
+                }
+                paymentPatient();
+            }
+
+            @Override
+            public void onReturn() {
+                paymentPatient();
+            }
+
+        });
     }
 
     public static void UnpaidPatient() {
@@ -1072,7 +1114,7 @@ public class App {
     }
 
     public static void ratePersonels() {
-        //TODO
+        // TODO
     }
 
     public static void visitRequest() {
@@ -1155,10 +1197,10 @@ public class App {
     }
 
     public static void OffRequest() {
-        //TODO
+        // TODO
     }
 
     public static void PaymentPersonel() {
-        //TODO
+        // TODO
     }
 }

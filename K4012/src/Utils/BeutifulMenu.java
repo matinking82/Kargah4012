@@ -3600,6 +3600,40 @@ public class BeutifulMenu {
                 });
     }
 
+    public static void showPayWindow(String text, PayFineCallBack callBack) {
+        JFrame frame = new JFrame("Pay Window");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setPreferredSize(new Dimension(300, 200));
+    
+        JLabel label = new JLabel(text);
+        label.setFont(new Font("Arial", Font.PLAIN, 16));
+        label.setHorizontalAlignment(SwingConstants.CENTER);
+    
+        JButton payButton = new JButton("Pay");
+        payButton.addActionListener(e -> {
+            callBack.onPay();
+            frame.dispose(); // Close the JFrame
+        });
+    
+        JButton returnButton = new JButton("Return");
+        returnButton.addActionListener(e -> {
+            callBack.onReturn();
+            frame.dispose(); // Close the JFrame
+        });
+    
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.add(label, BorderLayout.CENTER);
+    
+        JPanel buttonPanel = new JPanel(new FlowLayout());
+        buttonPanel.add(payButton);
+        buttonPanel.add(returnButton);
+        panel.add(buttonPanel, BorderLayout.SOUTH);
+    
+        frame.setContentPane(panel);
+        frame.pack();
+        frame.setVisible(true);
+    }
+
     public interface SendDoctorResumeCallBack {
         void onRequestCreated(Doctor doctor, Resume resume, List<ArticleForResume> articles,
                 List<ExpeirenceForResume> expeirences);
@@ -3640,4 +3674,9 @@ public class BeutifulMenu {
         public void onPersonelCreated(Personel personel);
     }
 
+    public interface PayFineCallBack{
+        void onPay();
+
+        void onReturn();
+    }
 }
