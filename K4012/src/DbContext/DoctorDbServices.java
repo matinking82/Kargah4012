@@ -9,6 +9,7 @@ import java.util.List;
 
 import DbContext.Interfaces.IDoctorDbServices;
 import Models.Doctor;
+import Utils.PasswordHasher;
 
 public class DoctorDbServices implements IDoctorDbServices {
     private Connection connection;
@@ -126,7 +127,7 @@ public class DoctorDbServices implements IDoctorDbServices {
             statement.setString(7, doctor.getShift());
             statement.setBoolean(8, doctor.isAvalable());
             statement.setString(9, doctor.getUsername());
-            statement.setString(10, doctor.getPassword());
+            statement.setString(10, PasswordHasher.ToSha256(doctor.getPassword()));
             statement.setString(11, doctor.getExpertise());
             statement.setInt(12, doctor.getOff());
             statement.setInt(13, doctor.getId());
@@ -172,7 +173,7 @@ public class DoctorDbServices implements IDoctorDbServices {
         boolean success = false;
         try {
             // Prepare the SQL statement
-            String sql = "UPDATE Doctor SET name = ?, gender = ?, phoneNumber = ?, email = ?, age = ?, salary = ?, shift = ?, isAvailable = ?, username = ?, password = ?, expertise = ?, off = ? WHERE id = ?";
+            String sql = "UPDATE Doctor SET name = ?, gender = ?, phoneNumber = ?, email = ?, age = ?, salary = ?, shift = ?, isAvailable = ?, username = ?, expertise = ?, off = ? WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, doctor.getName());
             statement.setString(2, doctor.getGender());
@@ -183,10 +184,9 @@ public class DoctorDbServices implements IDoctorDbServices {
             statement.setString(7, doctor.getShift());
             statement.setBoolean(8, doctor.isAvalable());
             statement.setString(9, doctor.getUsername());
-            statement.setString(10, doctor.getPassword());
-            statement.setString(11, doctor.getExpertise());
-            statement.setInt(12, doctor.getOff());
-            statement.setInt(13, doctor.getId());
+            statement.setString(10, doctor.getExpertise());
+            statement.setInt(11, doctor.getOff());
+            statement.setInt(12, doctor.getId());
 
             // Execute the SQL statement
             int rowsUpdated = statement.executeUpdate();

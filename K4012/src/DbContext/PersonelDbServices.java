@@ -9,6 +9,7 @@ import java.util.List;
 
 import DbContext.Interfaces.IPersonelDbServices;
 import Models.Personel;
+import Utils.PasswordHasher;
 
 public class PersonelDbServices implements IPersonelDbServices {
 
@@ -109,7 +110,7 @@ public class PersonelDbServices implements IPersonelDbServices {
             statement.setString(8, personel.getShift());
             statement.setBoolean(9, personel.isAvalable());
             statement.setString(10, personel.getUsername());
-            statement.setString(11, personel.getPassword());
+            statement.setString(11, PasswordHasher.ToSha256(personel.getPassword()));
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 return true;
@@ -143,7 +144,7 @@ public class PersonelDbServices implements IPersonelDbServices {
     @Override
     public boolean Update(Personel personel) {
         try {
-            PreparedStatement statement = connection.prepareStatement("UPDATE Personel SET name = ?, gender = ?, phoneNumber = ?, email = ?, age = ?, salary = ?, shift = ?, isAvailable = ?, username = ?, password = ? WHERE id = ?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE Personel SET name = ?, gender = ?, phoneNumber = ?, email = ?, age = ?, salary = ?, shift = ?, isAvailable = ?, username = ? WHERE id = ?");
             statement.setString(1, personel.getName());
             statement.setString(2, personel.getGender());
             statement.setString(3, personel.getPhoneNumber());
@@ -153,8 +154,7 @@ public class PersonelDbServices implements IPersonelDbServices {
             statement.setString(7, personel.getShift());
             statement.setBoolean(8, personel.isAvalable());
             statement.setString(9, personel.getUsername());
-            statement.setString(10, personel.getPassword());
-            statement.setInt(11, personel.getId());
+            statement.setInt(10, personel.getId());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
                 return true;

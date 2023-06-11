@@ -9,6 +9,7 @@ import java.util.List;
 
 import DbContext.Interfaces.INurseDbServices;
 import Models.Nurse;
+import Utils.PasswordHasher;
 
 public class NurseDbServices implements INurseDbServices {
     private Connection connection;
@@ -125,7 +126,7 @@ public class NurseDbServices implements INurseDbServices {
             statement.setString(7, nurse.getShift());
             statement.setBoolean(8, nurse.isAvalable());
             statement.setString(9, nurse.getUsername());
-            statement.setString(10, nurse.getPassword());
+            statement.setString(10, PasswordHasher.ToSha256(nurse.getPassword()));
             statement.setString(11, nurse.getType());
             statement.setString(12, nurse.getPlaceOfWork());
             statement.setInt(13, nurse.getId());
@@ -186,7 +187,7 @@ public class NurseDbServices implements INurseDbServices {
         boolean success = false;
         try {
             // Prepare the SQL statement
-            String sql = "UPDATE Nurse SET name=?, gender=?, phoneNumber=?, email=?, age=?, salary=?, shift=?, isAvailable=?, username=?, password=?, type=?, placeOfWork=? " +
+            String sql = "UPDATE Nurse SET name=?, gender=?, phoneNumber=?, email=?, age=?, salary=?, shift=?, isAvailable=?, username=?, type=?, placeOfWork=? " +
                          "WHERE id=?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, nurse.getName());
@@ -198,10 +199,9 @@ public class NurseDbServices implements INurseDbServices {
             statement.setString(7, nurse.getShift());
             statement.setBoolean(8, nurse.isAvalable());
             statement.setString(9, nurse.getUsername());
-            statement.setString(10, nurse.getPassword());
-            statement.setString(11, nurse.getType());
-            statement.setString(12, nurse.getPlaceOfWork());
-            statement.setInt(13, nurse.getId());
+            statement.setString(10, nurse.getType());
+            statement.setString(11, nurse.getPlaceOfWork());
+            statement.setInt(12, nurse.getId());
 
             // Execute the SQL statement
             int rowsUpdated = statement.executeUpdate();

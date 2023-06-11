@@ -9,6 +9,7 @@ import java.util.List;
 
 import DbContext.Interfaces.IAdminDbServices;
 import Models.Admin;
+import Utils.PasswordHasher;
 
 public class AdminDbServices implements IAdminDbServices {
     private Connection connection;
@@ -105,7 +106,7 @@ public class AdminDbServices implements IAdminDbServices {
             // Prepare the SQL statement
             String sql = "INSERT INTO Admin (password, username, name, phoneNumber, email, age,id) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, admin.getPassword());
+            statement.setString(1, PasswordHasher.ToSha256(admin.getPassword()));
             statement.setString(2, admin.getUsername());
             statement.setString(3, admin.getName());
             statement.setString(4, admin.getPhoneNumber());
@@ -158,15 +159,14 @@ public class AdminDbServices implements IAdminDbServices {
     public boolean Update(Admin admin) {
         try {
             // Prepare the SQL statement
-            String sql = "UPDATE Admin SET password = ?, username = ?, name = ?, phoneNumber = ?, email = ?, age = ? WHERE id = ?";
+            String sql = "UPDATE Admin SET username = ?, name = ?, phoneNumber = ?, email = ?, age = ? WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, admin.getPassword());
-            statement.setString(2, admin.getUsername());
-            statement.setString(3, admin.getName());
-            statement.setString(4, admin.getPhoneNumber());
-            statement.setString(5, admin.getEmail());
-            statement.setInt(6, admin.getAge());
-            statement.setInt(7, admin.getId());
+            statement.setString(1, admin.getUsername());
+            statement.setString(2, admin.getName());
+            statement.setString(3, admin.getPhoneNumber());
+            statement.setString(4, admin.getEmail());
+            statement.setInt(5, admin.getAge());
+            statement.setInt(6, admin.getId());
 
             // Execute the SQL statement
             int rowsUpdated = statement.executeUpdate();
